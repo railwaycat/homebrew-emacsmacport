@@ -1,6 +1,6 @@
 require 'formula'
 
-class EmacsMac <Formula
+class EmacsMac < Formula
   homepage 'http://www.gnu.org/software/emacs/'
 
   head 'git://github.com/railwaycat/emacs-mac-port.git'
