@@ -28,8 +28,17 @@ class EmacsMac <Formula
     EOS
 
     s += <<-EOS.undent
-        Emacs.app was installed to: /Applications
+        Emacs.app was installed to: 
+          #{prefix}
 
+        To link the application to default Homebrew App location:
+          brew linkapps
+        or:
+          ln -s #{prefix}/Emacs.app /Applications
+
+        For a CLI starter, please look at:
+          https://gist.github.com/4043945
+          
     EOS
 
     return s
@@ -40,7 +49,7 @@ class EmacsMac <Formula
             "--enable-locallisppath=#{HOMEBREW_PREFIX}/share/emacs/site-lisp",
             "--infodir=#{info}/emacs",
             "--with-mac",
-            "--enable-mac-app"]
+            "--enable-mac-app=#{prefix}"]
 
     # build
     system "./configure", *args
