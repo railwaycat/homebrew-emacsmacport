@@ -3,7 +3,8 @@ require 'formula'
 class EmacsMac < Formula
   homepage 'http://www.gnu.org/software/emacs/'
 
-  head 'git://github.com/railwaycat/emacs-mac-port.git'
+  head 'https://github.com/railwaycat/emacs-mac-port.git'
+  url 'https://github.com/railwaycat/emacs-mac-port.git', :using => :git, :tag => 'v4.0'
 
   depends_on 'automake' => :build
   depends_on 'pkg-config' => :build
@@ -15,7 +16,7 @@ class EmacsMac < Formula
   depends_on 'gnutls' => :optional
   depends_on 'imagemagick' => :optional
   depends_on 'libxml2' if build.include? 'with-xml2'
-  
+
   def caveats
     s = ""
     s += <<-EOS.undent
@@ -28,7 +29,7 @@ class EmacsMac < Formula
     EOS
 
     s += <<-EOS.undent
-        Emacs.app was installed to: 
+        Emacs.app was installed to:
           #{prefix}
 
         To link the application to default Homebrew App location:
@@ -38,7 +39,7 @@ class EmacsMac < Formula
 
         For a CLI starter, please look at:
           https://gist.github.com/4043945
-          
+
     EOS
 
     return s
