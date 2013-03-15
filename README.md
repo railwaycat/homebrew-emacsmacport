@@ -6,7 +6,7 @@ Enable:
 
 Install:
 
-    brew install --HEAD emacs-mac
+    brew install emacs-mac
 
 Disable:
 
