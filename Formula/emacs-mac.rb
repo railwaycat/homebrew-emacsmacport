@@ -24,7 +24,7 @@ class EmacsMac < Formula
 
       This is YAMAMOTO Mitsuharu's experimental "Mac port" addition to
       GNU Emacs 24. This provides a native GUI support for Mac OS X
-      10.4 - 10.8. After installing, see README-mac and NEWS-mac
+      10.4 - 10.9. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
     EOS
