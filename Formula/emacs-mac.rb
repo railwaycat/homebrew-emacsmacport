@@ -7,7 +7,7 @@ class EmacsMac < Formula
   url 'https://github.com/railwaycat/emacs-mac-port.git', :using => :git, :tag => 'v4.5'
   version 'emacs-24.3-mac-4.5'
 
-  depends_on 'automake' => :build
+  depends_on 'automake'
   depends_on 'pkg-config' => :build
 
   option 'with-dbus', 'Build with d-bus support'
