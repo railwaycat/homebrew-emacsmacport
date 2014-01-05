@@ -43,7 +43,7 @@ class EmacsMac < Formula
 
         To install info files under share/info, an environment variable
         need been set before install. Read more: man brew.
-          export HOMEBREWW_KEEP_INFO=1
+          export HOMEBREW_KEEP_INFO=1
 
     EOS
 
