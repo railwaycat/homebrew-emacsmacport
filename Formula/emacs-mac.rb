@@ -41,6 +41,10 @@ class EmacsMac < Formula
         For a CLI starter, please look at:
           https://gist.github.com/4043945
 
+        To install info files under share/info, an environment variable
+        need been set before install. Read more: man brew.
+          export HOMEBREWW_KEEP_INFO=1
+
     EOS
 
     return s
