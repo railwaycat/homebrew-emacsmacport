@@ -12,6 +12,7 @@ class EmacsMac < Formula
 
   option 'with-dbus', 'Build with d-bus support'
   option 'with-xml2', 'Build with libxml2 support'
+  option "keep-ctags", "Don't remove the ctags executable that emacs provides"
 
   depends_on 'd-bus' if build.include? 'with-dbus'
   depends_on 'gnutls' => :optional
@@ -50,6 +51,15 @@ class EmacsMac < Formula
     return s
   end
 
+  # Follow Homebrew and don't install ctags from Emacs. This allows Vim
+  # and Emacs and exuberant ctags to play together without violence.
+  def do_not_install_ctags
+    unless build.include? "keep-ctags"
+      (bin/"ctags").unlink
+      (share/man/man1/"ctags.1.gz").unlink
+    end
+  end
+
   def install
     args = ["--prefix=#{prefix}",
             "--enable-locallisppath=#{HOMEBREW_PREFIX}/share/emacs/site-lisp",
@@ -62,5 +72,7 @@ class EmacsMac < Formula
     system "make"
     system "make install"
 
+    # Don't cause ctags clash.
+    do_not_install_ctags
   end
 end
