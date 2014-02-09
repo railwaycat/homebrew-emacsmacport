@@ -13,6 +13,8 @@ class EmacsMac < Formula
   option 'with-dbus', 'Build with d-bus support'
   option 'with-xml2', 'Build with libxml2 support'
   option "keep-ctags", "Don't remove the ctags executable that emacs provides"
+  option "icon-official", "Using offical Emacs icon"
+  option "icon-modern", "Using a modern style Emacs icon by @tpanum"
 
   depends_on 'd-bus' if build.include? 'with-dbus'
   depends_on 'gnutls' => :optional
@@ -67,6 +69,16 @@ class EmacsMac < Formula
             "--with-mac",
             "--enable-mac-app=#{prefix}"]
 
+    # icons
+    icon_path = "./mac/Emacs.app/Contents/Resources/"
+    if build.include? "icon-official"
+      system "rm -f "+icon_path+"Emacs.icns"
+      system "cp " +icon_path+"Emacs.icns.official "+icon_path+"Emacs.icns"
+    elsif build.include? "icon-modern"
+      system "rm -f "+icon_path+"Emacs.icns"
+      system "cp " +icon_path+"Emacs.icns.modern "+icon_path+"Emacs.icns"
+    end
+    
     # build
     system "./configure", *args
     system "make"
