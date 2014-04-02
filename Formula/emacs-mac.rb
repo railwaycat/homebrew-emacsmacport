@@ -4,8 +4,8 @@ class EmacsMac < Formula
   homepage 'http://www.gnu.org/software/emacs/'
 
   head 'https://github.com/railwaycat/emacs-mac-port.git'
-  url 'https://github.com/railwaycat/emacs-mac-port.git', :using => :git, :tag => 'v4.7'
-  version 'emacs-24.3-mac-4.7'
+  url 'https://github.com/railwaycat/emacs-mac-port.git', :using => :git, :tag => 'v4.8'
+  version 'emacs-24.3-mac-4.8'
 
   depends_on 'automake'
   depends_on 'pkg-config' => :build
