@@ -18,7 +18,11 @@ Note: If you want info files from emacs been installed under `{brew --prefix}/sh
     export INFOPATH='/usr/local/share/info:/usr/share/info'
 ```
 
-If you use [cask](http://caskroom.io/), run `brew cask install emacs-mac`.
+If you use [cask](http://caskroom.io/), run:
+
+```
+    brew cask install emacs-mac
+```
 
 - Disable:
 ```
