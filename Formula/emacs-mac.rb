@@ -17,6 +17,7 @@ class EmacsMac < Formula
   option "icon-modern", "Using a modern style Emacs icon by @tpanum"
 
   depends_on 'd-bus' if build.include? 'with-dbus'
+  depends_on 'glib' => :optional
   depends_on 'gnutls' => :optional
   depends_on 'imagemagick' => :optional
   depends_on 'libxml2' if build.include? 'with-xml2'
