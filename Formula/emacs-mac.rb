@@ -37,11 +37,14 @@ class EmacsMac < Formula
       or:
         ln -s #{prefix}/Emacs.app /Applications
 
-      For an Emacs.app CLI starter, see:
+      For a CLI starter, please look at:
         https://gist.github.com/4043945
 
-      To use emacs inside the terminal, symlink the binary in this package:
-        ln -s #{prefix}/bin/emacs /usr/local/bin/emacs
+      This Emacs Mac Port is best used outside the terminal to take
+      advantage of buffer swiping and smooth scrolling.
+
+      For more tips, like creating an Emacs.app that starts in your projects
+      directory instead of root, see http://www.emacswiki.org/emacs/EmacsForMacOS#toc22
 
       To install info files under share/info, an environment variable
       need been set before install. Read more: man brew.
