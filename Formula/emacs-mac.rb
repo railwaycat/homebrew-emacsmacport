@@ -1,9 +1,9 @@
 class EmacsMac < Formula
   homepage "https://www.gnu.org/software/emacs/"
 
-  head "https://github.com/railwaycat/emacs-mac-port.git"
-  url "https://github.com/railwaycat/emacs-mac-port.git", :revision => "v5.4"
-  version "emacs-24.4.90-mac-5.4"
+  head "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git"
+  url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.4.91-mac-5.5"
+  version "emacs-24.4.91-mac-5.5"
 
   depends_on :autoconf => :build
   depends_on :automake => :build
@@ -45,6 +45,8 @@ class EmacsMac < Formula
 
       To use emacs inside the terminal, symlink the binary in this package:
         ln -s #{bin}/emacs /usr/local/bin/emacs
+      or create your own alias like:
+        alias emacs=#{bin}/emacs
     EOS
   end
 
@@ -67,16 +69,19 @@ class EmacsMac < Formula
     ]
 
     # icons
-    icons = "./mac/Emacs.app/Contents/Resources"
+    icons_dir = "./mac/Emacs.app/Contents/Resources"
+    official_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns"
+    modern_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns.modern"
     if build.with? "official-icon"
-      rm "#{icons}/Emacs.icns"
-      cp "#{icons}/Emacs.icns.official", "#{icons}/Emacs.icns"
+      rm "#{icons_dir}/Emacs.icns"
+      curl "#{official_icons}", "-o", "#{icons_dir}/Emacs.icns"
     elsif build.with? "modern-icon"
-      rm "#{icons}/Emacs.icns"
-      cp "#{icons}/Emacs.icns.modern", "#{icons}/Emacs.icns"
+      rm "#{icons_dir}/Emacs.icns"
+      curl "#{modern_icons}", "-o", "#{icons_dir}/Emacs.icns"
     end
 
     # build
+    system "./autogen.sh"
     system "./configure", *args
     system "make"
     system "make", "install"
