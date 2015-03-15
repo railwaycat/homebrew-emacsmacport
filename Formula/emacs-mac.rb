@@ -1,26 +1,29 @@
-require 'formula'
-
 class EmacsMac < Formula
-  homepage 'http://www.gnu.org/software/emacs/'
+  homepage "https://www.gnu.org/software/emacs/"
 
-  head 'https://github.com/railwaycat/emacs-mac-port.git'
-  url 'https://github.com/railwaycat/emacs-mac-port.git', :using => :git, :tag => 'v5.4'
-  version 'emacs-24.4.90-mac-5.4'
+  head "https://github.com/railwaycat/emacs-mac-port.git"
+  url "https://github.com/railwaycat/emacs-mac-port.git", :revision => "v5.4"
+  version "emacs-24.4.90-mac-5.4"
 
-  depends_on 'automake'
-  depends_on 'pkg-config' => :build
+  depends_on :autoconf => :build
+  depends_on :automake => :build
+  depends_on "pkg-config" => :build
 
-  option 'with-dbus', 'Build with d-bus support'
-  option 'with-xml2', 'Build with libxml2 support'
-  option "keep-ctags", "Don't remove the ctags executable that emacs provides"
-  option "icon-official", "Using offical Emacs icon"
-  option "icon-modern", "Using a modern style Emacs icon by @tpanum"
+  option "with-dbus", "Build with d-bus support"
+  option "with-xml2", "Build with libxml2 support"
+  option "with-ctags", "Don't remove the ctags executable that emacs provides"
+  option "with-official-icon", "Using offical Emacs icon"
+  option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
 
-  depends_on 'd-bus' if build.include? 'with-dbus'
-  depends_on 'glib' => :optional
-  depends_on 'gnutls' => :optional
-  depends_on 'imagemagick' => :optional
-  depends_on 'libxml2' if build.include? 'with-xml2'
+  deprecated_option "keep-ctags" => "with-ctags"
+  deprecated_option "icon-official" => "with-official-icon"
+  deprecated_option "icon-modern" => "with-modern-icon"
+
+  depends_on "d-bus" if build.with? "dbus"
+  depends_on "glib" => :optional
+  depends_on "gnutls" => :optional
+  depends_on "imagemagick" => :optional
+  depends_on "libxml2" if build.with? "xml2"
 
   def caveats
     <<-EOS.undent
@@ -41,18 +44,14 @@ class EmacsMac < Formula
         https://gist.github.com/4043945
 
       To use emacs inside the terminal, symlink the binary in this package:
-        ln -s #{prefix}/bin/emacs /usr/local/bin/emacs
-
-      To install info files under share/info, an environment variable
-      need been set before install. Read more: man brew.
-        export HOMEBREW_KEEP_INFO=1
+        ln -s #{bin}/emacs /usr/local/bin/emacs
     EOS
   end
 
   # Follow Homebrew and don't install ctags from Emacs. This allows Vim
   # and Emacs and exuberant ctags to play together without violence.
   def do_not_install_ctags
-    unless build.include? "keep-ctags"
+    if build.without? "ctags"
       (bin/"ctags").unlink
       (share/man/man1/"ctags.1.gz").unlink
     end
@@ -64,25 +63,29 @@ class EmacsMac < Formula
       "--enable-locallisppath=#{HOMEBREW_PREFIX}/share/emacs/site-lisp",
       "--infodir=#{info}/emacs",
       "--with-mac",
-      "--enable-mac-app=#{prefix}"
+      "--enable-mac-app=#{prefix}",
     ]
 
     # icons
     icons = "./mac/Emacs.app/Contents/Resources"
-    if build.include? "icon-official"
-      system "rm -f #{icons}/Emacs.icns"
-      system "cp #{icons}/Emacs.icns.official #{icons}/Emacs.icns"
-    elsif build.include? "icon-modern"
-      system "rm -f #{icons}/Emacs.icns"
-      system "cp #{icons}/Emacs.icns.modern #{icons}/Emacs.icns"
+    if build.with? "official-icon"
+      rm "#{icons}/Emacs.icns"
+      cp "#{icons}/Emacs.icns.official", "#{icons}/Emacs.icns"
+    elsif build.with? "modern-icon"
+      rm "#{icons}/Emacs.icns"
+      cp "#{icons}/Emacs.icns.modern", "#{icons}/Emacs.icns"
     end
-    
+
     # build
     system "./configure", *args
     system "make"
-    system "make install"
+    system "make", "install"
 
     # Don't cause ctags clash.
     do_not_install_ctags
+  end
+
+  test do
+    system "emacs", "--batch"
   end
 end
