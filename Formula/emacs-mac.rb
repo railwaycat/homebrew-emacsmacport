@@ -35,6 +35,14 @@ class EmacsMac < Formula
       Emacs.app was installed to:
         #{prefix}
 
+      To have it accessible from /Applications (using Spotlight 
+      and Finder for instance), execute the following commands:
+
+        rm /Applications/Emacs
+        osascript -e 'tell application "Finder" to make alias file to POSIX file "#{prefix}/Emacs.app" at POSIX file "/Applications"'
+
+      OLD INSTRUCTIONS BELOW (WHICH WILL NOT WORK WITH SPOTLIGHT):
+
       To link the application to default Homebrew App location:
         brew linkapps
       or:
