@@ -42,11 +42,6 @@ class EmacsMac < Formula
 
       For an Emacs.app CLI starter, see:
         https://gist.github.com/4043945
-
-      To use emacs inside the terminal, symlink the binary in this package:
-        ln -s #{bin}/emacs /usr/local/bin/emacs
-      or create your own alias like:
-        alias emacs=#{bin}/emacs
     EOS
   end
 
