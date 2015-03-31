@@ -14,6 +14,7 @@ class EmacsMac < Formula
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-official-icon", "Using offical Emacs icon"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
+  option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
 
   deprecated_option "keep-ctags" => "with-ctags"
   deprecated_option "icon-official" => "with-official-icon"
@@ -75,12 +76,16 @@ class EmacsMac < Formula
     icons_dir = "./mac/Emacs.app/Contents/Resources"
     official_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns"
     modern_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns.modern"
+    spacemacs_icons = "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns"
     if build.with? "official-icon"
       rm "#{icons_dir}/Emacs.icns"
       curl "#{official_icons}", "-o", "#{icons_dir}/Emacs.icns"
     elsif build.with? "modern-icon"
       rm "#{icons_dir}/Emacs.icns"
       curl "#{modern_icons}", "-o", "#{icons_dir}/Emacs.icns"
+    elsif build.with? "spacemacs-icon"
+      rm "#{icons_dir}/Emacs.icns"
+      curl "-L", "#{spacemacs_icons}", "-o", "#{icons_dir}/Emacs.icns"
     end
 
     # build
