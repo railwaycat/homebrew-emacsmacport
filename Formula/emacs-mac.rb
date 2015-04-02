@@ -2,8 +2,8 @@ class EmacsMac < Formula
   homepage "https://www.gnu.org/software/emacs/"
 
   head "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git"
-  url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-rc1-mac-5.6"
-  version "emacs-24.5-rc1-mac-5.6"
+  url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-rc2-mac-5.6"
+  version "emacs-24.5-rc2-mac-5.6"
 
   depends_on :autoconf => :build
   depends_on :automake => :build
