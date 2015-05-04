@@ -76,7 +76,7 @@ class EmacsMac < Formula
     icons_dir = "./mac/Emacs.app/Contents/Resources"
     official_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns"
     modern_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns.modern"
-    spacemacs_icons = "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns"
+    spacemacs_icons = "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
     if build.with? "official-icon"
       rm "#{icons_dir}/Emacs.icns"
       curl "#{official_icons}", "-o", "#{icons_dir}/Emacs.icns"
