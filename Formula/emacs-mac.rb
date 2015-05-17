@@ -2,8 +2,8 @@ class EmacsMac < Formula
   homepage "https://www.gnu.org/software/emacs/"
 
   head "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git"
-  url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-mac-5.7"
-  version "emacs-24.5-z-mac-5.7"
+  url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-mac-5.8"
+  version "emacs-24.5-z-mac-5.8"
 
   depends_on :autoconf => :build
   depends_on :automake => :build
@@ -36,18 +36,12 @@ class EmacsMac < Formula
       Emacs.app was installed to:
         #{prefix}
 
-      To have it accessible from /Applications (using Spotlight 
-      and Finder for instance), execute the following commands:
-
-        rm /Applications/Emacs
-        osascript -e 'tell application "Finder" to make alias file to POSIX file "#{prefix}/Emacs.app" at POSIX file "/Applications"'
-
-      OLD INSTRUCTIONS BELOW (WHICH WILL NOT WORK WITH SPOTLIGHT):
-
       To link the application to default Homebrew App location:
         brew linkapps
       or:
         ln -s #{prefix}/Emacs.app /Applications
+      Other ways please refer:
+        https://github.com/railwaycat/homebrew-emacsmacport/wiki/Alternative-way-of-place-Emacs.app-to-Applications-directory
 
       For an Emacs.app CLI starter, see:
         https://gist.github.com/4043945
