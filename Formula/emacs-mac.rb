@@ -1,8 +1,8 @@
 class EmacsMac < Formula
   homepage "https://www.gnu.org/software/emacs/"
 
-  head "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git"
-  url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-mac-5.8"
+  head "https://github.com/railwaycat/mirror-emacs-mac.git"
+  url "https://github.com/railwaycat/mirror-emacs-mac.git", :revision => "emacs-24.5-mac-5.8"
   version "emacs-24.5-z-mac-5.8"
 
   depends_on :autoconf => :build
