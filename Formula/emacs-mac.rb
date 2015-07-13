@@ -1,9 +1,9 @@
 class EmacsMac < Formula
   homepage "https://www.gnu.org/software/emacs/"
 
-  url "https://github.com/railwaycat/mirror-emacs-mac/archive/emacs-24.5-mac-5.8.tar.gz"
-  sha256 "55d9fa6be83ecbecbde64d002b943b3301cfd0746cd5139c2972dfe2b5f67ea5"
-  version "emacs-24.5-z-mac-5.8"
+  url "https://github.com/railwaycat/mirror-emacs-mac/archive/emacs-24.5-mac-5.9.tar.gz"
+  sha256 "2dddabd0a9c022f576d29bda8a3ed570712bf808f737485d43d173331c99037a"
+  version "emacs-24.5-z-mac-5.9"
 
   depends_on :autoconf => :build
   depends_on :automake => :build
@@ -29,7 +29,7 @@ class EmacsMac < Formula
 
   if build.with? "official-repo"
     head "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git"
-    url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-mac-5.8"
+    url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-mac-5.9"
   end
 
   def caveats
