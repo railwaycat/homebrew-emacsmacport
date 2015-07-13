@@ -2,13 +2,14 @@ class EmacsMac < Formula
   homepage "https://www.gnu.org/software/emacs/"
 
   url "https://github.com/railwaycat/mirror-emacs-mac/archive/emacs-24.5-mac-5.8.tar.gz"
-  version "emacs-24.5-z-mac-5.8"
   sha256 "55d9fa6be83ecbecbde64d002b943b3301cfd0746cd5139c2972dfe2b5f67ea5"
+  version "emacs-24.5-z-mac-5.8"
 
   depends_on :autoconf => :build
   depends_on :automake => :build
   depends_on "pkg-config" => :build
 
+  option "with-official-repo", "install by source code from official git repo (could show, depends on your location)"
   option "with-dbus", "Build with d-bus support"
   option "with-xml2", "Build with libxml2 support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
@@ -25,6 +26,11 @@ class EmacsMac < Formula
   depends_on "gnutls" => :optional
   depends_on "imagemagick" => :optional
   depends_on "libxml2" if build.with? "xml2"
+
+  if build.with? "official-repo"
+    head "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git"
+    url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-mac-5.8"
+  end
 
   def caveats
     <<-EOS.undent
