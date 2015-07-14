@@ -26,3 +26,7 @@ brew cask install emacs-mac
 ```
 brew untap railwaycat/emacsmacport
 ```
+
+### Pre-built binaries
+
+Please see [here](https://github.com/railwaycat/homebrew-emacsmacport/releases)
