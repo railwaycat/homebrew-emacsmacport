@@ -1,9 +1,9 @@
 class EmacsMac < Formula
   homepage "https://www.gnu.org/software/emacs/"
 
-  url "https://github.com/railwaycat/mirror-emacs-mac/archive/emacs-24.5-mac-5.10.tar.gz"
-  sha256 "e40666380b3ef48103f10f3c9f61489db10e9feb0fdb75d9a8e5a95a758a58c0"
-  version "emacs-24.5-z-mac-5.10"
+  url "https://github.com/railwaycat/mirror-emacs-mac/archive/emacs-24.5-mac-5.11.tar.gz"
+  sha256 "3923807476524382539ab24008e84b01f7ee60017fb072d995a307cd48c12943"
+  version "emacs-24.5-z-mac-5.11"
 
   depends_on :autoconf => :build
   depends_on :automake => :build
@@ -29,14 +29,14 @@ class EmacsMac < Formula
 
   if build.with? "official-repo"
     head "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git"
-    url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-mac-5.10"
+    url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-mac-5.11"
   end
 
   def caveats
     <<-EOS.undent
       This is YAMAMOTO Mitsuharu's experimental "Mac port" addition to
       GNU Emacs 24. This provides a native GUI support for Mac OS X
-      10.4 - 10.10. After installing, see README-mac and NEWS-mac
+      10.4 - 10.11. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
       Emacs.app was installed to:
