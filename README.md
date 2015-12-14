@@ -45,6 +45,8 @@ To disable this tap, please:
 
 https://github.com/railwaycat/homebrew-emacsmacport/releases
 
+Pre-built tested on 10.10.5 and 10.11.2
+
 ## Useful links ##
 
 * Switch meta and option key - https://gist.github.com/3498096
