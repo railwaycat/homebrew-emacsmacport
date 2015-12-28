@@ -27,7 +27,7 @@ This build has *many* features, a great number of which are particularly helpful
 ### Homebrew ###
 If you'd like to install with Homebrew, please
 
-`$ brew tap railwaycat/emacsmacport`
+`$ brew tap railwaycat/homebrew-emacsmacport`
 
 and then
  
