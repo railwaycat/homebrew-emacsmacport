@@ -16,6 +16,7 @@ class EmacsMac < Formula
   option "with-official-icon", "Using offical Emacs icon"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
+  option "with-borderless", "Using the borderless Emacs patch by Sam Gwydir"
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
@@ -52,6 +53,12 @@ class EmacsMac < Formula
   if build.with? "official-repo"
     head "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git"
     url "http://www.math.s.chiba-u.ac.jp/~mituharu/emacs-mac.git", :revision => "emacs-24.5-mac-5.15"
+  end
+
+  if build.with? "borderless"
+    patch :p1 do
+      url "https://gist.githubusercontent.com/jjungnickel/f2e749e12c48436f3a6e/raw/82f079da128baf1ef47e9ff19d9128b7143bd798/emacs-mac-borderless.patch"
+    end
   end
 
   def caveats
