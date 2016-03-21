@@ -17,6 +17,28 @@ class EmacsMac < Formula
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
 
+  # Update list from
+  # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
+  emacs_icons_project_icons = [
+    "EmacsIcon1",
+    "EmacsIcon2",
+    "EmacsIcon3",
+    "EmacsIcon4",
+    "EmacsIcon5",
+    "EmacsIcon6",
+    "EmacsIcon7",
+    "EmacsIcon8",
+    "EmacsIcon9",
+    "emacs-card-blue-deep",
+    "emacs-card-british-racing-green",
+    "emacs-card-carmine",
+    "emacs-card-green"
+  ]
+
+  emacs_icons_project_icons.each do |icon|
+    option "with-emacs-icons-project-#{icon}", "Using Emacs icon project #{icon}"
+  end
+
   deprecated_option "keep-ctags" => "with-ctags"
   deprecated_option "icon-official" => "with-official-icon"
   deprecated_option "icon-modern" => "with-modern-icon"
@@ -63,6 +85,10 @@ class EmacsMac < Formula
     end
   end
 
+  def emacs_icons_project_uri(icon)
+    "https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/#{icon}.icns"
+  end
+
   def install
     args = [
       "--prefix=#{prefix}",
@@ -77,6 +103,14 @@ class EmacsMac < Formula
     official_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns"
     modern_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns.modern"
     spacemacs_icons = "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
+
+    emacs_icons_project_icons.each do |icon|
+      if build.with? "with-emacs-icons-project-#{icon}"
+        rm "#{icons_dir}/Emacs.icns"
+        curl emacs_icons_project_uri(icon), "-o", "#{icons_dir}/Emacs.icns"
+      end
+    end
+
     if build.with? "official-icon"
       rm "#{icons_dir}/Emacs.icns"
       curl "#{official_icons}", "-o", "#{icons_dir}/Emacs.icns"
