@@ -19,7 +19,7 @@ class EmacsMac < Formula
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
-  emacs_icons_project_icons = [
+  @@emacs_icons_project_icons = [
     "EmacsIcon1",
     "EmacsIcon2",
     "EmacsIcon3",
@@ -35,7 +35,7 @@ class EmacsMac < Formula
     "emacs-card-green"
   ]
 
-  emacs_icons_project_icons.each do |icon|
+  @@emacs_icons_project_icons.each do |icon|
     option "with-emacs-icons-project-#{icon}", "Using Emacs icon project #{icon}"
   end
 
@@ -104,7 +104,7 @@ class EmacsMac < Formula
     modern_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns.modern"
     spacemacs_icons = "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
 
-    emacs_icons_project_icons.each do |icon|
+    @@emacs_icons_project_icons.each do |icon|
       if build.with? "with-emacs-icons-project-#{icon}"
         rm "#{icons_dir}/Emacs.icns"
         curl emacs_icons_project_uri(icon), "-o", "#{icons_dir}/Emacs.icns"
