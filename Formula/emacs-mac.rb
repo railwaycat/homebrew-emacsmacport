@@ -1,6 +1,8 @@
 class EmacsMac < Formula
   homepage "https://www.gnu.org/software/emacs/"
 
+  head "https://bitbucket.org/mituharu/emacs-mac.git", :branch => "work"
+
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-24.5-mac-5.16.tar.gz"
   sha256 "02285f442e13494d841143742410594cdf08eccb51fa4727d0b2050109466c6c"
   version "emacs-24.5-z-mac-5.16"
