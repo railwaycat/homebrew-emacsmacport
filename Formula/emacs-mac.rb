@@ -101,7 +101,7 @@ class EmacsMac < Formula
     spacemacs_icons = "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
 
     @@emacs_icons_project_icons.each do |icon|
-      if build.with? "with-emacs-icons-project-#{icon}"
+      if build.with? "emacs-icons-project-#{icon}"
         rm "#{icons_dir}/Emacs.icns"
         curl emacs_icons_project_uri(icon), "-o", "#{icons_dir}/Emacs.icns"
       end
