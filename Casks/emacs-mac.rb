@@ -1,9 +1,9 @@
 cask 'emacs-mac' do
-  version 'emacs-24.5-z-mac-5.16'
+  version 'emacs-24.5-z-mac-5.17'
 
-  sha256 'f88f729228bace93b351b352995be3fd056b08f02a7330efc2632aa51be8649a'
+  sha256 '7e5a32ecf298fe8b1f51ea2b17fdd6e02242ffeea5feee7914b664056bc06ca7'
 
-  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-24.5-mac-5.16.zip'
+  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-24.5-mac-5.17.zip'
   homepage 'https://www.gnu.org/software/emacs/'
 
   app 'Emacs.app'
