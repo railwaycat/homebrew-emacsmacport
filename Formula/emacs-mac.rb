@@ -3,9 +3,9 @@ class EmacsMac < Formula
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", :branch => "work"
 
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-24.5-mac-5.18.tar.gz"
-  sha256 "cc7a1341db7d2a9d246b927e34c749595602cbdc3e2da04f5e0b54a35e848858"
-  version "emacs-24.5-z-mac-5.18"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.1-rc1-mac-5.90.tar.gz"
+  sha256 "6a0de7d9a17d3c6a75d0868fca47eb05af9b92871433370f66c4f5fcdc9c5f19"
+  version "emacs-25.1-rc1-mac-5.90"
 
   depends_on :autoconf => :build
   depends_on :automake => :build
@@ -52,9 +52,9 @@ class EmacsMac < Formula
 
   def caveats
     <<-EOS.undent
-      This is YAMAMOTO Mitsuharu's experimental "Mac port" addition to
-      GNU Emacs 24. This provides a native GUI support for Mac OS X
-      10.4 - 10.11. After installing, see README-mac and NEWS-mac
+      This is YAMAMOTO Mitsuharu's "Mac port" addition to
+      GNU Emacs 25. This provides a native GUI support for Mac OS X
+      10.6 - 10.11. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
       Emacs.app was installed to:
