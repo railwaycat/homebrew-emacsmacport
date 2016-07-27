@@ -4,8 +4,8 @@
 
 Official repository: https://bitbucket.org/mituharu/emacs-mac/overview
 
-This is "Mac port" addition to GNU Emacs 24.  This provides a native
-GUI support for Mac OS X 10.4 - 10.11.  Note that Emacs 23 and later
+This is "Mac port" addition to GNU Emacs 25.  This provides a native
+GUI support for Mac OS X 10.6 - 10.11.  Note that Emacs 23 and later
 already contain the official GUI support via the NS (Cocoa) port for
 Mac OS X 10.4 and later.  So if it is good enough for you, then you
 don't need to try this.
@@ -20,7 +20,7 @@ it is also reproducible with official ones), report it using <kbd>M-x</kbd>
 report-emacs-bug *USING THE OFFICIAL BUILD* as such.
 
 ## Features ##
-This build has *many* features, a great number of which are particularly helpful for Mac users. You can see the full list <a href="https://github.com/railwaycat/mirror-emacs-mac/blob/master/README-mac">here</a>. 
+This build has *many* features, a great number of which are particularly helpful for Mac users. You can see the full list <a href="https://bitbucket.org/mituharu/emacs-mac/src/f3402395995bf70e50d6e65f841e44d5f9b4603c/README-mac?at=master&fileviewer=file-view-default">here</a>. 
 
 
 ## Installation options ##
@@ -47,7 +47,7 @@ To disable this tap, please:
 
 https://github.com/railwaycat/homebrew-emacsmacport/releases
 
-Pre-built tested on 10.10.5 and 10.11.2
+Pre-built tested on 10.9.5 and 10.11.6
 
 ## Useful links ##
 
