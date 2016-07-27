@@ -96,7 +96,7 @@ class EmacsMac < Formula
 
     # icons
     icons_dir = "./mac/Emacs.app/Contents/Resources"
-    official_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns"
+    official_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs25.icns"
     modern_icons = "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns.modern"
     spacemacs_icons = "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
 
