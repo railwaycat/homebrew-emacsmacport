@@ -7,8 +7,8 @@ class EmacsMac < Formula
   sha256 "6a0de7d9a17d3c6a75d0868fca47eb05af9b92871433370f66c4f5fcdc9c5f19"
   version "emacs-25.1-rc1-mac-5.90"
 
-  depends_on :autoconf => :build
-  depends_on :automake => :build
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
   depends_on "pkg-config" => :build
 
   option "with-dbus", "Build with d-bus support"
