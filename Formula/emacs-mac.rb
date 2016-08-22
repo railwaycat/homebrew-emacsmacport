@@ -3,9 +3,9 @@ class EmacsMac < Formula
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", :branch => "work"
 
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.1-rc1-mac-5.90.tar.gz"
-  sha256 "6a0de7d9a17d3c6a75d0868fca47eb05af9b92871433370f66c4f5fcdc9c5f19"
-  version "emacs-25.1-rc1-mac-5.90"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.1-rc2-mac-5.91.tar.gz"
+  sha256 "fb672b459a454656c07e20b6be8d1e4ef5a34343cb234c8e821bcc747716f74b"
+  version "emacs-25.1-rc2-mac-5.91"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
