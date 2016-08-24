@@ -1,9 +1,9 @@
 cask 'emacs-mac' do
-  version 'emacs-25.1-rc1-mac-5.90'
+  version 'emacs-25.1-rc2-mac-5.91'
 
-  sha256 '173d10eb7e720b0c72d5fbeb3aded2d380f6de43dc8e5c890a2836e508a575bf'
+  sha256 '16afb0f49a9014812c73b2a9d6bc6367ad5101ddcc68379aae61e314b21f9300'
 
-  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-25.1-rc1-mac-5.90.zip'
+  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-25.1-rc2-mac-5.91.zip'
   name 'Emacs-mac'
   homepage 'https://www.gnu.org/software/emacs/'
   license :gpl
