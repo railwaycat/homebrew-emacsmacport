@@ -12,6 +12,7 @@ class EmacsMac < Formula
   depends_on "pkg-config" => :build
 
   option "with-dbus", "Build with d-bus support"
+  option "with-modules", "Build with dynamic modules support"
   option "with-xml2", "Build with libxml2 support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-official-icon", "Using offical Emacs icon"
@@ -93,6 +94,8 @@ class EmacsMac < Formula
       "--with-mac",
       "--enable-mac-app=#{prefix}",
     ]
+
+    args << "--with-modules" if build.with? "modules"
 
     # icons
     icons_dir = "./mac/Emacs.app/Contents/Resources"
