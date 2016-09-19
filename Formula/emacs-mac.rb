@@ -5,7 +5,7 @@ class EmacsMac < Formula
 
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.1-mac-6.0.tar.gz"
   sha256 "5152b6cc403914c6333a677faf28247a98c1126c95382665b228113840ac3dfe"
-  version "emacs-25.1-mac-6.0"
+  version "emacs-25.1-z-mac-6.0"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
@@ -54,7 +54,7 @@ class EmacsMac < Formula
     <<-EOS.undent
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
       GNU Emacs 25. This provides a native GUI support for Mac OS X
-      10.6 - 10.11. After installing, see README-mac and NEWS-mac
+      10.6 - 10.12. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
       Emacs.app was installed to:
