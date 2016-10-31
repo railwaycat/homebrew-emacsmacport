@@ -1,5 +1,5 @@
 class EmacsMac < Formula
-  desc "YAMAMOTO Mitsuharu's native Mac port of GNU Emacs"
+  desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.1-mac-6.1.tar.gz"
   version "emacs-25.1-z-mac-6.1"
