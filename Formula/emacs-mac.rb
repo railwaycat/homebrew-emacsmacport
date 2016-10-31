@@ -1,9 +1,9 @@
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's native Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.1-mac-6.0.tar.gz"
-  version "emacs-25.1-z-mac-6.0"
-  sha256 "5152b6cc403914c6333a677faf28247a98c1126c95382665b228113840ac3dfe"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.1-mac-6.1.tar.gz"
+  version "emacs-25.1-z-mac-6.1"
+  sha256 "3ede57b06a20b361d5ed66d040e3b0adb1a84cbccabb6eaf21e2d8e8398de3b6"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
