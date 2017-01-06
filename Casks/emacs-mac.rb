@@ -1,7 +1,7 @@
 cask 'emacs-mac' do
   version 'emacs-25.1-z-mac-6.1'
 
-  sha256 '41230bfe0f87b3e58fe6c2f747cbfc688b4d9623728f9509fe654c4116c81877'
+  sha256 '944b5199ed41756d391776a540a6c4cba6118f0295be389a35035e8c09b45d5d'
 
   url 'https://s3.amazonaws.com/emacs-mac-port/emacs-25.1-mac-6.1-official-icon.zip'
   name 'Emacs-mac'
