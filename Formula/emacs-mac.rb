@@ -1,9 +1,9 @@
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.1-mac-6.1.tar.gz"
-  version "emacs-25.1-z-mac-6.1"
-  sha256 "3ede57b06a20b361d5ed66d040e3b0adb1a84cbccabb6eaf21e2d8e8398de3b6"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.2-rc1-mac-6.2.tar.bz2"
+  version "emacs-25.2-rc1-mac-6.2"
+  sha256 "4874212a00f57ea1024f9cdd4f05088cbaad8a9c4bffb20fc3940eb312d04715"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -44,13 +44,13 @@ class EmacsMac < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "pkg-config" => :build
+  depends_on "texinfo" => :"build"
 
   depends_on "d-bus" if build.with? "dbus"
   depends_on "glib" => :optional
   depends_on "gnutls" => :optional
   depends_on "imagemagick" => :optional
   depends_on "libxml2" if build.with? "xml2"
-  depends_on "texinfo" => :"optional"
 
   emacs_icons_project_icons.each do |icon, sha|
     resource "emacs-icons-project-#{icon}" do
