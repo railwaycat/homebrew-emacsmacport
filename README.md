@@ -47,7 +47,7 @@ To disable this tap, please:
 
 https://github.com/railwaycat/homebrew-emacsmacport/releases
 
-Pre-built tested on 10.9.5 and 10.11.6
+Pre-built tested on 10.9.5 and 10.12.3
 
 ## Useful links ##
 
