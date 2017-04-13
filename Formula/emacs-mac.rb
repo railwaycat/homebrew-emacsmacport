@@ -110,6 +110,11 @@ class EmacsMac < Formula
       (bin/"ctags").unlink
       (share/man/man1/"ctags.1.gz").unlink
     end
+
+    %W[ebrowse emacs emacsclient etags].each do |e|
+      (HOMEBREW_PREFIX/"bin").install_symlink bin/e
+    end
+
   end
 
   def caveats
