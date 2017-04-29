@@ -12,7 +12,7 @@ class EmacsMac < Formula
   option "with-xml2", "Build with libxml2 support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-no-title-bars", "Build with a patch for no title bars on frames (--HEAD is not supported)"
-  option "with-natural-title-bar", "Build with a patch for title bar colour inferred by your theme"
+  option "with-natural-title-bar", "Build with a patch for title bar color inferred by your theme (--HEAD is not supported)"
   option "with-official-icon", "Using offical Emacs icon"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
