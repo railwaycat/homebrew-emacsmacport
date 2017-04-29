@@ -12,6 +12,7 @@ class EmacsMac < Formula
   option "with-xml2", "Build with libxml2 support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-no-title-bars", "Build with a patch for no title bars on frames (--HEAD is not supported)"
+  option "with-natural-title-bar", "Build with a patch for title bar colour inferred by your theme"
   option "with-official-icon", "Using offical Emacs icon"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
@@ -77,7 +78,7 @@ class EmacsMac < Formula
 
   if build.with? "no-title-bars"
     if build.head?
-      odie "--with-no-title-bars not supported on --HEAD"
+      odie "--with-no-title-bars patch not supported on --HEAD"
     end
 
     patch do
@@ -85,6 +86,18 @@ class EmacsMac < Formula
       sha256 "11997f916d3df885798d549f48deb1bef29c545fad688155c7073a38d6e622b4"
     end
   end
+
+  if build.with? "natural-title-bar"
+    if build.head?
+      odie "--with-natural-title-bar patch not supported on --HEAD"
+    end
+
+    patch do
+      url "https://gist.github.com/lululau/90dbffb613c216f046ff14ed37b586b5/raw/32dceaf9a45e8dbdfe793852f88e15cbaedec8d8/emacs-mac-title-bar.patch"
+      sha256 '30c89405541f4383bb1bb9fa54f22b82d5144f9cdef8f313a72271ef72bf51ed'
+    end
+  end
+
 
   def install
     args = [
