@@ -11,6 +11,7 @@ class EmacsMac < Formula
   option "with-modules", "Build with dynamic modules support"
   option "with-xml2", "Build with libxml2 support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
+  option "with-no-title-bars", "Build with a patch for no title bars on frames (--HEAD is not supported)"
   option "with-official-icon", "Using offical Emacs icon"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
@@ -72,6 +73,17 @@ class EmacsMac < Formula
   resource "spacemacs-icon" do
     url "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
     sha256 "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900"
+  end
+
+  if build.with? "no-title-bars"
+    if build.head?
+      odie "--with-no-title-bars not supported on --HEAD"
+    end
+
+    patch do
+      url "https://gist.githubusercontent.com/railwaycat/3347b49ae1e3ee0468770f1d66f9e86d/raw/c86b7dfa6aa2243295ce336bde6bd38e69395cf9/emacs-25.2-mac-6.3-no-title-bar.patch"
+      sha256 "11997f916d3df885798d549f48deb1bef29c545fad688155c7073a38d6e622b4"
+    end
   end
 
   def install
