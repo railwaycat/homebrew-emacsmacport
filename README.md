@@ -54,3 +54,13 @@ Pre-built tested on 10.9.5 and 10.12.3
 * Switch meta and option key - https://gist.github.com/3498096
 
 * An Emacs.app CLI starter, modified from Aquamacs - https://gist.github.com/4043945
+
+## Included Patches Information ##
+
+* No title bar
+  `--with-no-title-bars`  
+  Enabled by default. This feature can been controled by `mac-use-title-bar`, a boolean with default value `false`. Value settings will been used in new frame **after** Emacs started. (<- yes this is a bug).
+  
+* Natural title bar
+  `--with-natural-title-bar`  
+  Disabled by default, more information see this [wiki page](https://github.com/railwaycat/homebrew-emacsmacport/wiki/Natural-Title-Bar)
