@@ -59,8 +59,8 @@ Pre-built tested on 10.9.5 and 10.12.3
 
 * No title bar
   `--with-no-title-bars`  
-  Enabled by default. This feature can been controled by `mac-use-title-bar`, a boolean with default value `false`. Value settings will been used in new frame **after** Emacs started. (<- yes this is a bug).
+  Enabled by default when build with this patch. This feature can been controled by `mac-use-title-bar`, a boolean with default value `false`. Value settings will been used in new frame **after** Emacs started. (<- yes this is a bug).
   
 * Natural title bar
   `--with-natural-title-bar`  
-  Disabled by default, more information see this [wiki page](https://github.com/railwaycat/homebrew-emacsmacport/wiki/Natural-Title-Bar)
+  Disabled by default when build with this patch, more information see this [wiki page](https://github.com/railwaycat/homebrew-emacsmacport/wiki/Natural-Title-Bar)
