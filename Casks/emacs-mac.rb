@@ -6,7 +6,6 @@ cask 'emacs-mac' do
   url 'https://s3.amazonaws.com/emacs-mac-port/emacs-25.2-mac-6.5.zip'
   name 'Emacs-mac'
   homepage 'https://www.gnu.org/software/emacs/'
-  license :gpl
 
   app 'Emacs.app'
 end

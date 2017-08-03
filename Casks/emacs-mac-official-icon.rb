@@ -6,7 +6,6 @@ cask 'emacs-mac-official-icon' do
   url 'https://s3.amazonaws.com/emacs-mac-port/emacs-25.2-mac-6.5-official-icon.zip'
   name 'Emacs-mac with official icon'
   homepage 'https://www.gnu.org/software/emacs/'
-  license :gpl
 
   app 'Emacs.app'
 end
