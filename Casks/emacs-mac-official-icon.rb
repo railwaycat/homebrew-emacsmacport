@@ -1,9 +1,9 @@
 cask 'emacs-mac-official-icon' do
-  version 'emacs-25.2-z-mac-6.5'
+  version 'emacs-25.2-z-mac-6.6'
 
-  sha256 '06db20040df9f1502e45a62ab2e269c8f68676e6a71c22607f663c6a2aa906c1'
+  sha256 '9bdab784877470ded5e0ba3ead127b175631125ed75de187a85f69e8d8791176'
 
-  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-25.2-mac-6.5-official-icon.zip'
+  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-25.2-mac-6.6-official-icon.zip'
   name 'Emacs-mac with official icon'
   homepage 'https://www.gnu.org/software/emacs/'
 
