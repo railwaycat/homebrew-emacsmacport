@@ -116,6 +116,11 @@ class EmacsMac < Formula
     system "make"
     system "make", "install"
 
+    if build.with? "modules"
+        src_dir = "#{prefix}/src"
+        src_dir.install "src/emacs-module.h"
+    end
+
     # Follow Homebrew and don't install ctags from Emacs. This allows Vim
     # and Emacs and exuberant ctags to play together without violence.
     if build.without? "ctags"
