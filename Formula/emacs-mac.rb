@@ -115,6 +115,7 @@ class EmacsMac < Formula
     system "./configure", *args
     system "make"
     system "make", "install"
+    prefix.install "NEWS-mac"
 
     # Follow Homebrew and don't install ctags from Emacs. This allows Vim
     # and Emacs and exuberant ctags to play together without violence.
