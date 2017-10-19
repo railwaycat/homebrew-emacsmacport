@@ -5,7 +5,7 @@ class EmacsMac < Formula
   version "emacs-25.3-mac-6.8"
   sha256 "02db42b9e288816d18769d59f1f474eb454376d0cac668bc6ba7054afea7132f"
 
-  head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
+  head "https://bitbucket.org/mituharu/emacs-mac.git", :branch => "work"
 
   option "with-dbus", "Build with d-bus support"
   option "with-modules", "Build with dynamic modules support"
