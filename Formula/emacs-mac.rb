@@ -34,7 +34,7 @@ class EmacsMac < Formula
     "emacs-card-green" => "f94ade7686418073f04b73937f34a1108786400527ed109af822d61b303048f7",
   }
 
-  emacs_icons_project_icons.keys.each do |icon|
+  emacs_icons_project_icons.each_key do |icon|
     option "with-emacs-icons-project-#{icon}", "Using Emacs icon project #{icon}"
   end
 
