@@ -100,6 +100,12 @@ class EmacsMac < Formula
     ]
     args << "--with-modules" if build.with? "modules"
 
+    if build.with? "gnutls"
+      args << "--with-gnutls"
+    else
+      args << "--without-gnutls"
+    end
+
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
 
     (%w[EmacsIcon1 EmacsIcon2 EmacsIcon3 EmacsIcon4
