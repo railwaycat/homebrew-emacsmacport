@@ -16,6 +16,7 @@ class EmacsMac < Formula
   option "with-official-icon", "Using offical Emacs icon"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
+  option "with-icon-for-documents", "Using official icon for documents which default open with Emacs"
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
@@ -90,6 +91,11 @@ class EmacsMac < Formula
     end
   end
 
+  patch :p0 do
+    url "https://gist.githubusercontent.com/railwaycat/39d6fd4b865a39a10b819e18ca151feb/raw/2eee1cce4af846509df24624b0b2ccce1878c0bd/emacs-mac-infoplist.patch"
+    sha256 '8243616fc8526142d5634ca40d0892721d207a044835b415204aee7492b2a373'
+  end
+
   def install
     args = [
       "--enable-locallisppath=#{HOMEBREW_PREFIX}/share/emacs/site-lisp",
@@ -121,6 +127,9 @@ class EmacsMac < Formula
       end
     end
 
+    if build.with? "icon-for-documents"
+      system "cp nextstep/Cocoa/Emacs.base/Contents/Resources/document.icns mac/Emacs.app/Contents/Resources"
+    end
     system "./autogen.sh"
     system "./configure", *args
     system "make"
