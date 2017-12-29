@@ -19,10 +19,15 @@ cask 'emacs-mac' do
   conflicts_with cask: [
                         'emacs',
                         'emacs-mac-spacemacs-icon',
+                       ],
+                 formula: [
+                        'emacs',
+                        'ctags'
                        ]
 
   app 'Emacs.app'
   binary "#{appdir}/Emacs.app/Contents/MacOS/Emacs.sh", target: 'emacs'
+  binary "#{appdir}/Emacs.app/Contents/MacOS/bin/ctags"
   binary "#{appdir}/Emacs.app/Contents/MacOS/bin/ebrowse"
   binary "#{appdir}/Emacs.app/Contents/MacOS/bin/emacsclient"
   binary "#{appdir}/Emacs.app/Contents/MacOS/bin/etags"
