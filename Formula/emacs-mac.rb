@@ -136,7 +136,7 @@ class EmacsMac < Formula
   end
 
   def caveats
-    <<-EOS.undent
+    <<~EOS
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
       GNU Emacs 25. This provides a native GUI support for Mac OS X
       10.6 - 10.13. After installing, see README-mac and NEWS-mac
