@@ -16,7 +16,6 @@ class EmacsMac < Formula
   option "with-official-icon", "Using offical Emacs icon (please notice this is the default icon on --HEAD)"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
-  option "with-icon-for-documents", "Using official icon for documents which default open with Emacs"
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
@@ -122,9 +121,6 @@ class EmacsMac < Formula
       end
     end
 
-    if build.with? "icon-for-documents"
-      system "cp nextstep/Cocoa/Emacs.base/Contents/Resources/document.icns mac/Emacs.app/Contents/Resources"
-    end
     system "./autogen.sh"
     system "./configure", *args
     system "make"
