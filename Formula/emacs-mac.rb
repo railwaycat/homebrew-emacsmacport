@@ -13,7 +13,7 @@ class EmacsMac < Formula
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-no-title-bars", "Build with a patch for no title bars on frames (--HEAD is not supported)"
   option "with-natural-title-bar", "Build with a patch for title bar color inferred by your theme (--HEAD is not supported)"
-  option "with-official-icon", "Using offical Emacs icon"
+  option "with-official-icon", "Using offical Emacs icon (please notice this is the default icon on --HEAD)"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
   option "with-icon-for-documents", "Using official icon for documents which default open with Emacs"
@@ -89,11 +89,6 @@ class EmacsMac < Formula
       url "https://gist.github.com/lululau/90dbffb613c216f046ff14ed37b586b5/raw/32dceaf9a45e8dbdfe793852f88e15cbaedec8d8/emacs-mac-title-bar.patch"
       sha256 '30c89405541f4383bb1bb9fa54f22b82d5144f9cdef8f313a72271ef72bf51ed'
     end
-  end
-
-  patch :p0 do
-    url "https://gist.githubusercontent.com/railwaycat/39d6fd4b865a39a10b819e18ca151feb/raw/2eee1cce4af846509df24624b0b2ccce1878c0bd/emacs-mac-infoplist.patch"
-    sha256 '8243616fc8526142d5634ca40d0892721d207a044835b415204aee7492b2a373'
   end
 
   def install
