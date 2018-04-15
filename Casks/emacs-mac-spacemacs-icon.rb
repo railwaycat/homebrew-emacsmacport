@@ -1,11 +1,11 @@
 cask 'emacs-mac-spacemacs-icon' do
-  version 'emacs-25.3-mac-6.8'
+  version 'emacs-26.1-rc1-mac-6.90'
 
-  sha256 '1edb21d9b3cc3757c075ca7c0a1a6d4a677a58d2303d4c85b66cbbf80e61c76a'
+  sha256 '51bd2fe7fd9fe39ed0b1328e909ea4fff279b50523fc447f992940b1bff704f2'
 
-  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-25.3-mac-6.8-spacemacs-icon.zip'
+  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-26.1-rc1-mac-6.90-spacemacs-icon.zip'
   name 'Emacs-mac with spacemacs icon'
-  homepage 'https://www.gnu.org/software/emacs/'
+  homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
 
   app 'Emacs.app'
 end
