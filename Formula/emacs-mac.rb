@@ -1,9 +1,9 @@
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-25.3-mac-6.8.tar.bz2"
-  version "emacs-25.3-mac-6.8"
-  sha256 "02db42b9e288816d18769d59f1f474eb454376d0cac668bc6ba7054afea7132f"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-26.1-rc1-mac-6.90.tar.bz2"
+  version "emacs-26.1-rc1-mac-6.90"
+  sha256 "b5489c5f80c04e8cc330abc5508a156fb5728c76b73fa965cf8c4686dc6f2a80"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -13,7 +13,6 @@ class EmacsMac < Formula
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-no-title-bars", "Build with a patch for no title bars on frames (--HEAD is not supported)"
   option "with-natural-title-bar", "Build with a patch for title bar color inferred by your theme (--HEAD is not supported)"
-  option "with-official-icon", "Using offical Emacs icon (please notice this is the default icon on --HEAD)"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
 
@@ -59,11 +58,6 @@ class EmacsMac < Formula
       url "https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/#{icon}.icns"
       sha256 sha
     end
-  end
-
-  resource "official-icon" do
-    url "https://s3.amazonaws.com/emacs-mac-port/Emacs25.icns"
-    sha256 "853125bc2fa0148b8e611f9b96f61031085a3c367661a9357febf4976dc4aa3e"
   end
 
   resource "modern-icon" do
@@ -112,7 +106,7 @@ class EmacsMac < Formula
         EmacsIcon5 EmacsIcon6 EmacsIcon7 EmacsIcon8
         EmacsIcon9 emacs-card-blue-deep emacs-card-british-racing-green
         emacs-card-carmine emacs-card-green].map { |i| "emacs-icons-project-#{i}" } +
-     %w[official-icon modern-icon spacemacs-icon]).each do |icon|
+     %w[modern-icon spacemacs-icon]).each do |icon|
       next if build.without? icon
 
       rm "#{icons_dir}/Emacs.icns"
@@ -138,7 +132,7 @@ class EmacsMac < Formula
   def caveats
     <<~EOS
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
-      GNU Emacs 25. This provides a native GUI support for Mac OS X
+      GNU Emacs 26. This provides a native GUI support for Mac OS X
       10.6 - 10.13. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
