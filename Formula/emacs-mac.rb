@@ -15,6 +15,7 @@ class EmacsMac < Formula
   option "with-natural-title-bar", "Build with a patch for title bar color inferred by your theme (--HEAD is not supported)"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
+  option "without-gnutls", "Build without gnutls support"
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
@@ -49,7 +50,7 @@ class EmacsMac < Formula
 
   depends_on "d-bus" if build.with? "dbus"
   depends_on "glib" => :optional
-  depends_on "gnutls" => :optional
+  depends_on "gnutls" if build.with? "gnutls"
   depends_on "imagemagick" => :optional
   depends_on "libxml2" if build.with? "xml2"
 
