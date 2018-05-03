@@ -73,8 +73,8 @@ class EmacsMac < Formula
 
   if build.with? "no-title-bars"
     patch do
-      url "https://gist.github.com/railwaycat/3347b49ae1e3ee0468770f1d66f9e86d/raw/c86b7dfa6aa2243295ce336bde6bd38e69395cf9/emacs-25.2-mac-6.3-no-title-bar.patch"
-      sha256 "11997f916d3df885798d549f48deb1bef29c545fad688155c7073a38d6e622b4"
+      url "https://gist.github.com/railwaycat/71b3f23ed6159b5dbf59389ae56f06e1/raw/360554bc055144d3a8801b39b6ef7f5c1d868484/emacs-26.1-rc1-mac-6.90-no-title-bar.patch"
+      sha256 "6937ec98ddca68e7c937d57ea2dc52af6b60d3438a0a5d30abc6ad719234a30f"
     end
   end
 
