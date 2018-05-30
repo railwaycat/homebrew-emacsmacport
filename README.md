@@ -4,7 +4,7 @@
 
 Official repository: https://bitbucket.org/mituharu/emacs-mac/overview
 
-This is "Mac port" addition to GNU Emacs 25.  This provides a native
+This is "Mac port" addition to GNU Emacs 26.  This provides a native
 GUI support for Mac OS X 10.6 - 10.13.  Note that Emacs 23 and later
 already contain the official GUI support via the NS (Cocoa) port for
 Mac OS X 10.4 and later.  So if it is good enough for you, then you
