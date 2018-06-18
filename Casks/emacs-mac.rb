@@ -1,9 +1,9 @@
 cask 'emacs-mac' do
-  version 'emacs-26.1-z-mac-7.0'
+  version 'emacs-26.1-z-mac-7.1'
 
-  sha256 '30bcf4d98fb5052deea98a45d9896f22fe7d2246c3a2d668737dac0dd42a085a'
+  sha256 '579c0534f4c3c37303c6b50b757b6c88264555a6f5dec0a5d7562dc417d193ff'
 
-  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-26.1-mac-7.0.zip'
+  url 'https://s3.amazonaws.com/emacs-mac-port/emacs-26.1-mac-7.1.zip'
   name 'Emacs-mac'
   homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
 
