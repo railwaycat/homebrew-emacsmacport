@@ -80,8 +80,8 @@ class EmacsMac < Formula
 
   if build.with? "natural-title-bar"
     patch do
-      url "https://gist.github.com/lululau/90dbffb613c216f046ff14ed37b586b5/raw/32dceaf9a45e8dbdfe793852f88e15cbaedec8d8/emacs-mac-title-bar.patch"
-      sha256 '30c89405541f4383bb1bb9fa54f22b82d5144f9cdef8f313a72271ef72bf51ed'
+      url "https://gist.github.com/railwaycat/d42c0a9f79aa8adbc646e8a725fcc690/raw/f3fce4fe560f8468370c5fa51a13edb8dc0d89ee/emacs-mac-title-bar.patch"
+      sha256 '9c42c00515d70e52f06336f5fa50317a9d92caa45256ebb14c17cbc2c9451947'
     end
   end
 
