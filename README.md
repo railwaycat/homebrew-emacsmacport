@@ -5,7 +5,7 @@
 Official repository: https://bitbucket.org/mituharu/emacs-mac/overview
 
 This is "Mac port" addition to GNU Emacs 26.  This provides a native
-GUI support for Mac OS X 10.6 - 10.13.  Note that Emacs 23 and later
+GUI support for Mac OS X 10.6 - 10.14.  Note that Emacs 23 and later
 already contain the official GUI support via the NS (Cocoa) port for
 Mac OS X 10.4 and later.  So if it is good enough for you, then you
 don't need to try this.
@@ -37,7 +37,7 @@ and then
 
 if you using cask
 
-`brew cask install emacs-mac`
+`brew cask install emacs-mac` or `brew cask install emacs-mac-spacemacs-icon`
 
 To disable this tap, please:
 
@@ -47,7 +47,7 @@ To disable this tap, please:
 
 https://github.com/railwaycat/homebrew-emacsmacport/releases
 
-Pre-built tested on 10.9.5 and 10.13
+Pre-built tested on 10.9.5, 10.13.6 and 10.14
 
 ## Useful links ##
 
