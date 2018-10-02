@@ -141,8 +141,6 @@ class EmacsMac < Formula
         #{prefix}
 
       To link the application to default Homebrew App location:
-        brew linkapps
-      or:
         ln -s #{prefix}/Emacs.app /Applications
       Other ways please refer:
         https://github.com/railwaycat/homebrew-emacsmacport/wiki/Alternative-way-of-place-Emacs.app-to-Applications-directory
