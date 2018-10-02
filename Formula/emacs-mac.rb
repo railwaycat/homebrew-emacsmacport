@@ -49,10 +49,10 @@ class EmacsMac < Formula
   depends_on "texinfo" => :"build"
 
   depends_on "d-bus" if build.with? "dbus"
-  depends_on "glib" => :optional
-  depends_on "gnutls" if build.with? "gnutls"
-  depends_on "imagemagick" => :optional
   depends_on "libxml2" if build.with? "xml2"
+  depends_on "glib" => :optional
+  depends_on "gnutls" => :optional
+  depends_on "imagemagick" => :optional
 
   emacs_icons_project_icons.each do |icon, sha|
     resource "emacs-icons-project-#{icon}" do
