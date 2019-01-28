@@ -1,15 +1,17 @@
-cask 'emacs-mac-spacemacs-icon' do
-  version 'emacs-26.1-z-mac-7.2'
+cask 'emacs-mac-snapshot' do
+  version 'emacs-26.1.91-mac'
 
-  sha256 '7975da3dfaf71f6b166d4ad6be3524286e0fb61cd75007eca93c7a8aec37736b'
-  url 'https://github.com/railwaycat/build-macport/releases/download/26.1-mac-7.4/emacs-26.1-mac-7.4-10.12-spacemacs-icon.zip'
+  sha256 'd8fd41fe7aa32cc7c539d56739f6ba76597dd9c98679ef1bea28d1849b2083cd'
+  url 'https://github.com/railwaycat/build-macport/releases/download/26.1-mac-7.4/emacs-26.1.91-mac-head-10.12.zip'
 
-  name 'Emacs-mac with spacemacs icon'
+  name 'Emacs-mac-snapshot'
   homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
 
   conflicts_with cask: [
                         'emacs',
-                        'emacs-mac'
+                        'emacs-mac',
+                        'emacs-mac-spacemacs-icon',
+                        'emacs-mac-spacemacs-icon-snapshot'
                        ]
 
   app 'Emacs.app'

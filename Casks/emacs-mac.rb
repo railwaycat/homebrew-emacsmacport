@@ -1,13 +1,8 @@
 cask 'emacs-mac' do
   version 'emacs-26.1-z-mac-7.2'
 
-  if MacOS.version >= :mojave
-    sha256 '8b23f75ced828a06c85966f3ad05e6bd494a466d38e39d9017a93d9ed501f2d9'
-    url 'https://s3.amazonaws.com/emacs-mac-port/emacs-26.1-mac-7.2-10.14.zip'
-  else
-    sha256 '7edc1aa09f9d20942f2091ba31e5d2b190ae73f7b46834f6844eb974c2e3f6f8'
-    url 'https://s3.amazonaws.com/emacs-mac-port/emacs-26.1-mac-7.2-10.9.zip'
-	end
+  sha256 'd00b76c2da141c32e90001211881349af5dd70eb8ed00ede59dca3cf838ca8bf'
+  url 'https://github.com/railwaycat/build-macport/releases/download/26.1-mac-7.4/emacs-26.1-mac-7.4-10.12.zip'
 
   name 'Emacs-mac'
   homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
