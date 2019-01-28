@@ -3,7 +3,7 @@ cask 'emacs-mac-spacemacs-icon' do
 
   sha256 '7975da3dfaf71f6b166d4ad6be3524286e0fb61cd75007eca93c7a8aec37736b'
   url 'https://github.com/railwaycat/build-macport/releases/download/26.1-mac-7.4/emacs-26.1-mac-7.4-10.12-spacemacs-icon.zip'
-
+  appcast 'https://github.com/railwaycat/build-macport/releases.atom'
   name 'Emacs-mac with spacemacs icon'
   homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
 

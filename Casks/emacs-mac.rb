@@ -3,7 +3,7 @@ cask 'emacs-mac' do
 
   sha256 'd00b76c2da141c32e90001211881349af5dd70eb8ed00ede59dca3cf838ca8bf'
   url 'https://github.com/railwaycat/build-macport/releases/download/26.1-mac-7.4/emacs-26.1-mac-7.4-10.12.zip'
-
+  appcast 'https://github.com/railwaycat/build-macport/releases.atom'
   name 'Emacs-mac'
   homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
 
