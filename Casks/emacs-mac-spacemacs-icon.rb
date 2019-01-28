@@ -1,5 +1,5 @@
 cask 'emacs-mac-spacemacs-icon' do
-  version 'emacs-26.1-z-mac-7.2'
+  version 'emacs-26.1-z-mac-7.4'
 
   sha256 '7975da3dfaf71f6b166d4ad6be3524286e0fb61cd75007eca93c7a8aec37736b'
   url 'https://github.com/railwaycat/build-macport/releases/download/26.1-mac-7.4/emacs-26.1-mac-7.4-10.12-spacemacs-icon.zip'
@@ -9,7 +9,9 @@ cask 'emacs-mac-spacemacs-icon' do
 
   conflicts_with cask: [
                         'emacs',
-                        'emacs-mac'
+                        'emacs-mac',
+                        'emacs-mac-snapshot',
+                        'emacs-mac-spacemacs-icon-snapshot'
                        ]
 
   app 'Emacs.app'
