@@ -91,14 +91,9 @@ class EmacsMac < Formula
       "--prefix=#{prefix}",
       "--with-mac",
       "--enable-mac-app=#{prefix}",
+      "--with-gnutls",
     ]
     args << "--with-modules" if build.with? "modules"
-
-    if build.with? "gnutls"
-      args << "--with-gnutls"
-    else
-      args << "--without-gnutls"
-    end
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
 
