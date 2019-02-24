@@ -1,8 +1,8 @@
 cask 'emacs-mac-snapshot' do
-  version 'emacs-26.1.91-mac'
+  version 'emacs-mac-967b705'
 
-  sha256 'd8fd41fe7aa32cc7c539d56739f6ba76597dd9c98679ef1bea28d1849b2083cd'
-  url 'https://github.com/railwaycat/build-macport/releases/download/26.1-mac-7.4/emacs-26.1.91-mac-head-10.12.zip'
+  sha256 'fe5c6748cdac2e34c70fe83abb45a031d0ca7b7054cf63c9bb488735093abddf'
+  url 'https://github.com/railwaycat/build-macport/releases/download/snapshot-967b705/emacs-26.1.92-mac-head-10.12.zip'
   appcast 'https://github.com/railwaycat/build-macport/releases.atom'
   name 'Emacs-mac-snapshot'
   homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
