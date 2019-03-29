@@ -1,0 +1,33 @@
+language: generic
+
+env:
+  global:
+    secure: "hV9kusX6WV4sXcs4i/G9S3BloP8PsqBJKop1dpgZXgypMjq3szbt624DXIVJ8JbEe19+I4c87DMVw4WEpe2OgdOAD72GZRoljz0OjfioUBf6KMtw5pIPFftfNcKx1Hrfk5+Q3RkKgHa5vt0xDbCvBUVpekICnBySJSqggetH7KFHlmFz84fnPfYSM7mFdkjPzzOHaDtEN5qTJAqYrm5LbGPIKwpmvU6VQ4ykGwJxBPDeNbR4upy1aVvnYQiwk5zibMrp3ZJvuhboqxygDTcEM7ps+UszhmBC3nUelUpydwY2UN4YD1RXlKOShWVkYn6ySUXkgbMWoJmdFejywOFY+thzceTUb4M7YWungun8NvxpzjT3Ta9sbUw9uuMk3ZroiCoNVqs3VwBWLFLEeL5wKHb+edKTR5lJoAQkBuHv6QEx2JeEggIpYBVa7bW12TQQi2HhfQUb0SGincGI96R2B3gXSFGVMjbqp4pTVk+sabxy0eIMNJUK1cP93rD0McsOyAKaUxRskeO1fRF2vdgQaYqYY8SqmL1wVkZ/ixaMAHiRcrE7k8GjC+JtE9y3aeU7U30p9qokehLbZzXe9Z1Sg9RGDZ/6fDVlXdoWaAmv8Dqr8l17+onlz5cYgw1H6LaWilb2O7itNZD8wK8TjHnhThjgwUPpFMRpIfJeXcF/+Eo="
+
+os: osx
+osx_image: xcode9.2
+
+before_install:
+  - brew install texinfo
+  - brew upgrade automake gnutls
+
+script:
+  - ./fetch-emacs-mac-port.sh 26.1-mac-7.4
+  - ./build-emacs.sh emacs-source 26.1
+  - cd emacs-source; ../copylib.rb; cd -
+  - ./make-zipball.sh emacs-source/tmproot 26.1-mac-7.4-10.12
+  - ./fetch-emacs-mac-port.sh head
+  - ./build-emacs.sh emacs-head 26.1.92
+  - cd emacs-head; ../copylib.rb; cd -
+  - ./make-zipball.sh emacs-head/tmproot 26.1.92-mac-head-10.12
+
+deploy:
+  provider: releases
+  api_key: "$GITHUB_TOKEN"
+  file:
+    - "emacs-source/tmproot/emacs-26.1-mac-7.4-10.12.zip"
+    - "emacs-source/tmproot/emacs-26.1-mac-7.4-10.12-spacemacs-icon.zip"
+    - "emacs-head/tmproot/emacs-26.1.92-mac-head-10.12.zip"
+    - "emacs-head/tmproot/emacs-26.1.92-mac-head-10.12-spacemacs-icon.zip"
+  skip_cleanup: true
+  draft: true
