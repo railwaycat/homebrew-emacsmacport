@@ -12,10 +12,11 @@ before_install:
   - brew upgrade automake gnutls
 
 script:
-  - ./fetch-emacs-mac-port.sh 26.1-mac-7.4
-  - ./build-emacs.sh emacs-source 26.1
+  - cd build-scripts
+  - ./fetch-emacs-mac-port.sh
+  - ./build-emacs.sh emacs-source 26.1.92
   - cd emacs-source; ../copylib.rb; cd -
-  - ./make-zipball.sh emacs-source/tmproot 26.1-mac-7.4-10.12
+  - ./make-zipball.sh emacs-source/tmproot 26.2-rc1-mac-7.5-10.12
   - ./fetch-emacs-mac-port.sh head
   - ./build-emacs.sh emacs-head 26.1.92
   - cd emacs-head; ../copylib.rb; cd -
@@ -25,9 +26,9 @@ deploy:
   provider: releases
   api_key: "$GITHUB_TOKEN"
   file:
-    - "emacs-source/tmproot/emacs-26.1-mac-7.4-10.12.zip"
-    - "emacs-source/tmproot/emacs-26.1-mac-7.4-10.12-spacemacs-icon.zip"
-    - "emacs-head/tmproot/emacs-26.1.92-mac-head-10.12.zip"
-    - "emacs-head/tmproot/emacs-26.1.92-mac-head-10.12-spacemacs-icon.zip"
+    - "build-scripts/emacs-source/tmproot/emacs-26.2-rc1-mac-7.5-10.12.zip"
+    - "build-scripts/emacs-source/tmproot/emacs-26.2-rc1-mac-7.5-10.12-spacemacs-icon.zip"
+    - "build-scripts/emacs-head/tmproot/emacs-26.1.92-mac-head-10.12.zip"
+    - "build-scripts/emacs-head/tmproot/emacs-26.1.92-mac-head-10.12-spacemacs-icon.zip"
   skip_cleanup: true
   draft: true
