@@ -12,7 +12,6 @@ before_install:
   - brew upgrade automake gnutls
 
 script:
-  - set -e
   - cd build-scripts
   - ./fetch-emacs-mac-port.sh 26.2-rc1-mac-7.5
   - ./build-emacs.sh emacs-source 26.1.92
