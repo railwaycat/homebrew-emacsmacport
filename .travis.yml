@@ -13,7 +13,7 @@ before_install:
 
 script:
   - cd build-scripts
-  - ./fetch-emacs-mac-port.sh
+  - ./fetch-emacs-mac-port.sh emacs-26.2-rc1-mac-7.5
   - ./build-emacs.sh emacs-source 26.1.92
   - cd emacs-source; ../copylib.rb; cd -
   - ./make-zipball.sh emacs-source/tmproot 26.2-rc1-mac-7.5-10.12
