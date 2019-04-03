@@ -1,8 +1,5 @@
 language: generic
 
-os: osx
-osx_image: xcode9.2
-
 matrix:
   include:
     - os: osx
@@ -16,13 +13,15 @@ matrix:
 before_install:
   - brew install texinfo
   - brew upgrade automake gnutls
+  - pushd build-scripts; ./patch_pkgconfig.sh; popd
 
 script:
   - pushd build-scripts
   - ./fetch-emacs-mac-port.sh 26.2-rc1-mac-7.5
   - ./build-emacs.sh emacs-source 26.1.92
-  - cd emacs-source; ../copylib.rb; cd -
+  - pushd emacs-source; ../copylib.rb; popd
   - ./make-zipball.sh emacs-source/tmproot 26.2-rc1-mac-7.5
+  - ls -d "$PWD/"*.zip
   # - ./fetch-emacs-mac-port.sh head
   # - ./build-emacs.sh emacs-head 26.1.92
   # - cd emacs-head; ../copylib.rb; cd -
@@ -32,6 +31,7 @@ script:
 deploy:
   provider: releases
   api_key: "$GITHUB_OAUTH"
+  file_glob: true
   file: build-scripts/emacs-source/tmproot/emacs-*.zip
   skip_cleanup: true
   draft: true
