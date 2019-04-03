@@ -8,7 +8,7 @@ before_install:
   - brew upgrade automake gnutls
 
 script:
-  - cd build-scripts
+  - pushd build-scripts
   - ./fetch-emacs-mac-port.sh 26.2-rc1-mac-7.5
   - ./build-emacs.sh emacs-source 26.1.92
   - cd emacs-source; ../copylib.rb; cd -
@@ -17,6 +17,7 @@ script:
   # - ./build-emacs.sh emacs-head 26.1.92
   # - cd emacs-head; ../copylib.rb; cd -
   # - ./make-zipball.sh emacs-head/tmproot 26.1.92-mac-head-10.12
+  - popd
 
 deploy:
   provider: releases
