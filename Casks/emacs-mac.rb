@@ -1,9 +1,18 @@
 cask 'emacs-mac' do
-  version 'emacs-26.1-z-mac-7.4'
+  version 'emacs-26.2-rc1-mac-7.5'
 
-  sha256 'd00b76c2da141c32e90001211881349af5dd70eb8ed00ede59dca3cf838ca8bf'
-  url 'https://github.com/railwaycat/build-macport/releases/download/26.1-mac-7.4/emacs-26.1-mac-7.4-10.12.zip'
-  appcast 'https://github.com/railwaycat/build-macport/releases.atom'
+  if MacOS.version >= :mojave
+    sha256 'c48c12b9fce51d3eb20265d8b9d91db0cc11fa8c7968695e00f0fc6370d99d86'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-rc1-mac-7.5/emacs-26.2-rc1-mac-7.5-10.14.3.zip'
+  elsif MacOS.version == :high_sierra
+    sha256 '1761ec15f9739d6f96e64f905f990d04b35bfbbdb844d82ff9cc5038436fe9ae'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-rc1-mac-7.5/emacs-26.2-rc1-mac-7.5-10.13.6.zip'
+  else
+    sha256 'f791401be693b00eb27db33bbccfb55d4b238ba9ecdbaf29bdca56657ae687f7'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-rc1-mac-7.5/emacs-26.2-rc1-mac-7.5-10.12.6.zip'
+  end
+
+  appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
   name 'Emacs-mac'
   homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
 
