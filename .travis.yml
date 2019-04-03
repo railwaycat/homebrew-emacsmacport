@@ -1,9 +1,5 @@
 language: generic
 
-env:
-  global:
-    secure: "hV9kusX6WV4sXcs4i/G9S3BloP8PsqBJKop1dpgZXgypMjq3szbt624DXIVJ8JbEe19+I4c87DMVw4WEpe2OgdOAD72GZRoljz0OjfioUBf6KMtw5pIPFftfNcKx1Hrfk5+Q3RkKgHa5vt0xDbCvBUVpekICnBySJSqggetH7KFHlmFz84fnPfYSM7mFdkjPzzOHaDtEN5qTJAqYrm5LbGPIKwpmvU6VQ4ykGwJxBPDeNbR4upy1aVvnYQiwk5zibMrp3ZJvuhboqxygDTcEM7ps+UszhmBC3nUelUpydwY2UN4YD1RXlKOShWVkYn6ySUXkgbMWoJmdFejywOFY+thzceTUb4M7YWungun8NvxpzjT3Ta9sbUw9uuMk3ZroiCoNVqs3VwBWLFLEeL5wKHb+edKTR5lJoAQkBuHv6QEx2JeEggIpYBVa7bW12TQQi2HhfQUb0SGincGI96R2B3gXSFGVMjbqp4pTVk+sabxy0eIMNJUK1cP93rD0McsOyAKaUxRskeO1fRF2vdgQaYqYY8SqmL1wVkZ/ixaMAHiRcrE7k8GjC+JtE9y3aeU7U30p9qokehLbZzXe9Z1Sg9RGDZ/6fDVlXdoWaAmv8Dqr8l17+onlz5cYgw1H6LaWilb2O7itNZD8wK8TjHnhThjgwUPpFMRpIfJeXcF/+Eo="
-
 os: osx
 osx_image: xcode9.2
 
@@ -24,7 +20,7 @@ script:
 
 deploy:
   provider: releases
-  api_key: "$GITHUB_TOKEN"
+  api_key: "$GITHUB_OAUTH"
   file:
     - "build-scripts/emacs-source/tmproot/emacs-26.2-rc1-mac-7.5-10.12.zip"
     - "build-scripts/emacs-source/tmproot/emacs-26.2-rc1-mac-7.5-10.12-spacemacs-icon.zip"
