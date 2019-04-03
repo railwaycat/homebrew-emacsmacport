@@ -3,8 +3,9 @@
 set -e
 
 work_dir=$1
-version=$2
-echo "make version $version"
+emacs_version=$2
+version="$emacs_version-$(sw_vers -productVersion)"
+echo "make tarball for version $version"
 
 # default icon
 cd $work_dir

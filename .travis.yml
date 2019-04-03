@@ -3,6 +3,16 @@ language: generic
 os: osx
 osx_image: xcode9.2
 
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode10.2
+    - os: osx
+      osx_image: xcode10.1
+    - os: osx
+      osx_image: xcode9.2
+
+
 before_install:
   - brew install texinfo
   - brew upgrade automake gnutls
@@ -12,7 +22,7 @@ script:
   - ./fetch-emacs-mac-port.sh 26.2-rc1-mac-7.5
   - ./build-emacs.sh emacs-source 26.1.92
   - cd emacs-source; ../copylib.rb; cd -
-  - ./make-zipball.sh emacs-source/tmproot 26.2-rc1-mac-7.5-10.12
+  - ./make-zipball.sh emacs-source/tmproot 26.2-rc1-mac-7.5
   # - ./fetch-emacs-mac-port.sh head
   # - ./build-emacs.sh emacs-head 26.1.92
   # - cd emacs-head; ../copylib.rb; cd -
@@ -22,10 +32,6 @@ script:
 deploy:
   provider: releases
   api_key: "$GITHUB_OAUTH"
-  file:
-    - "build-scripts/emacs-source/tmproot/emacs-26.2-rc1-mac-7.5-10.12.zip"
-    - "build-scripts/emacs-source/tmproot/emacs-26.2-rc1-mac-7.5-10.12-spacemacs-icon.zip"
-    # - "build-scripts/emacs-head/tmproot/emacs-26.1.92-mac-head-10.12.zip"
-    # - "build-scripts/emacs-head/tmproot/emacs-26.1.92-mac-head-10.12-spacemacs-icon.zip"
+  file: build-scripts/emacs-source/tmproot/emacs-*.zip
   skip_cleanup: true
   draft: true
