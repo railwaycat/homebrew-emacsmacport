@@ -21,7 +21,7 @@ script:
   - ./build-emacs.sh emacs-source 26.1.92
   - pushd emacs-source; ../copylib.rb; popd
   - ./make-zipball.sh emacs-source/tmproot 26.2-rc1-mac-7.5
-  - ls -d "$PWD/"*.zip
+  - ls -d $PWD/emacs-source/tmproot/*.zip
   # - ./fetch-emacs-mac-port.sh head
   # - ./build-emacs.sh emacs-head 26.1.92
   # - cd emacs-head; ../copylib.rb; cd -
