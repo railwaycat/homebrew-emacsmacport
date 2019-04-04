@@ -3,7 +3,7 @@
 set -e
 
 if [ "$1" = "head" ]; then
-  git clone --depth=1 --branch=work https://bitbucket.org/mituharu/emacs-mac.git emacs-head
+  git clone --depth=1 --branch=work https://bitbucket.org/mituharu/emacs-mac.git emacs-source
 else
   curl -O -L https://bitbucket.org/mituharu/emacs-mac/get/emacs-$1.tar.gz
   mkdir emacs-source
