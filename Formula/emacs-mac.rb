@@ -46,9 +46,9 @@ class EmacsMac < Formula
   depends_on "automake" => :build
   depends_on "pkg-config" => :build
   depends_on "texinfo" => :"build"
-  depends_on "gnutls"
 
   depends_on "d-bus" if build.with? "dbus"
+  depends_on "gnutls"
   depends_on "libxml2" if build.with? "xml2"
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
