@@ -1,15 +1,15 @@
 cask 'emacs-mac' do
-  version 'emacs-26.2-rc1-mac-7.5'
+  version 'emacs-26.2-z-mac-7.6'
 
   if MacOS.version >= :mojave
-    sha256 'c48c12b9fce51d3eb20265d8b9d91db0cc11fa8c7968695e00f0fc6370d99d86'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-rc1-mac-7.5/emacs-26.2-rc1-mac-7.5-10.14.3.zip'
+    sha256 '81e3ee9d86ad22c2784a0a5086c87a09226cd037a8bd58e2681607ab2b554018'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-mac-7.6/emacs-26.2-mac-7.6-10.14.3.zip'
   elsif MacOS.version == :high_sierra
-    sha256 '1761ec15f9739d6f96e64f905f990d04b35bfbbdb844d82ff9cc5038436fe9ae'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-rc1-mac-7.5/emacs-26.2-rc1-mac-7.5-10.13.6.zip'
+    sha256 'b551f358f50ff720020f5f74211392976165ed9e7d01648ce6885d01fc052cc3'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-mac-7.6/emacs-26.2-mac-7.6-10.13.6.zip'
   else
-    sha256 'f791401be693b00eb27db33bbccfb55d4b238ba9ecdbaf29bdca56657ae687f7'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-rc1-mac-7.5/emacs-26.2-rc1-mac-7.5-10.12.6.zip'
+    sha256 '58bafd25b255440adc424aa4ef92702fb049a20ebf259178b89d56f7b5df91da'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-mac-7.6/emacs-26.2-mac-7.6-10.12.6.zip'
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
