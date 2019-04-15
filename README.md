@@ -5,10 +5,10 @@
 Official repository: https://bitbucket.org/mituharu/emacs-mac/overview
 
 This is "Mac port" addition to GNU Emacs 26.  This provides a native
-GUI support for Mac OS X 10.6 - 10.14.  Note that Emacs 23 and later
-already contain the official GUI support via the NS (Cocoa) port for
-Mac OS X 10.4 and later.  So if it is good enough for you, then you
-don't need to try this.
+GUI support for Mac OS X 10.6 - macOS 10.14.  Note that Emacs 23 and
+later already contain the official GUI support via the NS (Cocoa)
+port. So if it is good enough for you, then you don't need to try
+this.
 
 #### IMPORTANT NOTE ####
 
@@ -47,7 +47,10 @@ To disable this tap, please:
 
 https://github.com/railwaycat/homebrew-emacsmacport/releases
 
-Pre-built tested on 10.9.5, 10.13.6 and 10.14
+Pre-built for macOS 10.12(Sierra), 10.13(High Sierra) and 10.14(Mojave), please
+download based on your macOS version. Due to the limitation of Travis-CI,
+pre-built for macOS before 10.12 is not supported, please install by homebrew
+(not brew cask) in case you are using an older version macOS. 
 
 ## Useful links ##
 
