@@ -11,14 +11,7 @@ export PATH="/usr/local/opt/texinfo/bin:$PATH"
 set -e
 cd $source_dir
 ./autogen.sh
-./configure --with-mac --enable-mac-app=$installprefix --prefix=$installprefix 
+./configure --with-mac --enable-mac-app=$installprefix --prefix=$installprefix --enable-self-contained
 make
 make install
 set +e
-
-mv $installprefix/share/emacs/$emacs_version/* $app_dir
-mv $installprefix/share/info $app_dir
-mv $installprefix/share/man $app_dir
-mv $installprefix/var $app_dir
-mv $installprefix/bin $app_dir/../MacOS/bin
-mv $installprefix/libexec/emacs/$emacs_version/$compver $app_dir/../MacOS/libexec
