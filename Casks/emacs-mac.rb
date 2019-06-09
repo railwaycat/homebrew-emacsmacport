@@ -3,7 +3,7 @@ cask 'emacs-mac' do
 
   if MacOS.version >= :mojave
     sha256 'd759f033df4d428a5445826f533aeb01cb0055f421bcb43b97adba98bdf5de3e'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-mac-7.6.1/emacs-26.2-mac-7.6.1-10.14.3.zip'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-mac-7.6.1/emacs-26.2-mac-7.6.1-10.14.4.zip'
   elsif MacOS.version == :high_sierra
     sha256 'ff9be62cea4f3701a85e3b7750d2533fa5cd26a3b709ddd0bbe54cdce8c043d6'
     url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.2-mac-7.6.1/emacs-26.2-mac-7.6.1-10.13.6.zip'
