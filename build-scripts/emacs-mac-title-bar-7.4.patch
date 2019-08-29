@@ -1,0 +1,52 @@
+diff -Nur mituharu-emacs-mac-fd1cf1f3e757/src/macappkit.m 74/src/macappkit.m
+--- mituharu-emacs-mac-fd1cf1f3e757/src/macappkit.m	2018-11-16 17:38:56.000000000 +0800
++++ 74/src/macappkit.m	2018-11-17 23:03:48.000000000 +0800
+@@ -2098,6 +2098,18 @@
+ 
+ @implementation EmacsWindow
+ 
+++ (NSButton *)standardWindowButton:(NSWindowButton)b forStyleMask:(NSWindowStyleMask)styleMask
++{
++
++  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
++  NSString *hideDocumentIcon = [userDefaults stringForKey: @"HideDocumentIcon"];
++
++  if([hideDocumentIcon isEqualToString: @"YES"] && (b == NSWindowDocumentIconButton || b == NSWindowDocumentVersionsButton)) {
++    return nil;
++  }
++  return [NSWindow standardWindowButton:b forStyleMask:styleMask];
++}
++
+ - (instancetype)initWithContentRect:(NSRect)contentRect
+ 			  styleMask:(NSWindowStyleMask)windowStyle
+ 			    backing:(NSBackingStoreType)bufferingType
+@@ -2659,6 +2671,19 @@
+       MRC_RELEASE (visualEffectView);
+       FRAME_BACKGROUND_ALPHA_ENABLED_P (f) = true;
+     }
++
++  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
++  NSString *transparentTitleBar = [userDefaults stringForKey: @"TransparentTitleBar"];
++
++  if ([transparentTitleBar isEqualToString: @"DARK"]) {
++    window.titlebarAppearsTransparent = true;
++    window.appearance = [NSAppearance appearanceNamed: NSAppearanceNameVibrantDark];
++  }
++
++  if ([transparentTitleBar isEqualToString: @"LIGHT"]) {
++    window.titlebarAppearsTransparent = true;
++  }
++
+   if (FRAME_MAC_DOUBLE_BUFFERED_P (f))
+     {
+       FRAME_SYNTHETIC_BOLD_WORKAROUND_DISABLED_P (f) = true;
+@@ -6432,8 +6457,7 @@
+       if ([defaults objectForKey:@"ApplePressAndHoldEnabled"] == nil)
+ 	{
+ 	  NSDictionaryOf (NSString *, NSString *) *appDefaults =
+-	    [NSDictionary dictionaryWithObject:@"NO"
+-					forKey:@"ApplePressAndHoldEnabled"];
++            [NSDictionary dictionaryWithObjectsAndKeys:@"NO", @"ApplePressAndHoldEnabled", @"NO", @"TransparentTitleBar", @"NO", @"HideDocumentIcon", nil];
+ 
+ 	  [defaults registerDefaults:appDefaults];
+ 	}

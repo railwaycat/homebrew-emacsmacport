@@ -9,3 +9,6 @@ else
   mkdir emacs-source
   tar xf emacs-$1.tar.gz -C ./emacs-source --strip-components=1
 fi
+
+# apply patch: emacs-mac-title-bar-7.4.patch
+patch -d emacs-source -p1 < emacs-mac-title-bar-7.4.patch
