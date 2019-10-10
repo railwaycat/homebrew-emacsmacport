@@ -10,6 +10,7 @@ class EmacsMac < Formula
   option "with-dbus", "Build with d-bus support"
   option "with-modules", "Build with dynamic modules support"
   option "with-xml2", "Build with libxml2 support"
+  option "with-rsvg", "Build with rsvg support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-no-title-bars", "Build with a patch for no title bars on frames (--HEAD is not supported)"
   option "with-natural-title-bar", "Build with a patch for title bar color inferred by your theme (--HEAD is not supported)"
@@ -52,6 +53,7 @@ class EmacsMac < Formula
   depends_on "libxml2" if build.with? "xml2"
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
+  depends_on "librsvg" if build.with? "rsvg"
 
   emacs_icons_project_icons.each do |icon, sha|
     resource "emacs-icons-project-#{icon}" do
@@ -94,6 +96,7 @@ class EmacsMac < Formula
       "--with-gnutls",
     ]
     args << "--with-modules" if build.with? "modules"
+    args << "--with-rsvg" if build.with? "rsvg"
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
 
