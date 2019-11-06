@@ -72,6 +72,11 @@ class EmacsMac < Formula
     sha256 "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900"
   end
 
+  resource "sexy-icon" do
+    url "https://raw.githubusercontent.com/picandocodigo/emacs.sexy/gh-pages/img/emacs-icon2%402X.png"
+    sha256 "30ddd5c9483dd92ff7d037ff347b08b18fd2b70cfdba7b727081924be45e4a16"
+  end
+
   if build.with? "no-title-bars"
     patch do
       url "https://gist.github.com/railwaycat/fd3b98f1cfbded5113dd4e307b7ae84c/raw/4354ee8213c0c69bec8d9c77f01d3830d3c1d009/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
@@ -104,12 +109,12 @@ class EmacsMac < Formula
         EmacsIcon5 EmacsIcon6 EmacsIcon7 EmacsIcon8
         EmacsIcon9 emacs-card-blue-deep emacs-card-british-racing-green
         emacs-card-carmine emacs-card-green].map { |i| "emacs-icons-project-#{i}" } +
-     %w[modern-icon spacemacs-icon]).each do |icon|
+     %w[modern-icon spacemacs-icon sexy-icon]).each do |icon|
       next if build.without? icon
 
       rm "#{icons_dir}/Emacs.icns"
       resource(icon).stage do
-        icons_dir.install Dir["*.icns*"].first => "Emacs.icns"
+        icons_dir.install Dir["*[.-]ic[o]?n[s]?*"].first => "Emacs.icns"
       end
     end
 
