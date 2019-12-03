@@ -4,7 +4,7 @@ index c297c6b45..7a037a9cf 100644
 +++ b/Library/Homebrew/os/mac/pkgconfig/10.14/libxml-2.0.pc
 @@ -1,7 +1,8 @@
  prefix=/usr
-+xcode_prefix=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk${prefix}
++xcode_prefix=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk${prefix}
  exec_prefix=${prefix}
  libdir=${exec_prefix}/lib
 -includedir=${prefix}/include
