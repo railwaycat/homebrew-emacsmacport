@@ -1,9 +1,9 @@
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-26.3-mac-7.7.tar.gz"
-  version "emacs-26.3-z-mac-7.7"
-  sha256 "42bdf59fbf0fa49a608af3d1d4c95319ed907611d580c5f6b5f7f77b7cbf2d6e"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-26.3-mac-7.8.tar.gz"
+  version "emacs-26.3-z-mac-7.8"
+  sha256 "64461a8fe83d407fb2fc89032f79f742e231e570fd26e8a631247d7b2da34e9f"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -131,7 +131,7 @@ class EmacsMac < Formula
     <<~EOS
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
       GNU Emacs 26. This provides a native GUI support for Mac OS X
-      10.6 - 10.14. After installing, see README-mac and NEWS-mac
+      10.6 - 10.15. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
       Emacs.app was installed to:
