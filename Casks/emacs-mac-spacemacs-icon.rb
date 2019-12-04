@@ -1,15 +1,15 @@
 cask 'emacs-mac-spacemacs-icon' do
-  version 'emacs-26.3-z-mac-7.7'
+  version 'emacs-26.3-z-mac-7.8'
 
   if MacOS.version >= :mojave
-    sha256 '507abca7eed2400a4f7ed135e9631c28b288091096cd1edaf8d4b00c46e8457a'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.7/emacs-26.3-mac-7.7-10.14.4-spacemacs-icon.zip'
+    sha256 '1505709c574205daa36a06075b6e53bdc3c5060f3aae5f1a2fe299b6502568b3'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.8/emacs-26.3-mac-7.8-10.14.4-spacemacs-icon.zip'
   elsif MacOS.version == :high_sierra
-    sha256 'b48df51ea637f42f4ab8abc24cafa4e179f26cb8cb84e97023a3257905d1ca4e'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.7/emacs-26.3-mac-7.7-10.13.6-spacemacs-icon.zip'
+    sha256 '0eabbb47e8a8e089402ae959dffbe31d2b75d441df0b7244bba9494db8183642'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.8/emacs-26.3-mac-7.8-10.13.6-spacemacs-icon.zip'
   else
-    sha256 '27a95ab605ba096bffc8b75e3c9f84f8b0045e3a7ee43dd635966cdafb5eaee1'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.7/emacs-26.3-mac-7.7-10.12.6-spacemacs-icon.zip'
+    sha256 '3405daceb9ec97f1c6f31b9b6f9e48b1ca363e89fd1a25e769bdbb428e23d4e8'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.8/emacs-26.3-mac-7.8-10.12.6-spacemacs-icon.zip'
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
