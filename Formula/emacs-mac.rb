@@ -1,3 +1,4 @@
+# coding: utf-8
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
@@ -16,6 +17,7 @@ class EmacsMac < Formula
   option "with-natural-title-bar", "Build with a patch for title bar color inferred by your theme (--HEAD is not supported)"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
+  option "with-gnu-head-icon", "Using a Bold GNU Head icon by Aurélio A. Heckert"
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
@@ -72,6 +74,11 @@ class EmacsMac < Formula
     sha256 "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900"
   end
 
+  resource "gnu-head-icon" do
+    url "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/icons/heckert_gnu.icns"
+    sha256 "b5899aaa3589b54c6f31aa081daf29d303047aa07b5ca1d0fd7f9333a829b6d3"
+  end
+
   if build.with? "no-title-bars"
     patch do
       url "https://gist.github.com/railwaycat/fd3b98f1cfbded5113dd4e307b7ae84c/raw/4354ee8213c0c69bec8d9c77f01d3830d3c1d009/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
@@ -104,7 +111,7 @@ class EmacsMac < Formula
         EmacsIcon5 EmacsIcon6 EmacsIcon7 EmacsIcon8
         EmacsIcon9 emacs-card-blue-deep emacs-card-british-racing-green
         emacs-card-carmine emacs-card-green].map { |i| "emacs-icons-project-#{i}" } +
-     %w[modern-icon spacemacs-icon]).each do |icon|
+     %w[modern-icon spacemacs-icon gnu-head-icon]).each do |icon|
       next if build.without? icon
 
       rm "#{icons_dir}/Emacs.icns"
