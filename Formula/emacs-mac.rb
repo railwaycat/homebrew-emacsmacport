@@ -73,8 +73,8 @@ class EmacsMac < Formula
   end
 
   resource "sexy-icon" do
-    url "https://raw.githubusercontent.com/picandocodigo/emacs.sexy/gh-pages/img/emacs-icon2%402X.png"
-    sha256 "30ddd5c9483dd92ff7d037ff347b08b18fd2b70cfdba7b727081924be45e4a16"
+    url "https://github.com/picandocodigo/emacs.sexy/releases/download/icons/emacsV2-128x128@2x.png"
+    sha256 "c09087e3b706119d63dfb5d4db2f95ed7163ffa1fb89f27b9f163a577a690caf"
   end
 
   if build.with? "no-title-bars"
