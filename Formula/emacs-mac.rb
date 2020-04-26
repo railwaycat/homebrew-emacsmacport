@@ -6,7 +6,7 @@ class EmacsMac < Formula
   version "emacs-26.3-z-mac-7.9"
   sha256 "fd811bbd877d363fa040555499ae2b4398bd9ac1039bd5283a1a75a9928256e0"
 
-  head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
+  head "https://bitbucket.org/mituharu/emacs-mac.git", :branch => "work"
 
   option "with-dbus", "Build with d-bus support"
   option "with-modules", "Build with dynamic modules support"
@@ -38,7 +38,7 @@ class EmacsMac < Formula
     "emacs-card-green" => "f94ade7686418073f04b73937f34a1108786400527ed109af822d61b303048f7",
   }
 
-  emacs_icons_project_icons.keys.each do |icon|
+  emacs_icons_project_icons.each_key do |icon|
     option "with-emacs-icons-project-#{icon}", "Using Emacs icon project #{icon}"
   end
 
@@ -49,7 +49,7 @@ class EmacsMac < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "pkg-config" => :build
-  depends_on "texinfo" => :"build"
+  depends_on "texinfo" => :build
 
   depends_on "d-bus" if build.with? "dbus"
   depends_on "gnutls"
@@ -87,6 +87,8 @@ class EmacsMac < Formula
   end
 
   if build.with? "no-title-bars"
+    odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
+
     patch do
       url "https://gist.github.com/railwaycat/fd3b98f1cfbded5113dd4e307b7ae84c/raw/4354ee8213c0c69bec8d9c77f01d3830d3c1d009/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
       sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
