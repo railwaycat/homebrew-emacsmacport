@@ -81,7 +81,7 @@ class EmacsMac < Formula
   end
 
   resource "emacs-sexy-icon" do
-    url "https://emacs-mac-port.s3.amazonaws.com/EmacsSexy.icns"
+    url "https://emacs.sexy/img/Emacs.icns"
     sha256 "7ab72feeeff0084e14bcb75a3e1040bdf738e0044361e7af8a67ebbaa58d852a"
   end
 
