@@ -1,4 +1,3 @@
-# coding: utf-8
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
@@ -14,7 +13,7 @@ class EmacsMac < Formula
   option "with-rsvg", "Build with rsvg support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-no-title-bars", "Build with a patch for no title bars on frames (--HEAD is not supported)"
-  option "with-natural-title-bar", "Build with a patch for title bar color inferred by your theme (--HEAD is not supported)"
+  option "with-natural-title-bar", "Build with a patch for title bar color inferred by theme (--HEAD is not supported)"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
   option "with-gnu-head-icon", "Using a Bold GNU Head icon by Aurélio A. Heckert"
@@ -53,10 +52,10 @@ class EmacsMac < Formula
 
   depends_on "d-bus" if build.with? "dbus"
   depends_on "gnutls"
+  depends_on "librsvg" if build.with? "rsvg"
   depends_on "libxml2" if build.with? "xml2"
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
-  depends_on "librsvg" if build.with? "rsvg"
   depends_on "jansson" => :optional
 
   emacs_icons_project_icons.each do |icon, sha|
@@ -98,7 +97,7 @@ class EmacsMac < Formula
   if build.with? "natural-title-bar"
     patch do
       url "https://gist.github.com/lululau/f2e6314a14cc95586721272dd85a7c51/raw/f5a92d3e654cc41d0eab2b229a98ed63da82ee1c/emacs-mac-title-bar-7.4.patch"
-      sha256 '5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897'
+      sha256 "5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897"
     end
   end
 
