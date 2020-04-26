@@ -81,7 +81,7 @@ class EmacsMac < Formula
     sha256 "b5899aaa3589b54c6f31aa081daf29d303047aa07b5ca1d0fd7f9333a829b6d3"
   end
 
-  resource "sexy-icon" do
+  resource "emacs-sexy-icon" do
     url "https://emacs-mac-port.s3.amazonaws.com/EmacsSexy.icns"
     sha256 "7ab72feeeff0084e14bcb75a3e1040bdf738e0044361e7af8a67ebbaa58d852a"
   end
