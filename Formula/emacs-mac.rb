@@ -123,7 +123,7 @@ class EmacsMac < Formula
 
       rm "#{icons_dir}/Emacs.icns"
       resource(icon).stage do
-        icons_dir.install Dir["*[.-]ic[o]?n[s]?*"].first => "Emacs.icns"
+        icons_dir.install Dir["*.icns*"].first => "Emacs.icns"
       end
     end
 
