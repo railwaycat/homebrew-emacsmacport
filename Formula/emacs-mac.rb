@@ -54,6 +54,7 @@ class EmacsMac < Formula
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
   depends_on "librsvg" if build.with? "rsvg"
+  depends_on "jansson" => :optional
 
   emacs_icons_project_icons.each do |icon, sha|
     resource "emacs-icons-project-#{icon}" do
