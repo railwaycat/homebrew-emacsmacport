@@ -20,6 +20,7 @@ class EmacsMac < Formula
   option "with-gnu-head-icon", "Using a Bold GNU Head icon by Aurélio A. Heckert"
   option "with-emacs-sexy-icon", "Using the Emacs Sexy icon by @picandocodigo"
   option "with-jansson", "Build with jansson support (--HEAD only)"
+  option "with-starter", "Build with a starter script to start emacs GUI from CLI"
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
@@ -147,6 +148,17 @@ class EmacsMac < Formula
     if build.without? "ctags"
       (bin/"ctags").unlink
       (share/man/man1/"ctags.1.gz").unlink
+    end
+
+    if build.with? "starter"
+      # Replace the symlink with one that starts GUI
+      # alignment the behavior with cask
+      # borrow the idea from emacs-plus
+      (bin/"emacs").unlink
+      (bin/"emacs").write <<~EOS
+        #!/bin/bash
+        exec #{prefix}/Emacs.app/Contents/MacOS/Emacs.sh "$@"
+      EOS
     end
   end
 
