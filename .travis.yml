@@ -11,14 +11,13 @@ matrix:
       osx_image: xcode11.3
     - os: osx
       osx_image: xcode10.1
-    - os: osx
-      osx_image: xcode9.2
 
 
 before_install:
   - export HOMEBREW_NO_INSTALL_CLEANUP=1
   - brew install texinfo
-  - brew upgrade automake gnutls
+  - brew upgrade automake
+  - brew upgrade gnutls
   - pushd build-scripts; ./patch_pkgconfig.sh; popd
 
 script:
