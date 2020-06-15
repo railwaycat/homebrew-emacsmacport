@@ -1,12 +1,12 @@
 cask 'emacs-mac' do
-  version 'emacs-26.3-z-mac-7.9'
+  version 'emacs-26.3-z-mac-7.9.1'
 
   if MacOS.version >= :mojave
-    sha256 '47a4d542bcbdc9d97bbd49d0482e663370e5c584fd43ac6ca7a0fa29625c68da'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.9/emacs-26.3-mac-7.9-10.14.4.zip'
+    sha256 '8f105d20ee0d7b3f0b8afd5b5bf1f9afff0dc5bdd51969f1cc34866053739952'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.9.1/emacs-26.3-mac-7.9-10.14.6.zip'
   else
-    sha256 '6027df79425f334ff2a2aa943bcafc01f8f3faa5bae2b63fecfa641c963d3045'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.9/emacs-26.3-mac-7.9-10.13.6.zip'
+    sha256 'e86a56a1648483496c7409c483977d115d8c2a43b0733a4712f790085cb00367'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-26.3-mac-7.9.1/emacs-26.3-mac-7.9-10.13.6.zip'
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
