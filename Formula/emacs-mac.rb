@@ -79,7 +79,7 @@ class EmacsMac < Formula
   end
 
   resource "gnu-head-icon" do
-    url "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/icons/heckert_gnu.icns"
+    url "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/icons/gnu-head.icns"
     sha256 "b5899aaa3589b54c6f31aa081daf29d303047aa07b5ca1d0fd7f9333a829b6d3"
   end
 
