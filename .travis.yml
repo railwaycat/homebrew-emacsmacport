@@ -1,7 +1,7 @@
 language: generic
 
 env:
-  - MACPORT_VER=26.3-mac-7.9 EMACS_VER=26.3
+  - MACPORT_VER=27.1-mac-8.0 EMACS_VER=27.1
   # - MACPORT_VER=head EMACS_VER=26.2
 
 
