@@ -1,14 +1,14 @@
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-26.3-mac-7.9.tar.gz"
-  version "emacs-26.3-z-mac-7.9"
-  sha256 "fd811bbd877d363fa040555499ae2b4398bd9ac1039bd5283a1a75a9928256e0"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.1-mac-8.0.tar.gz"
+  version "emacs-27.1-mac-8.0"
+  sha256 "b6a20eafb475a08d25213d475320f85d6acd438319cb7fe2a51e571d651975be"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", :branch => "work"
 
   option "with-dbus", "Build with d-bus support"
-  option "with-modules", "Build with dynamic modules support"
+  option "with-modules", "Build with dynamic modules support (on by default)"
   option "with-xml2", "Build with libxml2 support"
   option "with-rsvg", "Build with rsvg support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
@@ -19,7 +19,6 @@ class EmacsMac < Formula
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
   option "with-gnu-head-icon", "Using a Bold GNU Head icon by Aurélio A. Heckert"
   option "with-emacs-sexy-icon", "Using the Emacs Sexy icon by @picandocodigo"
-  option "with-jansson", "Build with jansson support (--HEAD only)"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
 
   # Update list from
@@ -59,7 +58,6 @@ class EmacsMac < Formula
   depends_on "libxml2" if build.with? "xml2"
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
-  depends_on "jansson" => :optional
 
   emacs_icons_project_icons.each do |icon, sha|
     resource "emacs-icons-project-#{icon}" do
@@ -113,14 +111,8 @@ class EmacsMac < Formula
       "--enable-mac-app=#{prefix}",
       "--with-gnutls",
     ]
-    args << "--with-modules" if build.with? "modules"
+    args << "--with-modules"
     args << "--with-rsvg" if build.with? "rsvg"
-
-    if build.with? "jansson"
-      odie "--with-jansson is supported only on --HEAD" unless build.head?
-
-      args << "--with-json"
-    end
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
 
