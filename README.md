@@ -20,7 +20,7 @@ it is also reproducible with official ones), report it using <kbd>M-x</kbd>
 report-emacs-bug *USING THE OFFICIAL BUILD* as such.
 
 ## Features ##
-This build has *many* features, a great number of which are particularly helpful for Mac users. You can see the full list <a href="https://bitbucket.org/mituharu/emacs-mac/src/f3402395995bf70e50d6e65f841e44d5f9b4603c/README-mac?at=master&fileviewer=file-view-default">here</a>. 
+This build has *many* features, a great number of which are particularly helpful for Mac users. You can see the full list <a href="https://bitbucket.org/mituharu/emacs-mac/src/master/README-mac">here</a>. 
 
 
 ## Installation options ##
