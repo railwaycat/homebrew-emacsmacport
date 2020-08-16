@@ -11,9 +11,9 @@ class EmacsMac < Formula
   option "without-modules", "Build without dynamic modules support"
   option "with-rsvg", "Build with rsvg support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
-  option "with-no-title-bars", "Build with a patch for no title bars on frames (--HEAD is not supported)"
+  option "with-no-title-bars", "Build with a patch for no title bars on frames (not recommended to use with --HEAD option)"
   option "with-natural-title-bar",
-         "Build with a patch for title bar color inferred by theme (--HEAD is not supported)"
+         "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
   option "with-gnu-head-icon", "Using a Bold GNU Head icon by Aurélio A. Heckert"
@@ -46,13 +46,13 @@ class EmacsMac < Formula
   deprecated_option "icon-official" => "with-official-icon"
   deprecated_option "icon-modern" => "with-modern-icon"
 
-  depends_on "autoconf" => :build
-  depends_on "automake" => :build
-  depends_on "pkg-config" => :build
-  depends_on "texinfo" => :build
+  depends_on "autoconf"
+  depends_on "automake"
+  depends_on "pkg-config"
+  depends_on "texinfo"
+  depends_on "gnutls"
 
   depends_on "d-bus" if build.with? "dbus"
-  depends_on "gnutls"
   depends_on "librsvg" if build.with? "rsvg"
   depends_on "libxml2" => :recommended
   depends_on "jansson" => :recommended
