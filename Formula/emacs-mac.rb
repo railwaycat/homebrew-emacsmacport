@@ -87,8 +87,7 @@ class EmacsMac < Formula
   end
 
   if build.with? "no-title-bars"
-    odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
-
+    # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
     patch do
       url "https://gist.github.com/railwaycat/fd3b98f1cfbded5113dd4e307b7ae84c/raw/4354ee8213c0c69bec8d9c77f01d3830d3c1d009/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
       sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
