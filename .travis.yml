@@ -16,6 +16,7 @@ matrix:
 before_install:
   - export HOMEBREW_NO_INSTALL_CLEANUP=1
   - brew install texinfo
+  - brew install jansson
   - brew upgrade automake
   - brew upgrade gnutls
   - pushd build-scripts; ./patch_pkgconfig.sh; popd
