@@ -1,0 +1,51 @@
+diff -ruN mituharu-emacs-mac-85a43e7fcf73/lisp/cus-start.el mituharu-emacs-mac-patched/lisp/cus-start.el
+--- mituharu-emacs-mac-85a43e7fcf73/lisp/cus-start.el	2019-03-22 01:05:44.000000000 -0400
++++ mituharu-emacs-mac-patched/lisp/cus-start.el	2019-04-04 15:08:10.000000000 -0400
+@@ -580,6 +580,7 @@
+ 	     (mac-pass-command-to-system mac boolean "22.1")
+ 	     (mac-pass-control-to-system mac boolean "22.1")
+ 	     (mac-drawing-use-gcd mac boolean "24.4")
++             (mac-use-title-bar mac boolean "25.2")
+ 	     (mac-frame-tabbing mac (choice (const automatic) (const inverted)
+                                             (const nil) (const t)) "24.5")
+ 	     (mac-ignore-accessibility mac boolean "25.3")
+diff -ruN mituharu-emacs-mac-85a43e7fcf73/src/macappkit.m mituharu-emacs-mac-patched/src/macappkit.m
+--- mituharu-emacs-mac-85a43e7fcf73/src/macappkit.m	2019-03-22 01:05:44.000000000 -0400
++++ mituharu-emacs-mac-patched/src/macappkit.m	2019-04-04 15:08:19.000000000 -0400
+@@ -2613,9 +2613,13 @@
+       if (!self.shouldBeTitled)
+ 	windowStyle = NSWindowStyleMaskBorderless;
+       else
+-	windowStyle = (NSWindowStyleMaskTitled | NSWindowStyleMaskClosable
+-		       | NSWindowStyleMaskMiniaturizable
+-		       | NSWindowStyleMaskResizable);
++        if (mac_use_title_bar)
++          windowStyle = (NSWindowStyleMaskTitled | NSWindowStyleMaskClosable
++                         | NSWindowStyleMaskMiniaturizable
++                         | NSWindowStyleMaskResizable);
++        else
++          windowStyle = (NSWindowStyleMaskBorderless | NSWindowStyleMaskResizable
++                         | NSWindowStyleMaskMiniaturizable);
+     }
+   else
+     windowStyle = NSWindowStyleMaskBorderless;
+diff -ruN mituharu-emacs-mac-85a43e7fcf73/src/macterm.c mituharu-emacs-mac-patched/src/macterm.c
+--- mituharu-emacs-mac-85a43e7fcf73/src/macterm.c	2019-03-22 01:05:44.000000000 -0400
++++ mituharu-emacs-mac-patched/src/macterm.c	2019-04-04 15:08:27.000000000 -0400
+@@ -6314,6 +6314,16 @@
+ This variable has no effect on OS X 10.11 and earlier.  */);
+   Vmac_frame_tabbing = Qautomatic;
+ 
++  DEFVAR_BOOL ("mac-use-title-bar", mac_use_title_bar,
++     doc: /*Non-nil means to include the title bar on frames.  Nil means to
++omit the title bar on OSX >= 10.7.  This variable is ignored on OSX <
++10.7. Note that the first frame per emacs session (unless it is an
++emacsclient) will use the default value of this variable (nil--do not
++include a title bar), ignoring (!) the user-set value of this
++variable. This is almost certainly due to a bug in the patch adding
++this variable. Default is nil.*/);
++  mac_use_title_bar = false;
++
+   DEFVAR_BOOL ("mac-ignore-accessibility", mac_ignore_accessibility,
+     doc: /* Non-nil means to ignore the system accessibility feature.
+ Emacspeak users may want to set this variable so it may not interfere
