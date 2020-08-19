@@ -88,31 +88,31 @@ class EmacsMac < Formula
 
   # declare all patches as resource, workaround issue #214
   resource "natural-title-bar-patch" do
-    url "https://gist.github.com/lululau/f2e6314a14cc95586721272dd85a7c51/raw/f5a92d3e654cc41d0eab2b229a98ed63da82ee1c/emacs-mac-title-bar-7.4.patch"
+    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-mac-title-bar-7.4.patch"
     sha256 "5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897"
   end
 
   resource "no-title-bars-patch" do
-    url "https://gist.github.com/railwaycat/fd3b98f1cfbded5113dd4e307b7ae84c/raw/4354ee8213c0c69bec8d9c77f01d3830d3c1d009/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
+    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
     sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
   end
 
   resource "multi-tty-patch" do
-    url "https://gist.github.com/railwaycat/c48cc2ea545a9d29521e092662661311/raw/0c7977aa5ae27e386e0b9d9e3f5d28881abd316d/multi-tty-27.diff"
+    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/multi-tty-27.diff"
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
   end
 
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
     patch do
-      url "https://gist.github.com/railwaycat/fd3b98f1cfbded5113dd4e307b7ae84c/raw/4354ee8213c0c69bec8d9c77f01d3830d3c1d009/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
       sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
     end
   end
 
   if build.with? "natural-title-bar"
     patch do
-      url "https://gist.github.com/lululau/f2e6314a14cc95586721272dd85a7c51/raw/f5a92d3e654cc41d0eab2b229a98ed63da82ee1c/emacs-mac-title-bar-7.4.patch"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-mac-title-bar-7.4.patch"
       sha256 "5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897"
     end
   end
@@ -121,7 +121,7 @@ class EmacsMac < Formula
   # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
   # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
   patch do
-    url "https://gist.github.com/railwaycat/c48cc2ea545a9d29521e092662661311/raw/0c7977aa5ae27e386e0b9d9e3f5d28881abd316d/multi-tty-27.diff"
+    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/multi-tty-27.diff"
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
   end
 
