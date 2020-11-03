@@ -20,6 +20,7 @@ class EmacsMac < Formula
   option "with-gnu-head-icon", "Using a Bold GNU Head icon by Aurélio A. Heckert"
   option "with-emacs-sexy-icon", "Using the Emacs Sexy icon by @picandocodigo"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
+  option "with-wordwrap-category", "(experiment!) Build with (backport) patch for wordwrap by category"
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
@@ -114,6 +115,13 @@ class EmacsMac < Formula
     patch do
       url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-mac-title-bar-7.4.patch"
       sha256 "5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897"
+    end
+  end
+
+  if build.with? "wordwrap-category"
+    patch do
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/word-wrap.diff"
+      sha256 "bb576007e2d1d52313ab355e17f8e96aa522492102b070ec999ee17ae8cd22dd"
     end
   end
 
