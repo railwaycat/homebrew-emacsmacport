@@ -189,7 +189,7 @@ class EmacsMac < Formula
     <<~EOS
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
       GNU Emacs 27. This provides a native GUI support for Mac OS X
-      10.6 - 10.15. After installing, see README-mac and NEWS-mac
+      10.6 - 11.0. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
       Emacs.app was installed to:
