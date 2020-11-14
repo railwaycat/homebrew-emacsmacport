@@ -1,9 +1,9 @@
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.1-mac-8.0.tar.gz"
-  version "emacs-27.1-mac-8.0"
-  sha256 "b6a20eafb475a08d25213d475320f85d6acd438319cb7fe2a51e571d651975be"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.1-mac-8.1.tar.gz"
+  version "emacs-27.1-mac-8.1"
+  sha256 "cae62f036be66ebcdada4d4563859b70825d2a8c91edd24e9e9794ece9f30dee"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -188,7 +188,7 @@ class EmacsMac < Formula
   def caveats
     <<~EOS
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
-      GNU Emacs 26. This provides a native GUI support for Mac OS X
+      GNU Emacs 27. This provides a native GUI support for Mac OS X
       10.6 - 10.15. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
