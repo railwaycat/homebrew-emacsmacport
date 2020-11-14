@@ -1,12 +1,14 @@
 language: generic
 
 env:
-  - MACPORT_VER=27.1-mac-8.0 EMACS_VER=27.1
+  - MACPORT_VER=27.1-mac-8.1 EMACS_VER=27.1
   # - MACPORT_VER=head EMACS_VER=26.2
 
 
 matrix:
   include:
+    - os: osx
+      osx_image: xcode12u
     - os: osx
       osx_image: xcode11.3
     - os: osx
