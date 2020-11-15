@@ -2,10 +2,10 @@ cask 'emacs-mac' do
   version 'emacs-27.1-mac-8.1'
 
   if MacOS.version >= :catalina
-    sha256 '94c07effbbbdeafda477d8eba2201ecd6c4f4299e9e83d7a1a38ec0dd0eabb51'
+    sha256 '33035a0e190cf624860de57209c6190c8c2539520c1d0ecc2cc8fe2c08271125'
     url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.1/emacs-27.1-mac-8.1-10.15.5.zip'
   elsif MacOS.version == :mojave
-    sha256 '8c63966e5f1ac2b642cf41226d8cce1cf367238221cc67592a05056f076faf88'
+    sha256 '66b6fef8a51a2dd9ed4f37c03315354ee4b01964b4473bfc69ec3a39fb88365f'
     url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.1/emacs-27.1-mac-8.1-10.14.6.zip'
   else
     sha256 'b771a463a3556b5c577c135733ef9c7bf236a072a941965dc06ac44628b175e0'
