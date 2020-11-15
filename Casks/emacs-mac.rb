@@ -1,12 +1,15 @@
 cask 'emacs-mac' do
-  version 'emacs-27.1-mac-8.0.1'
+  version 'emacs-27.1-mac-8.1'
 
-  if MacOS.version >= :mojave
-    sha256 '491d8013a15e77e3a10221bd4f1fa965edc0f14432b59152840aefe9a5c80067'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.0.1/emacs-27.1-mac-8.0.1-10.14.6.zip'
+  if MacOS.version >= :catalina
+    sha256 '94c07effbbbdeafda477d8eba2201ecd6c4f4299e9e83d7a1a38ec0dd0eabb51'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.1/emacs-27.1-mac-8.1-10.15.5.zip'
+  elsif MacOS.version == :mojave
+    sha256 '8c63966e5f1ac2b642cf41226d8cce1cf367238221cc67592a05056f076faf88'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.1/emacs-27.1-mac-8.1-10.14.6.zip'
   else
-    sha256 'b2efaf27048986a76ce077560683e81220f7c4656e939deeff0bdee69d95ae6b'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.0.1/emacs-27.1-mac-8.0.1-10.13.6.zip'
+    sha256 'b771a463a3556b5c577c135733ef9c7bf236a072a941965dc06ac44628b175e0'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.1/emacs-27.1-mac-8.1-10.13.6.zip'
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
