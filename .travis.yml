@@ -25,6 +25,7 @@ addons:
 
 before_install:
   # - export HOMEBREW_NO_INSTALL_CLEANUP=1
+  - brew info gnutls
   - pushd build-scripts; ./patch_pkgconfig.sh; popd
 
 script:
