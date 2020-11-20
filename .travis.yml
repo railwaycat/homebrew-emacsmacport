@@ -22,10 +22,11 @@ addons:
       - jansson
       - automake
       - gnutls
+    update: true
 
 before_install:
   # - export HOMEBREW_NO_INSTALL_CLEANUP=1
-  - brew upgrade gnutls
+  - brew info gnutls
   - pushd build-scripts; ./patch_pkgconfig.sh; popd
 
 script:
