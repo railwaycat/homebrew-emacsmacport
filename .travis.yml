@@ -15,16 +15,21 @@ jobs:
     - os: osx
       osx_image: xcode10.1
 
-addons:
-  homebrew:
-    packages:
-      - texinfo
-      - jansson
-      - automake
-      - gnutls
+# addons:
+#   homebrew:
+#     packages:
+#       - texinfo
+#       - jansson
+#       - automake
+#       - gnutls
 
 before_install:
-  # - export HOMEBREW_NO_INSTALL_CLEANUP=1
+  - export HOMEBREW_NO_INSTALL_CLEANUP=1
+  - export HOMEBREW_NO_AUTO_UPDATE=1
+  - brew install texinfo
+  - brew install jansson
+  - brew install automake
+  - brew install gnutls
   - brew info gnutls
   - pushd build-scripts; ./patch_pkgconfig.sh; popd
 
@@ -43,3 +48,4 @@ deploy:
   file_glob: true
   file: build-scripts/emacs-source/tmproot/emacs-*.zip
   draft: true
+  skip_cleanup: true
