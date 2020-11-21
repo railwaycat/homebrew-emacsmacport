@@ -22,7 +22,6 @@ addons:
       - jansson
       - automake
       - gnutls
-    update: true
 
 before_install:
   # - export HOMEBREW_NO_INSTALL_CLEANUP=1
