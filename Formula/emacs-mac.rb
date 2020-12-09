@@ -133,6 +133,13 @@ class EmacsMac < Formula
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
   end
 
+  # patch for M1 mac, see the following links for details
+  # https://lists.gnu.org/archive/html/bug-gnu-emacs/2020-11/msg01480.html
+  patch do
+    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/codesign.diff"
+    sha256 "cc1e5cc11090dad58d3a9ff4a364b7ba0ce09d87c601ece798b4d9ecd28e0f09"
+  end
+
   def install
     args = [
       "--enable-locallisppath=#{HOMEBREW_PREFIX}/share/emacs/site-lisp",

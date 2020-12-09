@@ -1,0 +1,40 @@
+diff -ru a/configure.ac b/configure.ac
+--- a/configure.ac	2020-11-12 17:00:19.000000000 +0900
++++ b/configure.ac	2020-12-09 07:23:51.000000000 +0900
+@@ -5190,6 +5190,11 @@
+     dnl Not DARWIN, because Panther and lower CoreFoundation.h use DARWIN to
+     dnl distinguish macOS from pure Darwin.
+     AC_DEFINE(DARWIN_OS, [], [Define if the system is Darwin.])
++    case "${canonical}" in
++      arm-* | aarch64-* )
++        AC_CHECK_PROGS(CODESIGN, [codesign], [yes])
++        ;;
++    esac
+     ;;
+ 
+   gnu-linux | gnu-kfreebsd )
+diff -ru a/src/Makefile.in b/src/Makefile.in
+--- a/src/Makefile.in	2020-11-12 17:00:19.000000000 +0900
++++ b/src/Makefile.in	2020-12-09 07:29:41.000000000 +0900
+@@ -344,6 +344,8 @@
+ CHECK_STRUCTS = @CHECK_STRUCTS@
+ HAVE_PDUMPER = @HAVE_PDUMPER@
+ 
++CODESIGN = @CODESIGN@
++
+ # 'make' verbosity.
+ AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
+ 
+@@ -660,6 +662,12 @@
+ 	  $(ALLOBJS) $(LIBEGNU_ARCHIVE) $(W32_RES_LINK) $(LIBES)
+ ifeq ($(HAVE_PDUMPER),yes)
+ 	$(AM_V_at)$(MAKE_PDUMPER_FINGERPRINT) $@.tmp
++
++  ifneq ($(CODESIGN),)
++## make-fingerprint breaks the code signature. This code signature must
++## be valid for the executable to run on a ARM Mac.
++	$(CODESIGN) -s - $@.tmp
++  endif
+ endif
+ 	$(AM_V_at)mv $@.tmp $@
+ 	$(MKDIR_P) $(etc)
