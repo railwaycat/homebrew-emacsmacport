@@ -19,3 +19,5 @@ patch -d emacs-source -p1 < multi-tty-27.diff
 # apply patch: word-wrap.diff
 patch -d emacs-source -p1 < word-wrap.diff
 
+# apply patch: codesign for apple silicon
+patch -d emacs-source -p1 < emacs-27.1-mac-8.1-codesign.diff
