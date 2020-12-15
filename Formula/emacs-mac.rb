@@ -134,10 +134,10 @@ class EmacsMac < Formula
   end
 
   # patch for M1 mac, see the following links for details
-  # https://lists.gnu.org/archive/html/bug-gnu-emacs/2020-11/msg01480.html
+  # https://bitbucket.org/mituharu/emacs-mac/commits/ef4507125fdad5c3f079dde555b61febde2d43f7
   patch do
-    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/codesign.diff"
-    sha256 "cc1e5cc11090dad58d3a9ff4a364b7ba0ce09d87c601ece798b4d9ecd28e0f09"
+    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-27.1-mac-8.1-codesign.diff"
+    sha256 "59585a84cd576e2ddf21b0ecc26fe6f0a58a40572a127e4340ef231eb0dc4dac"
   end
 
   def install
