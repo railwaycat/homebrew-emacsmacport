@@ -87,40 +87,24 @@ class EmacsMac < Formula
     sha256 "7ab72feeeff0084e14bcb75a3e1040bdf738e0044361e7af8a67ebbaa58d852a"
   end
 
-  # declare all patches as resource, workaround issue #214
-  resource "natural-title-bar-patch" do
-    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-mac-title-bar-7.4.patch"
-    sha256 "5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897"
-  end
-
-  resource "no-title-bars-patch" do
-    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
-    sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
-  end
-
-  resource "multi-tty-patch" do
-    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/multi-tty-27.diff"
-    sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
-  end
-
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
       sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
     end
   end
 
   if build.with? "natural-title-bar"
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-mac-title-bar-7.4.patch"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/emacs-mac-title-bar-7.4.patch"
       sha256 "5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897"
     end
   end
 
   if build.with? "wordwrap-category"
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/word-wrap.diff"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/word-wrap.diff"
       sha256 "bb576007e2d1d52313ab355e17f8e96aa522492102b070ec999ee17ae8cd22dd"
     end
   end
@@ -129,15 +113,18 @@ class EmacsMac < Formula
   # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
   # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
   patch do
-    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/multi-tty-27.diff"
+    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/multi-tty-27.diff"
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
   end
 
   # patch for M1 mac, see the following links for details
   # https://bitbucket.org/mituharu/emacs-mac/commits/ef4507125fdad5c3f079dde555b61febde2d43f7
   stable do
+    # I have several lines of brew audit warning for this stable block, but
+    # since build.head? no longer works in this scope, I don't know if there's
+    # better way to not serve a patch when build with --HEAD
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/74b64b57a95619975bfedb4880557fce398ae99a/build-scripts/emacs-27.1-mac-8.1-codesign.diff"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/build-scripts/emacs-27.1-mac-8.1-codesign.diff"
       sha256 "59585a84cd576e2ddf21b0ecc26fe6f0a58a40572a127e4340ef231eb0dc4dac"
     end
   end
