@@ -135,9 +135,11 @@ class EmacsMac < Formula
 
   # patch for M1 mac, see the following links for details
   # https://bitbucket.org/mituharu/emacs-mac/commits/ef4507125fdad5c3f079dde555b61febde2d43f7
-  patch do
-    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-27.1-mac-8.1-codesign.diff"
-    sha256 "59585a84cd576e2ddf21b0ecc26fe6f0a58a40572a127e4340ef231eb0dc4dac"
+  stable do
+    patch do
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/74b64b57a95619975bfedb4880557fce398ae99a/build-scripts/emacs-27.1-mac-8.1-codesign.diff"
+      sha256 "59585a84cd576e2ddf21b0ecc26fe6f0a58a40572a127e4340ef231eb0dc4dac"
+    end
   end
 
   def install
