@@ -25,7 +25,7 @@ brew update
 # remove all installed formula and reinstall from Brewfile, save time to upgrade
 # all
 brew remove --force $(brew list --formula)
-brew bundle --file ./Brewfile
+brew bundle --file $(pwd)/build-scripts/Brewfile
 
 # output the version of gnutls
 brew info gnutls
