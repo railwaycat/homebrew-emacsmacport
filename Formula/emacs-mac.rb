@@ -124,7 +124,7 @@ class EmacsMac < Formula
     # since build.head? no longer works in this scope, I don't know if there's
     # better way to not serve a patch when build with --HEAD
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/build-scripts/emacs-27.1-mac-8.1-codesign.diff"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/emacs-27.1-mac-8.1-codesign.diff"
       sha256 "59585a84cd576e2ddf21b0ecc26fe6f0a58a40572a127e4340ef231eb0dc4dac"
     end
   end
