@@ -19,6 +19,7 @@ class EmacsMac < Formula
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
   option "with-gnu-head-icon", "Using a Bold GNU Head icon by Aurélio A. Heckert"
   option "with-emacs-sexy-icon", "Using the Emacs Sexy icon by @picandocodigo"
+  option "with-emacs-big-sur-icon", "Using the Emacs icon in Big Sur style"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
   option "with-wordwrap-category", "(experiment!) Build with (backport) patch for wordwrap by category"
 
@@ -87,6 +88,11 @@ class EmacsMac < Formula
     sha256 "7ab72feeeff0084e14bcb75a3e1040bdf738e0044361e7af8a67ebbaa58d852a"
   end
 
+  resource "emacs-big-sur-icon" do
+    url "https://raw.githubusercontent.com/nobu417/emacs-icon-replacement-for-macos-big-sur/master/Emacs.icns"
+    sha256 "e9ec41167c38842a3f6555d3142909211a2aa7e3ff91621b9a576b3847d3b565"
+  end
+
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
     patch do
@@ -147,7 +153,7 @@ class EmacsMac < Formula
         EmacsIcon5 EmacsIcon6 EmacsIcon7 EmacsIcon8
         EmacsIcon9 emacs-card-blue-deep emacs-card-british-racing-green
         emacs-card-carmine emacs-card-green].map { |i| "emacs-icons-project-#{i}" } +
-     %w[modern-icon spacemacs-icon gnu-head-icon emacs-sexy-icon]).each do |icon|
+     %w[modern-icon spacemacs-icon gnu-head-icon emacs-sexy-icon emacs-big-sur-icon]).each do |icon|
       next if build.without? icon
 
       rm "#{icons_dir}/Emacs.icns"
