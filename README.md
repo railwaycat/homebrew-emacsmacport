@@ -37,7 +37,7 @@ and then
 
 if you using cask
 
-`brew cask install emacs-mac` or `brew cask install emacs-mac-spacemacs-icon`
+`brew install --cask emacs-mac` or `brew install --cask emacs-mac-spacemacs-icon`
 
 To disable this tap, please:
 
@@ -50,7 +50,7 @@ https://github.com/railwaycat/homebrew-emacsmacport/releases
 Pre-built for macOS 10.13(High Sierra)/10.14(Mojave) and above, please
 download based on your macOS version. Due to the limitation of Travis-CI,
 pre-built for macOS before 10.13 is not supported for now, please install by homebrew
-(not brew cask) in case you are using an older version macOS. 
+(without `--cask`) in case you are using an older version macOS. 
 
 ## Useful links ##
 
