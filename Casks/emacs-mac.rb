@@ -1,12 +1,18 @@
 cask 'emacs-mac' do
-  version 'emacs-27.1-mac-8.1'
+  version 'emacs-27.2-mac-8.2'
 
-  if MacOS.version >= :mojave
-    sha256 'cd6fec3a33ae9a12fca1d1fad35bfa8f12489d518c1e2bbd207df6d6eb251d01'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.1/emacs-27.1-mac-8.1-10.14.6.zip'
+  if Hardware::CPU.intel?
+    if MacOS.version >= :mojave
+      sha256 '1e2a797887e507233c5d0791ed23c0630597a26466e227ea07cd64e0b5e1a510'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.2/emacs-27.2-mac-8.2-10.14.6.zip'
+    else
+      sha256 '68e1b74d1f7aeb75fa42e95d2523f97067ef34467ab449bd21902203749d4689'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.2/emacs-27.2-mac-8.2-10.13.6.zip'
+    end
   else
-    sha256 '41a02e4193bc722b67426791cf210fd7581f8e4faf28e3feb9b78ced183c2c8e'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.1/emacs-27.1-mac-8.1-10.13.6.zip'
+    # Arm Macs should be running macOS >= 11, let's add the version check in the future when necessary. 
+    sha256 '4dec669fce2c00286e5491b32c6ff66fe97ca36253da2447f12a1241df3484e9'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.2/emacs-27.2-mac-8.2-11.2.3-arm64.zip'
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'

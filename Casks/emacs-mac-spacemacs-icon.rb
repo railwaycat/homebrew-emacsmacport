@@ -1,12 +1,18 @@
 cask 'emacs-mac-spacemacs-icon' do
-  version 'emacs-27.1-mac-8.1'
+  version 'emacs-27.2-mac-8.2'
 
-  if MacOS.version >= :mojave
-    sha256 '4a7b2fc277b42c2e00b848e0dc8e3bc19c3a833165a940f5710ad1b6a594a50d'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.1/emacs-27.1-mac-8.1-10.14.6-spacemacs-icon.zip'
+  if Hardware::CPU.intel?
+    if MacOS.version >= :mojave
+      sha256 '3a5294278a2daf142d78ee6a596c6b10f4544cc5eb5d27339c33ef0d17a4a0ed'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.2/emacs-27.2-mac-8.2-10.14.6-spacemacs-icon.zip'
+    else
+      sha256 'ed8b673986cdfef12e466bb4de56dc1074f8165560baaac41b5536ffdbf4146f'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.2/emacs-27.2-mac-8.2-10.13.6-spacemacs-icon.zip'
+    end
   else
-    sha256 '39148ffd86754384351715301039c46c43ed5d929845171599b4e9bae337f3ba'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.1-mac-8.1/emacs-27.1-mac-8.1-10.13.6-spacemacs-icon.zip'
+    # Arm Macs should be running macOS >= 11, let's add the version check in the future when necessary. 
+    sha256 '57323539f09cf781514e0641508984a67d9039f3441c07ca87b35d387d0bf32b'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.2/emacs-27.2-mac-8.2-11.2.3-arm64-spacemacs-icon.zip'
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
