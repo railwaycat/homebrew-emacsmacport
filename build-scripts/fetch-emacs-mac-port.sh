@@ -15,9 +15,3 @@ patch -d emacs-source -p1 < ../patches/emacs-mac-title-bar-7.4.patch
 
 # apply patch: multi-tty-27.diff
 patch -d emacs-source -p1 < ../patches/multi-tty-27.diff
-
-# apply patch: word-wrap.diff
-patch -d emacs-source -p1 < ../patches/word-wrap.diff
-
-# apply patch: codesign for apple silicon
-# patch -d emacs-source -p1 < ../patches/emacs-27.1-mac-8.1-codesign.diff
