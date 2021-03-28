@@ -184,6 +184,9 @@ class EmacsMac < Formula
       Other ways please refer:
         https://github.com/railwaycat/homebrew-emacsmacport/wiki/Alternative-way-of-place-Emacs.app-to-Applications-directory
 
+      If you are using Doom Emacs, be sure to run doom sync:
+        ~/.emacs.d/doom sync
+
       For an Emacs.app CLI starter, see:
         https://gist.github.com/4043945
     EOS
