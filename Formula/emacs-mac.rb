@@ -1,9 +1,9 @@
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.1-mac-8.1.tar.gz"
-  version "emacs-27.1-mac-8.1"
-  sha256 "cae62f036be66ebcdada4d4563859b70825d2a8c91edd24e9e9794ece9f30dee"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.2-mac-8.2.tar.gz"
+  version "emacs-27.2-mac-8.2"
+  sha256 "80c7377c95591cd8034443a05d596a6e0440adfc6a2633ad143167fadac3d828"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -21,7 +21,7 @@ class EmacsMac < Formula
   option "with-emacs-sexy-icon", "Using the Emacs Sexy icon by @picandocodigo"
   option "with-emacs-big-sur-icon", "Using the Emacs icon in Big Sur style"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
-  option "with-wordwrap-category", "(experiment!) Build with (backport) patch for wordwrap by category"
+  option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
@@ -108,31 +108,12 @@ class EmacsMac < Formula
     end
   end
 
-  if build.with? "wordwrap-category"
-    patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/word-wrap.diff"
-      sha256 "bb576007e2d1d52313ab355e17f8e96aa522492102b070ec999ee17ae8cd22dd"
-    end
-  end
-
   # patch for multi-tty support, see the following links for details
   # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
   # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
   patch do
     url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/multi-tty-27.diff"
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
-  end
-
-  # patch for M1 mac, see the following links for details
-  # https://bitbucket.org/mituharu/emacs-mac/commits/ef4507125fdad5c3f079dde555b61febde2d43f7
-  stable do
-    # I have several lines of brew audit warning for this stable block, but
-    # since build.head? no longer works in this scope, I don't know if there's
-    # better way to not serve a patch when build with --HEAD
-    patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/emacs-27.1-mac-8.1-codesign.diff"
-      sha256 "59585a84cd576e2ddf21b0ecc26fe6f0a58a40572a127e4340ef231eb0dc4dac"
-    end
   end
 
   def install
@@ -146,6 +127,7 @@ class EmacsMac < Formula
     ]
     args << "--with-modules" unless build.without? "modules"
     args << "--with-rsvg" if build.with? "rsvg"
+    args << "--with-mac-metal" if build.with? "mac-metal"
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
 
