@@ -116,6 +116,11 @@ class EmacsMac < Formula
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
   end
 
+  patch do
+    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/7e793808ebbc11d519a0103fb9f8fe7efbec345d/patches/mac-arm-fix.diff"
+    sha256 "9b58a61931e79863caa5c310a7ec290cc7b84c78aa0086d0ba7192756c370db8"
+  end
+
   def install
     args = [
       "--enable-locallisppath=#{HOMEBREW_PREFIX}/share/emacs/site-lisp",
