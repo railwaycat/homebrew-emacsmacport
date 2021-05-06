@@ -141,7 +141,7 @@ class EmacsMac < Formula
         EmacsIcon9 emacs-card-blue-deep emacs-card-british-racing-green
         emacs-card-carmine emacs-card-green].map { |i| "emacs-icons-project-#{i}" } +
      %w[modern-icon spacemacs-icon gnu-head-icon emacs-sexy-icon emacs-big-sur-icon]).each do |icon|
-      next if build.without? icon
+      next unless build.with? icon
 
       rm "#{icons_dir}/Emacs.icns"
       resource(icon).stage do
