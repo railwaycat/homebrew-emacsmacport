@@ -1,3 +1,4 @@
+# coding: utf-8
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
@@ -16,6 +17,7 @@ class EmacsMac < Formula
   option "with-natural-title-bar",
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
+  option "with-sjrmanning-icon", "Using an Emacs icon by @sjrmanning"
   option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
   option "with-gnu-head-icon", "Using a Bold GNU Head icon by Aurélio A. Heckert"
   option "with-emacs-sexy-icon", "Using the Emacs Sexy icon by @picandocodigo"
@@ -76,6 +78,11 @@ class EmacsMac < Formula
   resource "spacemacs-icon" do
     url "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
     sha256 "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900"
+  end
+
+  resource "sjrmanning-icon" do
+    url "https://raw.githubusercontent.com/sjrmanning/emacs-icon/master/emacs-icon.icns"
+    sha256 "fc267d801432da90de5c0d2254f6de16557193b6c062ccaae30d91b3ada01ab9"
   end
 
   resource "gnu-head-icon" do
@@ -140,7 +147,7 @@ class EmacsMac < Formula
         EmacsIcon5 EmacsIcon6 EmacsIcon7 EmacsIcon8
         EmacsIcon9 emacs-card-blue-deep emacs-card-british-racing-green
         emacs-card-carmine emacs-card-green].map { |i| "emacs-icons-project-#{i}" } +
-     %w[modern-icon spacemacs-icon gnu-head-icon emacs-sexy-icon emacs-big-sur-icon]).each do |icon|
+     %w[modern-icon sjrmanning-icon spacemacs-icon gnu-head-icon emacs-sexy-icon emacs-big-sur-icon]).each do |icon|
       next if build.without? icon
 
       rm "#{icons_dir}/Emacs.icns"
