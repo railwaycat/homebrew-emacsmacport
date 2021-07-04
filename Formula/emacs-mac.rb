@@ -109,7 +109,7 @@ class EmacsMac < Formula
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
     ICONS_INFO.each do |icon,|
-      next if build.without? icon
+      next unless build.with? icon
 
       rm "#{icons_dir}/Emacs.icns"
       resource(icon).stage do
