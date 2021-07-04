@@ -5,7 +5,7 @@
 Official repository: https://bitbucket.org/mituharu/emacs-mac/overview
 
 This is "Mac port" addition to GNU Emacs 27.  This provides a native
-GUI support for Mac OS X 10.6 - macOS 11.0.  Note that Emacs 23 and
+GUI support for Mac OS X 10.6 - macOS 11.  Note that Emacs 23 and
 later already contain the official GUI support via the NS (Cocoa)
 port. So if it is good enough for you, then you don't need to try
 this.
@@ -17,7 +17,7 @@ official builds such as X11 or NS (Cocoa).  If it turns out to be
 specific to the Mac port, then please report it to
 <a href="mailto:mituharu+bug-gnu-emacs-mac@math.s.chiba-u.ac.jp">mituharu+bug-gnu-emacs-mac@math.s.chiba-u.ac.jp</a>.  Otherwise (i.e.,
 it is also reproducible with official ones), report it using <kbd>M-x</kbd>
-report-emacs-bug *USING THE OFFICIAL BUILD* as such.
+report-emacs-bug **USING THE OFFICIAL BUILD** as such.
 
 ## Features ##
 This build has *many* features, a great number of which are particularly helpful for Mac users. You can see the full list <a href="https://bitbucket.org/mituharu/emacs-mac/src/master/README-mac">here</a>. 

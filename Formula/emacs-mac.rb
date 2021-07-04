@@ -1,3 +1,4 @@
+# coding: utf-8
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
@@ -15,34 +16,38 @@ class EmacsMac < Formula
          "Build with a patch for no title bars on frames (not recommended to use with --HEAD option)"
   option "with-natural-title-bar",
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
-  option "with-modern-icon", "Using a modern style Emacs icon by @tpanum"
-  option "with-spacemacs-icon", "Using the spacemacs Emacs icon by Nasser Alshammari"
-  option "with-gnu-head-icon", "Using a Bold GNU Head icon by Aurélio A. Heckert"
-  option "with-emacs-sexy-icon", "Using the Emacs Sexy icon by @picandocodigo"
-  option "with-emacs-big-sur-icon", "Using the Emacs icon in Big Sur style"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
   option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
 
-  # Update list from
-  # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
-  emacs_icons_project_icons = {
-    "EmacsIcon1"                      => "50dbaf2f6d67d7050d63d987fe3743156b44556ab42e6d9eee92248c56011bd0",
-    "EmacsIcon2"                      => "8d63589b0302a67f13ab94b91683a8ad7c2b9e880eabe008056a246a22592963",
-    "EmacsIcon3"                      => "80dd2a4776739a081e0a42008e8444c729d41ba876b19fa9d33fde98ee3e0ebf",
-    "EmacsIcon4"                      => "8ce646ca895abe7f45029f8ff8f5eac7ab76713203e246b70dea1b8a21a6c135",
-    "EmacsIcon5"                      => "ca415df7ad60b0dc495626b0593d3e975b5f24397ad0f3d802455c3f8a3bd778",
-    "EmacsIcon6"                      => "12a1999eb006abac11535b7fe4299ebb3c8e468360faf074eb8f0e5dec1ac6b0",
-    "EmacsIcon7"                      => "f5067132ea12b253fb4a3ea924c75352af28793dcf40b3063bea01af9b2bd78c",
-    "EmacsIcon8"                      => "d330b15cec1bcdfb8a1e8f8913d8680f5328d59486596fc0a9439b54eba340a0",
-    "EmacsIcon9"                      => "f58f46e5ef109fff8adb963a97aea4d1b99ca09265597f07ee95bf9d1ed4472e",
-    "emacs-card-blue-deep"            => "6bdb17418d2c620cf4132835cfa18dcc459a7df6ce51c922cece3c7782b3b0f9",
-    "emacs-card-british-racing-green" => "ddf0dff6a958e3b6b74e6371f1a68c2223b21e75200be6b4ac6f0bd94b83e1a5",
-    "emacs-card-carmine"              => "4d34f2f1ce397d899c2c302f2ada917badde049c36123579dd6bb99b73ebd7f9",
-    "emacs-card-green"                => "f94ade7686418073f04b73937f34a1108786400527ed109af822d61b303048f7",
-  }
-
-  emacs_icons_project_icons.each_key do |icon|
-    option "with-emacs-icons-project-#{icon}", "Using Emacs icon project #{icon}"
+  # icons
+  ICONS_INFO = {
+    "emacs-big-sur-icon" => "e9ec41167c38842a3f6555d3142909211a2aa7e3ff91621b9a576b3847d3b565",
+    "emacs-icons-project-EmacsIcon1" => "50dbaf2f6d67d7050d63d987fe3743156b44556ab42e6d9eee92248c56011bd0",
+    "emacs-icons-project-EmacsIcon2" => "8d63589b0302a67f13ab94b91683a8ad7c2b9e880eabe008056a246a22592963",
+    "emacs-icons-project-EmacsIcon3" => "80dd2a4776739a081e0a42008e8444c729d41ba876b19fa9d33fde98ee3e0ebf",
+    "emacs-icons-project-EmacsIcon4" => "8ce646ca895abe7f45029f8ff8f5eac7ab76713203e246b70dea1b8a21a6c135",
+    "emacs-icons-project-EmacsIcon5" => "ca415df7ad60b0dc495626b0593d3e975b5f24397ad0f3d802455c3f8a3bd778",
+    "emacs-icons-project-EmacsIcon6" => "12a1999eb006abac11535b7fe4299ebb3c8e468360faf074eb8f0e5dec1ac6b0",
+    "emacs-icons-project-EmacsIcon7" => "f5067132ea12b253fb4a3ea924c75352af28793dcf40b3063bea01af9b2bd78c",
+    "emacs-icons-project-EmacsIcon8" => "d330b15cec1bcdfb8a1e8f8913d8680f5328d59486596fc0a9439b54eba340a0",
+    "emacs-icons-project-EmacsIcon9" => "f58f46e5ef109fff8adb963a97aea4d1b99ca09265597f07ee95bf9d1ed4472e",
+    "emacs-icons-project-emacs-card-blue-deep" => "6bdb17418d2c620cf4132835cfa18dcc459a7df6ce51c922cece3c7782b3b0f9",
+    "emacs-icons-project-emacs-card-british-racing-green" => "ddf0dff6a958e3b6b74e6371f1a68c2223b21e75200be6b4ac6f0bd94b83e1a5",
+    "emacs-icons-project-emacs-card-carmine" => "4d34f2f1ce397d899c2c302f2ada917badde049c36123579dd6bb99b73ebd7f9",
+    "emacs-icons-project-emacs-card-green" => "f94ade7686418073f04b73937f34a1108786400527ed109af822d61b303048f7",
+    "emacs-sexy-icon" => "7ab72feeeff0084e14bcb75a3e1040bdf738e0044361e7af8a67ebbaa58d852a",
+    "gnu-head-icon" => "b5899aaa3589b54c6f31aa081daf29d303047aa07b5ca1d0fd7f9333a829b6d3",
+    "modern-icon" => "eb819de2380d3e473329a4a5813fa1b4912ec284146c94f28bd24fbb79f8b2c5",
+    "sjrmanning-icon" => "fc267d801432da90de5c0d2254f6de16557193b6c062ccaae30d91b3ada01ab9",
+    "spacemacs-icon" => "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900",
+  }.freeze
+  ICONS_INFO.each do |icon, iconsha|
+    option "with-#{icon}", "Using Emacs icon: #{icon}"
+    next if build.without? "#{icon}"
+    resource "#{icon}" do
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/eec478c2bae3a76737b136dc11a182a8215c9a25/icons/#{icon}.icns"
+      sha256 iconsha
+    end
   end
 
   deprecated_option "keep-ctags" => "with-ctags"
@@ -60,38 +65,6 @@ class EmacsMac < Formula
   depends_on "libxml2" => :recommended
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
-
-  emacs_icons_project_icons.each do |icon, sha|
-    resource "emacs-icons-project-#{icon}" do
-      url "https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/#{icon}.icns"
-      sha256 sha
-    end
-  end
-
-  resource "modern-icon" do
-    url "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns.modern"
-    sha256 "eb819de2380d3e473329a4a5813fa1b4912ec284146c94f28bd24fbb79f8b2c5"
-  end
-
-  resource "spacemacs-icon" do
-    url "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
-    sha256 "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900"
-  end
-
-  resource "gnu-head-icon" do
-    url "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/icons/gnu-head.icns"
-    sha256 "b5899aaa3589b54c6f31aa081daf29d303047aa07b5ca1d0fd7f9333a829b6d3"
-  end
-
-  resource "emacs-sexy-icon" do
-    url "https://emacs.sexy/img/Emacs.icns"
-    sha256 "7ab72feeeff0084e14bcb75a3e1040bdf738e0044361e7af8a67ebbaa58d852a"
-  end
-
-  resource "emacs-big-sur-icon" do
-    url "https://raw.githubusercontent.com/nobu417/emacs-icon-replacement-for-macos-big-sur/master/Emacs.icns"
-    sha256 "e9ec41167c38842a3f6555d3142909211a2aa7e3ff91621b9a576b3847d3b565"
-  end
 
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
@@ -135,12 +108,7 @@ class EmacsMac < Formula
     args << "--with-mac-metal" if build.with? "mac-metal"
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
-
-    (%w[EmacsIcon1 EmacsIcon2 EmacsIcon3 EmacsIcon4
-        EmacsIcon5 EmacsIcon6 EmacsIcon7 EmacsIcon8
-        EmacsIcon9 emacs-card-blue-deep emacs-card-british-racing-green
-        emacs-card-carmine emacs-card-green].map { |i| "emacs-icons-project-#{i}" } +
-     %w[modern-icon spacemacs-icon gnu-head-icon emacs-sexy-icon emacs-big-sur-icon]).each do |icon|
+    ICONS_INFO.each do |icon,|
       next unless build.with? icon
 
       rm "#{icons_dir}/Emacs.icns"
@@ -178,7 +146,7 @@ class EmacsMac < Formula
     <<~EOS
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
       GNU Emacs 27. This provides a native GUI support for Mac OS X
-      10.6 - 11.0. After installing, see README-mac and NEWS-mac
+      10.6 - 11. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
       Emacs.app was installed to:
