@@ -62,7 +62,7 @@ pre-built for macOS before 10.13 is not supported for now, please install by hom
 
 * No title bar
   `--with-no-title-bars`  
-  Enabled by default when build with this patch. This feature can been controled by `mac-use-title-bar`, a boolean with default value `false`. Value settings will been used in new frame **after** Emacs started. (<- yes this is a bug).
+  Enabled by default when build with this patch. This feature can been controlled by `mac-use-title-bar`, a boolean with default value `false`. Value settings will been used in new frame **after** Emacs started. (<- yes this is a bug).
   
 * Natural title bar
   `--with-natural-title-bar`  
