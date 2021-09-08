@@ -1,0 +1,22 @@
+trigger: none
+
+strategy:
+  matrix:
+    macos10.14:
+      imageName: 'macOS-10.14'
+    macos10.15:
+      imageName: 'macOS-10.15'
+
+pool:
+  vmImage: $(imageName)
+
+steps:
+- script: |
+    echo build
+    echo "aabbcc" > $(Build.ArtifactStagingDirectory)/aa.txt
+  displayName: Build
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    publishLocation: 'pipeline'
