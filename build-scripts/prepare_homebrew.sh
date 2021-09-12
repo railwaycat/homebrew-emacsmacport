@@ -12,7 +12,7 @@ if [ $OS_VER != "10.13.6" ]; then
   brew update
   # remove all installed formula and reinstall from Brewfile, prevent waste time
   # on upgrade all
-  brew remove --force $(brew list --formula)
+  # brew remove --force $(brew list --formula)
   brew bundle --file $(pwd)/build-scripts/Brewfile
 else
   # for 10.13, homebrew upgrade package takes a ridiculous time way more than
