@@ -80,7 +80,7 @@ index cf15f579b5..efd41005e3 100644
  	       || *BYTE_POS_ADDR (IT_BYTEPOS (*it)) == '\t'))))
  
 +/* These are the category sets we use.  They are defined by
-+   kinsoku.el and chracters.el.  */
++   kinsoku.el and characters.el.  */
 +#define NOT_AT_EOL '<'
 +#define NOT_AT_BOL '>'
 +#define LINE_BREAKABLE '|'

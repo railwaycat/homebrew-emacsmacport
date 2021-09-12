@@ -26,7 +26,7 @@ options[:rel_path_to_dest] ||= "@executable_path/" + Pathname.new(dest).relative
     if m
       with_writable_mode(exe) {
         if lib == File.basename(exe)
-          Vsh.system(*%W"install_name_tool -id #{dest}/#{lib} #{exe}") # remove our local build path from the id to leak as litle as possible (not that it really matters)
+          Vsh.system(*%W"install_name_tool -id #{dest}/#{lib} #{exe}") # remove our local build path from the id to leak as little as possible (not that it really matters)
         else
           Vsh.system(*%W"install_name_tool -change #{orig} #{options[:rel_path_to_dest]}/#{lib} #{exe}") # Point the libs to the newly embedded lib directory
         end

@@ -22,7 +22,7 @@ index 843312ab78..52685b1f23 100644
 +++ b/src/frame.c
 @@ -1267,12 +1267,8 @@ affects all frames on the same terminal device.  */)
      emacs_abort ();
- #else /* not MSDOS */
+ #else /* not MS-DOS */
  
 -#if defined WINDOWSNT || defined HAVE_MACGUI /* This should work now! */
 -  if (sf->output_method != output_termcap
@@ -34,7 +34,7 @@ index 843312ab78..52685b1f23 100644
 +  if (sf->output_method != output_termcap)
      error ("Not using an ASCII terminal now; cannot make a new ASCII frame");
  #endif
- #endif /* not MSDOS */
+ #endif /* not MS-DOS */
 diff --git a/src/macterm.c b/src/macterm.c
 index a565779d4e..f8384eeaaf 100644
 --- a/src/macterm.c
