@@ -12,9 +12,19 @@ pool:
 
 steps:
 - script: |
-    echo build
-    echo "aabbcc" > $(Build.ArtifactStagingDirectory)/aa.txt
-  displayName: Build
+    ./build-scripts/prepare_homebrew.sh
+    pushd build-scripts; ./patch_pkgconfig.sh; popd
+  displayName: prepare
+- script: |
+    pushd build-scripts
+    ./fetch-emacs-mac-port.sh $MACPORT_VER
+    ./build-emacs.sh emacs-source $EMACS_VER
+    pushd emacs-source; ../copylib.rb; popd
+    ./make-zipball.sh emacs-source/tmproot $MACPORT_VER
+    ls -d $PWD/emacs-source/tmproot/*.zip
+    mv $PWD/emacs-source/tmproot/*.zip $(Build.ArtifactStagingDirectory)
+    popd
+  displayName: build and pack
 
 - task: PublishPipelineArtifact@1
   inputs:
