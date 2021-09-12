@@ -56,6 +56,10 @@ pre-built for macOS before 10.13 is not supported for now, please install by hom
 
 * Switch meta and option key - https://gist.github.com/3498096
 
+* Emacs mac port on [MacPorts](https://www.macports.org/) (not be maintained by the maintainer of this repo):
+  - [emacs-mac-app](https://ports.macports.org/port/emacs-mac-app/)  
+  - [emacs-mac-app-devel](https://ports.macports.org/port/emacs-mac-app-devel/)
+
 * An Emacs.app CLI starter, modified from Aquamacs - https://gist.github.com/4043945
 
 ## Included Patches Information ##

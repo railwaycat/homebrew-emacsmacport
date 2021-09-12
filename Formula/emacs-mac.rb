@@ -162,6 +162,8 @@ class EmacsMac < Formula
 
       For an Emacs.app CLI starter, see:
         https://gist.github.com/4043945
+
+      Emacs mac port also available on MacPorts with name "emacs-mac-app" and "emacs-mac-app-devel", but they are not maintained by the maintainer of this formula.
     EOS
   end
 
