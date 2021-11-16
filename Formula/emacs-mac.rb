@@ -2,9 +2,9 @@
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.2-mac-8.2.tar.gz"
-  version "emacs-27.2-mac-8.2"
-  sha256 "80c7377c95591cd8034443a05d596a6e0440adfc6a2633ad143167fadac3d828"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.2-mac-8.3.tar.gz"
+  version "emacs-27.2-mac-8.3"
+  sha256 "4263e4e1897a950c16252b58c9af8ae4d369b25790873d0777c9547a89b90198"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -146,7 +146,7 @@ class EmacsMac < Formula
     <<~EOS
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
       GNU Emacs 27. This provides a native GUI support for Mac OS X
-      10.6 - 11. After installing, see README-mac and NEWS-mac
+      10.6 - 12. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
       Emacs.app was installed to:
