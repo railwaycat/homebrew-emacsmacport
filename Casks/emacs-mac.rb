@@ -1,5 +1,5 @@
 cask 'emacs-mac' do
-  version 'emacs-27.2-mac-8.3'
+  version 'emacs-27.2-mac-8.3.1'
 
   if Hardware::CPU.intel?
     if MacOS.version <= :high_sierra
@@ -18,8 +18,8 @@ cask 'emacs-mac' do
     end
   else
     # Arm Macs should be running macOS >= Big Sur(11), let's add the version check in the future when necessary.
-    sha256 'd6bb266cad2f7d289891d25287586a577c32b5582d0860680b86d412e583d19e'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3/emacs-27.2-mac-8.3-11.6.1-arm64.zip'
+    sha256 '7b314e6bee8795221707267e5e95c70459b1ac97460077337bdd76b9702930e3'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3.1/emacs-27.2-mac-8.3.1-arm64-11.6.1.zip'
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'

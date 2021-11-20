@@ -1,5 +1,5 @@
 cask 'emacs-mac-spacemacs-icon' do
-  version 'emacs-27.2-mac-8.3'
+  version 'emacs-27.2-mac-8.3.1'
 
   if Hardware::CPU.intel?
     if MacOS.version <= :high_sierra
@@ -18,8 +18,8 @@ cask 'emacs-mac-spacemacs-icon' do
     end
   else
     # Arm Macs should be running macOS >= Big Sur(11), let's add the version check in the future when necessary.
-    sha256 '16682979f9a14ccd40048f7e3dd0c7793d03c680e4f654ec0f0e06a7068eddc3'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3/emacs-27.2-mac-8.3-11.6.1-arm64-spacemacs-icon.zip'
+    sha256 'a83af9b9a32d166e1c46f02a2caeb142e06d274f2068847d41d8a0e5fd289409'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3.1/emacs-27.2-mac-8.3.1-arm64-11.6.1-spacemacs-icon.zip'
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
