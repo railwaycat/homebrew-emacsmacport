@@ -1,23 +1,31 @@
 cask 'emacs-mac' do
-  version 'emacs-27.2-mac-8.2'
+  version 'emacs-27.2-mac-8.3'
 
   if Hardware::CPU.intel?
-    if MacOS.version >= :mojave
-      sha256 '1e2a797887e507233c5d0791ed23c0630597a26466e227ea07cd64e0b5e1a510'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.2/emacs-27.2-mac-8.2-10.14.6.zip'
+    if MacOS.version <= :high_sierra
+      odie "Because of the limitation of build system, there is no cask support for High Sierra(10.13) and earlier, please build from Homebrew formula."
+    elsif MacOS.version <= :mojave
+      sha256 '6cca77eab9d1f2e2533eda8ba139e3581dca3af6c24c906912c8f8aefb939d87'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3/emacs-27.2-mac-8.3-10.14.6.zip'
+    elsif MacOS.version <= :catalina
+      sha256 'ec393d8d69ae80dec8500312c0eb5dccfe6c0b1e08d4dc4b0094b98b2568b275'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3/emacs-27.2-mac-8.3-10.15.7.zip'
     else
-      sha256 '68e1b74d1f7aeb75fa42e95d2523f97067ef34467ab449bd21902203749d4689'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.2/emacs-27.2-mac-8.2-10.13.6.zip'
+      # for macOS version is or newer than Big Sur
+      # elsif MacOS.version <= :big_sur # reserved for later
+      sha256 'be3d78cfb715ee8ca811374cf65838e0e59d0840477d2d304889dabb7206cbd0'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3/emacs-27.2-mac-8.3-11.6.1.zip'
     end
   else
-    # Arm Macs should be running macOS >= 11, let's add the version check in the future when necessary. 
-    sha256 '4dec669fce2c00286e5491b32c6ff66fe97ca36253da2447f12a1241df3484e9'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.2/emacs-27.2-mac-8.2-11.2.3-arm64.zip'
+    # Arm Macs should be running macOS >= Big Sur(11), let's add the version check in the future when necessary.
+    sha256 'd6bb266cad2f7d289891d25287586a577c32b5582d0860680b86d412e583d19e'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3/emacs-27.2-mac-8.3-11.6.1-arm64.zip'
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
   name 'Emacs-mac'
   homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
+  desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
 
   conflicts_with cask: [
                         'emacs',
