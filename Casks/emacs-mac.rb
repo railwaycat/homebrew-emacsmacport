@@ -18,7 +18,7 @@ cask 'emacs-mac' do
     end
   else
     # Arm Macs should be running macOS >= Big Sur(11), let's add the version check in the future when necessary.
-    sha256 '7b314e6bee8795221707267e5e95c70459b1ac97460077337bdd76b9702930e3'
+    sha256 'bf8f32cfb0bdd5e6ef9c5816fd123f151631f916c9c4a1025f8af7569bc70147'
     url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3.1/emacs-27.2-mac-8.3.1-arm64-11.6.1.zip'
   end
 

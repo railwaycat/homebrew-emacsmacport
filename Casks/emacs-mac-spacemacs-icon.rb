@@ -18,7 +18,7 @@ cask 'emacs-mac-spacemacs-icon' do
     end
   else
     # Arm Macs should be running macOS >= Big Sur(11), let's add the version check in the future when necessary.
-    sha256 'a83af9b9a32d166e1c46f02a2caeb142e06d274f2068847d41d8a0e5fd289409'
+    sha256 'bcacdeb6abdba2789f2b3d921185578b56203e95619cbb4b1a396c0ccadcd727'
     url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-27.2-mac-8.3.1/emacs-27.2-mac-8.3.1-arm64-11.6.1-spacemacs-icon.zip'
   end
 
