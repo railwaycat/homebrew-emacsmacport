@@ -21,7 +21,7 @@ steps:
     pushd build-scripts
     ./fetch-emacs-mac-port.sh "27.2-mac-8.3"
     ./build-emacs.sh emacs-source "27.2"
-    pushd emacs-source; ../copylib.rb; popd
+    pushd emacs-source; ../copylib.rb $(brew --prefix); popd
     ./make-zipball.sh emacs-source/tmproot "27.2-mac-8.3"
     ls -d $PWD/emacs-source/tmproot/*.zip
     mv $PWD/emacs-source/tmproot/*.zip $(Build.ArtifactStagingDirectory)

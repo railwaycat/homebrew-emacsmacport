@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# coding: utf-8
 #  Copyright © 2016 David Caldwell
 #  Copyright © 2019 Xin Xu
 #  This program is free software: you can redistribute it and/or modify
@@ -47,5 +48,5 @@ def with_writable_mode(file)
   File.chmod(old, file)
 end
 
-brew_dir = "/usr/local"
+brew_dir = ARGV[0]
 copy_lib("#{Dir.pwd}/tmproot/Emacs.app/Contents/MacOS/Emacs", brew_dir, "#{Dir.pwd}/tmproot/Emacs.app/Contents/MacOS/lib") # Install and adjust libs into the App.

@@ -15,3 +15,8 @@ patch -d emacs-source -p1 < ../patches/emacs-mac-title-bar-7.4.patch
 
 # apply patch: multi-tty-27.diff
 patch -d emacs-source -p1 < ../patches/multi-tty-27.diff
+
+# Emacs 27 will need this patch for mac builds, later version should be fixed
+if [ "$(uname -p)" = "arm" ]; then
+  patch -d emacs-source -p1 < ../patches/mac-arm-fix.diff
+fi
