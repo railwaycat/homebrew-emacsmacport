@@ -40,12 +40,13 @@ class EmacsMac < Formula
     "modern-icon" => "eb819de2380d3e473329a4a5813fa1b4912ec284146c94f28bd24fbb79f8b2c5",
     "sjrmanning-icon" => "fc267d801432da90de5c0d2254f6de16557193b6c062ccaae30d91b3ada01ab9",
     "spacemacs-icon" => "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900",
+    "retro-sink-bw" => "5cd836f86c8f5e1688d6b59bea4b57c8948026a9640257a7d2ec153ea7200571"
   }.freeze
   ICONS_INFO.each do |icon, iconsha|
     option "with-#{icon}", "Using Emacs icon: #{icon}"
     next if build.without? "#{icon}"
     resource "#{icon}" do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/eec478c2bae3a76737b136dc11a182a8215c9a25/icons/#{icon}.icns"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/f27bd8d442fa40d4d96926a6bd94f0889184d966/icons/#{icon}.icns"
       sha256 iconsha
     end
   end
