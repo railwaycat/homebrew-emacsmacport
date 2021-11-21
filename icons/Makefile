@@ -16,7 +16,8 @@ emacs-sexy-icon.png \
 gnu-head-icon.png \
 modern-icon.png \
 sjrmanning-icon.png \
-spacemacs-icon.png
+spacemacs-icon.png \
+retro-sink-bw.png
 
 %.png: %.icns
 	sips --resampleWidth 100 -s format png $< --out $@
