@@ -1,7 +1,8 @@
-diff -Nur mituharu-emacs-mac-fd1cf1f3e757/src/macappkit.m 74/src/macappkit.m
---- mituharu-emacs-mac-fd1cf1f3e757/src/macappkit.m	2018-11-16 17:38:56.000000000 +0800
-+++ 74/src/macappkit.m	2018-11-17 23:03:48.000000000 +0800
-@@ -2098,6 +2098,18 @@
+diff --git a/src/macappkit.m b/src/macappkit.m
+index fb7bf2a..732fbed 100644
+--- a/src/macappkit.m
++++ b/src/macappkit.m
+@@ -2262,6 +2262,18 @@ - (void)showMenuBar
  
  @implementation EmacsWindow
  
@@ -20,7 +21,7 @@ diff -Nur mituharu-emacs-mac-fd1cf1f3e757/src/macappkit.m 74/src/macappkit.m
  - (instancetype)initWithContentRect:(NSRect)contentRect
  			  styleMask:(NSWindowStyleMask)windowStyle
  			    backing:(NSBackingStoreType)bufferingType
-@@ -2659,6 +2671,19 @@
+@@ -2854,6 +2866,20 @@ - (void)setupWindow
        MRC_RELEASE (visualEffectView);
        FRAME_BACKGROUND_ALPHA_ENABLED_P (f) = true;
      }
@@ -35,12 +36,13 @@ diff -Nur mituharu-emacs-mac-fd1cf1f3e757/src/macappkit.m 74/src/macappkit.m
 +
 +  if ([transparentTitleBar isEqualToString: @"LIGHT"]) {
 +    window.titlebarAppearsTransparent = true;
++    window.appearance = [NSAppearance appearanceNamed: NSAppearanceNameVibrantLight];
 +  }
 +
    if (FRAME_MAC_DOUBLE_BUFFERED_P (f))
      {
        FRAME_SYNTHETIC_BOLD_WORKAROUND_DISABLED_P (f) = true;
-@@ -6432,8 +6457,7 @@
+@@ -6906,8 +6932,7 @@ + (void)initialize
        if ([defaults objectForKey:@"ApplePressAndHoldEnabled"] == nil)
  	{
  	  NSDictionaryOf (NSString *, NSString *) *appDefaults =
