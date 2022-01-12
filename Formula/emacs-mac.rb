@@ -18,6 +18,7 @@ class EmacsMac < Formula
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
   option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
+  option "with-native-comp", "Build with native compilation (only with --HEAD, experimental, check issue \#274 before installation)"
 
   # icons
   ICONS_INFO = {
@@ -97,6 +98,14 @@ class EmacsMac < Formula
     end
   end
 
+  head do
+    if build.with? "native-comp"
+      opoo "native-comp option only works with --HEAD, check issue \#274 before installation"
+      depends_on "libgccjit" => :recommended
+      depends_on "gcc" => :build
+    end
+  end
+
   def install
     args = [
       "--enable-locallisppath=#{HOMEBREW_PREFIX}/share/emacs/site-lisp",
@@ -109,6 +118,23 @@ class EmacsMac < Formula
     args << "--with-modules" unless build.without? "modules"
     args << "--with-rsvg" if build.with? "rsvg"
     args << "--with-mac-metal" if build.with? "mac-metal"
+
+    if build.head?
+      args << "--with-native-compilation" if build.with? "native-comp"
+
+      if build.with? "native-comp"
+        gcc_ver = Formula["gcc"].any_installed_version
+        gcc_ver_major = gcc_ver.major
+        gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
+
+        ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
+        ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
+
+        ENV.append "LDFLAGS", "-L#{gcc_lib}"
+        ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
+        ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
+      end
+    end
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
     ICONS_INFO.each do |icon,|
