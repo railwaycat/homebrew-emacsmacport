@@ -171,6 +171,12 @@ class EmacsMac < Formula
     end
   end
 
+  def post_install
+    if build.head? and build.with? "native-comp"
+      ln_sf "#{Dir[opt_prefix/"lib/emacs/*"].first}/native-lisp", "#{opt_prefix}/Emacs.app/Contents/native-lisp"
+    end
+  end
+
   def caveats
     <<~EOS
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
