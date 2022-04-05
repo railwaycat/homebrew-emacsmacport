@@ -1,0 +1,40 @@
+name: Emacs build
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-11, macos-10.15]
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: get current time
+        run: echo "REL_DATE=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+      - name: get OS version
+        run: echo "OS_VER=$(sw_vers -productVersion)" >> $GITHUB_ENV
+
+      - name: prepare
+        run: ./build-scripts/prepare_homebrew.sh
+
+      - name: build and pack
+        run: |
+          pushd build-scripts
+          ./fetch-emacs-mac-port.sh "27.2-mac-8.3"
+          ./build-emacs.sh emacs-source "27.2"
+          pushd emacs-source; ../copylib.rb $(brew --prefix); popd
+          ./make-zipball.sh emacs-source/tmproot "27.2-mac-8.3"
+          ls -d $PWD/emacs-source/tmproot/*.zip
+          popd
+
+      - name: publish
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ matrix.os }}-${{ env.REL_DATE }}
+          draft: true
+          files: |
+            build-scripts/emacs-source/tmproot/emacs-27.2-mac-8.3-${{ env.OS_VER }}.zip
+            build-scripts/emacs-source/tmproot/emacs-27.2-mac-8.3-${{ env.OS_VER }}-spacemacs-icon.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
