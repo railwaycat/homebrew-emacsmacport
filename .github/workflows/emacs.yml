@@ -21,10 +21,10 @@ jobs:
       - name: build and pack
         run: |
           pushd build-scripts
-          ./fetch-emacs-mac-port.sh "27.2-mac-8.3"
-          ./build-emacs.sh emacs-source "27.2"
+          ./fetch-emacs-mac-port.sh "28.1-mac-9.0"
+          ./build-emacs.sh emacs-source "28.1"
           pushd emacs-source; ../copylib.rb $(brew --prefix); popd
-          ./make-zipball.sh emacs-source/tmproot "27.2-mac-8.3"
+          ./make-zipball.sh emacs-source/tmproot "28.1-mac-9.0"
           ls -d $PWD/emacs-source/tmproot/*.zip
           popd
 
@@ -34,7 +34,7 @@ jobs:
           name: ${{ matrix.os }}-${{ env.REL_DATE }}
           draft: true
           files: |
-            build-scripts/emacs-source/tmproot/emacs-27.2-mac-8.3-${{ env.OS_VER }}.zip
-            build-scripts/emacs-source/tmproot/emacs-27.2-mac-8.3-${{ env.OS_VER }}-spacemacs-icon.zip
+            build-scripts/emacs-source/tmproot/emacs-28.1-mac-9.0-${{ env.OS_VER }}.zip
+            build-scripts/emacs-source/tmproot/emacs-28.1-mac-9.0-${{ env.OS_VER }}-spacemacs-icon.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
