@@ -2,9 +2,9 @@
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.2-mac-8.3.tar.gz"
-  version "emacs-27.2-mac-8.3"
-  sha256 "4263e4e1897a950c16252b58c9af8ae4d369b25790873d0777c9547a89b90198"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-28.1-mac-9.0.tar.gz"
+  version "emacs-28.1-mac-9.0"
+  sha256 "967d5642ca47ae3de2626f0fc7163424e36925642827e151c3906179020dd90e"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -18,7 +18,7 @@ class EmacsMac < Formula
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
   option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
-  option "with-native-comp", "Build with native compilation (only with --HEAD, experimental, check issue \#274 before installation)"
+  option "with-native-comp", "Build with native compilation"
 
   # icons
   ICONS_INFO = {
@@ -83,27 +83,17 @@ class EmacsMac < Formula
     end
   end
 
+  if build.with? "native-comp"
+    depends_on "libgccjit" => :recommended
+    depends_on "gcc" => :build
+  end
+
   # patch for multi-tty support, see the following links for details
   # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
   # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
   patch do
     url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/multi-tty-27.diff"
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
-  end
-
-  stable do
-    patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/7e793808ebbc11d519a0103fb9f8fe7efbec345d/patches/mac-arm-fix.diff"
-      sha256 "9b58a61931e79863caa5c310a7ec290cc7b84c78aa0086d0ba7192756c370db8"
-    end
-  end
-
-  head do
-    if build.with? "native-comp"
-      opoo "native-comp option only works with --HEAD, check issue \#274 before installation"
-      depends_on "libgccjit" => :recommended
-      depends_on "gcc" => :build
-    end
   end
 
   def install
@@ -118,22 +108,19 @@ class EmacsMac < Formula
     args << "--with-modules" unless build.without? "modules"
     args << "--with-rsvg" if build.with? "rsvg"
     args << "--with-mac-metal" if build.with? "mac-metal"
+    args << "--with-native-compilation" if build.with? "native-comp"
 
-    if build.head?
-      args << "--with-native-compilation" if build.with? "native-comp"
+    if build.with? "native-comp"
+      gcc_ver = Formula["gcc"].any_installed_version
+      gcc_ver_major = gcc_ver.major
+      gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
 
-      if build.with? "native-comp"
-        gcc_ver = Formula["gcc"].any_installed_version
-        gcc_ver_major = gcc_ver.major
-        gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
+      ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
+      ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
 
-        ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
-        ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
-
-        ENV.append "LDFLAGS", "-L#{gcc_lib}"
-        ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
-        ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
-      end
+      ENV.append "LDFLAGS", "-L#{gcc_lib}"
+      ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
+      ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
     end
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
@@ -172,7 +159,7 @@ class EmacsMac < Formula
   end
 
   def post_install
-    if build.head? and build.with? "native-comp"
+    if build.with? "native-comp"
       ln_sf "#{Dir[opt_prefix/"lib/emacs/*"].first}/native-lisp", "#{opt_prefix}/Emacs.app/Contents/native-lisp"
     end
   end
@@ -180,8 +167,8 @@ class EmacsMac < Formula
   def caveats
     <<~EOS
       This is YAMAMOTO Mitsuharu's "Mac port" addition to
-      GNU Emacs 27. This provides a native GUI support for Mac OS X
-      10.6 - 12. After installing, see README-mac and NEWS-mac
+      GNU Emacs 28. This provides a native GUI support for Mac OS X
+      10.10 - 12. After installing, see README-mac and NEWS-mac
       in #{prefix} for the port details.
 
       Emacs.app was installed to:
