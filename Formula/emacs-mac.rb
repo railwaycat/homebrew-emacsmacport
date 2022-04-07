@@ -1,4 +1,3 @@
-# coding: utf-8
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
@@ -8,9 +7,7 @@ class EmacsMac < Formula
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
-  option "with-dbus", "Build with d-bus support"
   option "without-modules", "Build without dynamic modules support"
-  option "with-rsvg", "Build with rsvg support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-no-title-bars",
          "Build with a patch for no title bars on frames (not recommended to use with --HEAD option)"
@@ -23,31 +20,32 @@ class EmacsMac < Formula
 
   # icons
   ICONS_INFO = {
-    "emacs-big-sur-icon" => "e9ec41167c38842a3f6555d3142909211a2aa7e3ff91621b9a576b3847d3b565",
-    "emacs-icons-project-EmacsIcon1" => "50dbaf2f6d67d7050d63d987fe3743156b44556ab42e6d9eee92248c56011bd0",
-    "emacs-icons-project-EmacsIcon2" => "8d63589b0302a67f13ab94b91683a8ad7c2b9e880eabe008056a246a22592963",
-    "emacs-icons-project-EmacsIcon3" => "80dd2a4776739a081e0a42008e8444c729d41ba876b19fa9d33fde98ee3e0ebf",
-    "emacs-icons-project-EmacsIcon4" => "8ce646ca895abe7f45029f8ff8f5eac7ab76713203e246b70dea1b8a21a6c135",
-    "emacs-icons-project-EmacsIcon5" => "ca415df7ad60b0dc495626b0593d3e975b5f24397ad0f3d802455c3f8a3bd778",
-    "emacs-icons-project-EmacsIcon6" => "12a1999eb006abac11535b7fe4299ebb3c8e468360faf074eb8f0e5dec1ac6b0",
-    "emacs-icons-project-EmacsIcon7" => "f5067132ea12b253fb4a3ea924c75352af28793dcf40b3063bea01af9b2bd78c",
-    "emacs-icons-project-EmacsIcon8" => "d330b15cec1bcdfb8a1e8f8913d8680f5328d59486596fc0a9439b54eba340a0",
-    "emacs-icons-project-EmacsIcon9" => "f58f46e5ef109fff8adb963a97aea4d1b99ca09265597f07ee95bf9d1ed4472e",
-    "emacs-icons-project-emacs-card-blue-deep" => "6bdb17418d2c620cf4132835cfa18dcc459a7df6ce51c922cece3c7782b3b0f9",
+    "emacs-big-sur-icon"                                  => "e9ec41167c38842a3f6555d3142909211a2aa7e3ff91621b9a576b3847d3b565",
+    "emacs-icons-project-EmacsIcon1"                      => "50dbaf2f6d67d7050d63d987fe3743156b44556ab42e6d9eee92248c56011bd0",
+    "emacs-icons-project-EmacsIcon2"                      => "8d63589b0302a67f13ab94b91683a8ad7c2b9e880eabe008056a246a22592963",
+    "emacs-icons-project-EmacsIcon3"                      => "80dd2a4776739a081e0a42008e8444c729d41ba876b19fa9d33fde98ee3e0ebf",
+    "emacs-icons-project-EmacsIcon4"                      => "8ce646ca895abe7f45029f8ff8f5eac7ab76713203e246b70dea1b8a21a6c135",
+    "emacs-icons-project-EmacsIcon5"                      => "ca415df7ad60b0dc495626b0593d3e975b5f24397ad0f3d802455c3f8a3bd778",
+    "emacs-icons-project-EmacsIcon6"                      => "12a1999eb006abac11535b7fe4299ebb3c8e468360faf074eb8f0e5dec1ac6b0",
+    "emacs-icons-project-EmacsIcon7"                      => "f5067132ea12b253fb4a3ea924c75352af28793dcf40b3063bea01af9b2bd78c",
+    "emacs-icons-project-EmacsIcon8"                      => "d330b15cec1bcdfb8a1e8f8913d8680f5328d59486596fc0a9439b54eba340a0",
+    "emacs-icons-project-EmacsIcon9"                      => "f58f46e5ef109fff8adb963a97aea4d1b99ca09265597f07ee95bf9d1ed4472e",
+    "emacs-icons-project-emacs-card-blue-deep"            => "6bdb17418d2c620cf4132835cfa18dcc459a7df6ce51c922cece3c7782b3b0f9",
     "emacs-icons-project-emacs-card-british-racing-green" => "ddf0dff6a958e3b6b74e6371f1a68c2223b21e75200be6b4ac6f0bd94b83e1a5",
-    "emacs-icons-project-emacs-card-carmine" => "4d34f2f1ce397d899c2c302f2ada917badde049c36123579dd6bb99b73ebd7f9",
-    "emacs-icons-project-emacs-card-green" => "f94ade7686418073f04b73937f34a1108786400527ed109af822d61b303048f7",
-    "emacs-sexy-icon" => "7ab72feeeff0084e14bcb75a3e1040bdf738e0044361e7af8a67ebbaa58d852a",
-    "gnu-head-icon" => "b5899aaa3589b54c6f31aa081daf29d303047aa07b5ca1d0fd7f9333a829b6d3",
-    "modern-icon" => "eb819de2380d3e473329a4a5813fa1b4912ec284146c94f28bd24fbb79f8b2c5",
-    "sjrmanning-icon" => "fc267d801432da90de5c0d2254f6de16557193b6c062ccaae30d91b3ada01ab9",
-    "spacemacs-icon" => "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900",
-    "retro-sink-bw" => "5cd836f86c8f5e1688d6b59bea4b57c8948026a9640257a7d2ec153ea7200571"
+    "emacs-icons-project-emacs-card-carmine"              => "4d34f2f1ce397d899c2c302f2ada917badde049c36123579dd6bb99b73ebd7f9",
+    "emacs-icons-project-emacs-card-green"                => "f94ade7686418073f04b73937f34a1108786400527ed109af822d61b303048f7",
+    "emacs-sexy-icon"                                     => "7ab72feeeff0084e14bcb75a3e1040bdf738e0044361e7af8a67ebbaa58d852a",
+    "gnu-head-icon"                                       => "b5899aaa3589b54c6f31aa081daf29d303047aa07b5ca1d0fd7f9333a829b6d3",
+    "modern-icon"                                         => "eb819de2380d3e473329a4a5813fa1b4912ec284146c94f28bd24fbb79f8b2c5",
+    "sjrmanning-icon"                                     => "fc267d801432da90de5c0d2254f6de16557193b6c062ccaae30d91b3ada01ab9",
+    "spacemacs-icon"                                      => "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900",
+    "retro-sink-bw"                                       => "5cd836f86c8f5e1688d6b59bea4b57c8948026a9640257a7d2ec153ea7200571",
   }.freeze
   ICONS_INFO.each do |icon, iconsha|
     option "with-#{icon}", "Using Emacs icon: #{icon}"
-    next if build.without? "#{icon}"
-    resource "#{icon}" do
+    next if build.without? icon
+
+    resource icon do
       url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/f27bd8d442fa40d4d96926a6bd94f0889184d966/icons/#{icon}.icns"
       sha256 iconsha
     end
@@ -59,15 +57,15 @@ class EmacsMac < Formula
 
   depends_on "autoconf"
   depends_on "automake"
-  depends_on "d-bus" if build.with? "dbus"
   depends_on "gnutls"
-  depends_on "librsvg" if build.with? "rsvg"
   depends_on "pkg-config"
   depends_on "texinfo"
   depends_on "jansson" => :recommended
   depends_on "libxml2" => :recommended
+  depends_on "dbus" => :optional
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
+  depends_on "librsvg" => :optional
 
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
@@ -106,7 +104,7 @@ class EmacsMac < Formula
       "--enable-mac-app=#{prefix}",
       "--with-gnutls",
     ]
-    args << "--with-modules" unless build.without? "modules"
+    args << "--with-modules" if build.with? "modules"
     args << "--with-rsvg" if build.with? "rsvg"
     args << "--with-mac-metal" if build.with? "mac-metal"
     args << "--with-native-compilation" if build.with? "native-comp"
@@ -127,7 +125,7 @@ class EmacsMac < Formula
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
     ICONS_INFO.each do |icon,|
-      next unless build.with? icon
+      next if build.without? icon
 
       rm "#{icons_dir}/Emacs.icns"
       resource(icon).stage do
