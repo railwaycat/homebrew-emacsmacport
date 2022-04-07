@@ -19,6 +19,7 @@ class EmacsMac < Formula
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
   option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
   option "with-native-comp", "Build with native compilation"
+  option "with-xwidgets", "Build with xwidgets"
 
   # icons
   ICONS_INFO = {
@@ -109,6 +110,7 @@ class EmacsMac < Formula
     args << "--with-rsvg" if build.with? "rsvg"
     args << "--with-mac-metal" if build.with? "mac-metal"
     args << "--with-native-compilation" if build.with? "native-comp"
+    args << "--with-xwidgets" if build.with? "xwidgets"
 
     if build.with? "native-comp"
       gcc_ver = Formula["gcc"].any_installed_version
