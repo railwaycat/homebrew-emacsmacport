@@ -22,6 +22,7 @@ cask 'emacs-mac' do
       # elsif MacOS.version <= :monterey # reserved for later
       sha256 'c6fb1575bd27adabbf85234bc223ff98300391ea23dab73da4a240947416d72b'
       url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0/emacs-28.1-mac-9.0-arm64-12.3.1.zip'
+    end
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'

@@ -22,6 +22,7 @@ cask 'emacs-mac-spacemacs-icon' do
       # elsif MacOS.version <= :monterey # reserved for later
       sha256 '89e28630ceb651824cb4df5a661e1c015fe511a0569ba1006f8af5868c9577a6'
       url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0/emacs-28.1-mac-9.0-arm64-12.3.1-spacemacs-icon.zip'
+    end
   end
 
   appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
