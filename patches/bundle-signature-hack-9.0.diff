@@ -1,0 +1,33 @@
+diff --git a/configure.ac b/configure.ac
+index efb0bee993..93634efbe7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1911,7 +1911,7 @@ if test "${with_mac}" != no; then
+   fi
+ 
+   mac_appbindir=${mac_appdir}/Emacs.app/Contents/MacOS
+-  mac_applibexecdir=${mac_appdir}/Emacs.app/Contents/MacOS/libexec/${configuration}
++  mac_applibexecdir=${mac_appdir}/Emacs.app/Contents/MacOS/libexec
+   mac_applibdir=${mac_appdir}/Emacs.app/Contents/Frameworks
+   mac_appresdir=${mac_appdir}/Emacs.app/Contents/Resources
+ 
+diff --git a/mac/Makefile.in b/mac/Makefile.in
+index e1663c1a8f..b4dd9c5090 100644
+--- a/mac/Makefile.in
++++ b/mac/Makefile.in
+@@ -32,11 +32,11 @@ configuration=@configuration@
+ mac_self_contained=@mac_self_contained@
+ 
+ ifeq ($(DUMPING),pdumper)
+-ifeq (${mac_self_contained},no)
++# ifeq (${mac_self_contained},no)
+ bundle_pdmp := Emacs.app/Contents/MacOS/Emacs.pdmp
+-else
+-bundle_pdmp := Emacs.app/Contents/MacOS/libexec/${configuration}/Emacs.pdmp
+-endif
++# else
++# bundle_pdmp := Emacs.app/Contents/MacOS/libexec/${configuration}/Emacs.pdmp
++# endif
+ else
+ bundle_pdmp :=
+ endif
