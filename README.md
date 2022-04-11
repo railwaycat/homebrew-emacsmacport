@@ -26,7 +26,7 @@ This build has *many* features, a great number of which are particularly helpful
 
 
 ### Homebrew ###
-If you'd like to install with Homebrew, please
+If you'd like to install with Homebrew, please:
 
 `$ brew tap railwaycat/emacsmacport`
 
@@ -34,7 +34,7 @@ and then
  
 `$ brew install emacs-mac`
 
-if you using cask
+If you are using cask:
 
 `brew install --cask emacs-mac` or `brew install --cask emacs-mac-spacemacs-icon`
 
