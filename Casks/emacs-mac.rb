@@ -1,17 +1,17 @@
 cask 'emacs-mac' do
-  version 'emacs-28.1-mac-9.0'
+  version 'emacs-28.1-mac-9.0.1'
 
   if Hardware::CPU.intel?
     if MacOS.version <= :mojave
       odie "Because of the limitation of build system, there is no cask support for Mojave(10.14) and earlier, please build from Homebrew formula."
     elsif MacOS.version <= :catalina
-      sha256 'ae8cc8649d038c6ce8d27e92631a19c8f168c1b6d78c15837577468a7681395a'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0/emacs-28.1-mac-9.0-10.15.7.zip'
+      sha256 'dd49a5685e335268403fd0ab99c86809029c5cdd9f93ef6560596b9487b28c6d'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0.1/emacs-28.1-mac-9.0.1-10.15.7.zip'
     else
       # for macOS version is or newer than Big Sur
       # elsif MacOS.version <= :big_sur # reserved for later
-      sha256 'a3763e2b039fb8535e02a73a56a197ff5993c16fab8c75e3ff41ebea23e41073'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0/emacs-28.1-mac-9.0-11.6.5.zip'
+      sha256 '5b23fd090421ab77e5580274fb70316d3f1a760da06c87f706d18ca4971fb95d'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0.1/emacs-28.1-mac-9.0.1-11.6.5.zip'
     end
   else
     if MacOS.version <= :big_sur
@@ -20,8 +20,8 @@ cask 'emacs-mac' do
     else
       # for macOS version is or newer than Big Sur
       # elsif MacOS.version <= :monterey # reserved for later
-      sha256 'c6fb1575bd27adabbf85234bc223ff98300391ea23dab73da4a240947416d72b'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0/emacs-28.1-mac-9.0-arm64-12.3.1.zip'
+      sha256 'f76dfe76131d26d76a4a34a89487fd01388ccf5d1b35744b05d5f0aa361ff8bf'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0.1/emacs-28.1-mac-9.0.1-arm64-12.3.1.zip'
     end
   end
 

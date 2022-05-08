@@ -1,17 +1,17 @@
 cask 'emacs-mac-spacemacs-icon' do
-  version 'emacs-28.1-mac-9.0'
+  version 'emacs-28.1-mac-9.0.1'
 
   if Hardware::CPU.intel?
     if MacOS.version <= :mojave
       odie "Because of the limitation of build system, there is no cask support for mojave(10.14) and earlier, please build from Homebrew formula."
     elsif MacOS.version <= :catalina
-      sha256 '832e1b9384730cc5ff2ce018a979aec82699a7a13c9bd18f84649a39644d50ac'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0/emacs-28.1-mac-9.0-10.15.7-spacemacs-icon.zip'
+      sha256 '7e16185a41b8197339e9e5f943d5c68f039f230b7350dfab883e0f2668c04a56'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0.1/emacs-28.1-mac-9.0.1-10.15.7-spacemacs-icon.zip'
     else
       # for macOS version is or newer than Big Sur
       # elsif MacOS.version <= :big_sur # reserved for later
-      sha256 '2f412038d391ed663d3731c792ca586ae439d3442ed71f5a2719c3d635c1cbc2'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0/emacs-28.1-mac-9.0-11.6.5-spacemacs-icon.zip'
+      sha256 '04221d92edb5f6dfd59a859f070d01e6fb281ade170bb54de176e24779b3556d'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0.1/emacs-28.1-mac-9.0.1-11.6.5-spacemacs-icon.zip'
     end
   else
     if MacOS.version <= :big_sur
@@ -20,8 +20,8 @@ cask 'emacs-mac-spacemacs-icon' do
     else
       # for macOS version is or newer than Big Sur
       # elsif MacOS.version <= :monterey # reserved for later
-      sha256 '89e28630ceb651824cb4df5a661e1c015fe511a0569ba1006f8af5868c9577a6'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0/emacs-28.1-mac-9.0-arm64-12.3.1-spacemacs-icon.zip'
+      sha256 'd23fe977de07b7fd52efb42f076c19a1132e43097d4d23dbaa878af718a9ccff'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.1-mac-9.0.1/emacs-28.1-mac-9.0.1-arm64-12.3.1-spacemacs-icon.zip'
     end
   end
 
