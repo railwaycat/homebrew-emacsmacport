@@ -79,7 +79,7 @@ class EmacsMac < Formula
 
   if build.with? "natural-title-bar"
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/patches/emacs-mac-title-bar-9.0.patch"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/89fc33ae62c82c7ff5894967c1038ef87bb0b418/patches/emacs-mac-title-bar-9.0.patch"
       sha256 "4c719da92bf7744bb7931315ddcca78b190d7513adf49f86e7c2ae93dacfc68b"
     end
   end
