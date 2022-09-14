@@ -1,4 +1,6 @@
 ICONS = emacs-big-sur-icon.png \
+emacs-icons-project-EmacsTerm.png \
+emacs-icons-project-EmacsVapor.png \
 emacs-icons-project-EmacsIcon1.png \
 emacs-icons-project-EmacsIcon2.png \
 emacs-icons-project-EmacsIcon3.png \
