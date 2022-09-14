@@ -46,7 +46,7 @@ class EmacsMac < Formula
     next if build.without? icon
 
     resource icon do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/TODO/icons/#{icon}.icns"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/a5e268d21a3db7b575f78f6539beb6bbbfef7ecb/icons/#{icon}.icns"
       sha256 iconsha
     end
   end
