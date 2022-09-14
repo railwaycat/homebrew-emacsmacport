@@ -3,6 +3,8 @@
 | Option                                                       | Icon                                                                                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
 | `--with-emacs-big-sur-icon`                                  | ![emacs-big-sur-icon](emacs-big-sur-icon.png)                                                                   |
+| `--with-emacs-icons-project-EmacsTerm`                       | ![emacs-icons-project](emacs-icons-project-EmacsTerm.png)                                               |
+| `--with-emacs-icons-project-EmacsVapor`                      | ![emacs-icons-project-EmacsI](emacs-icons-project-EmacsVapor.png)                                               |
 | `--with-emacs-icons-project-EmacsIcon1`                      | ![emacs-icons-project-EmacsI](emacs-icons-project-EmacsIcon1.png)                                               |
 | `--with-emacs-icons-project-EmacsIcon2`                      | ![emacs-icons-project-EmacsI](emacs-icons-project-EmacsIcon2.png)                                               |
 | `--with-emacs-icons-project-EmacsIcon3`                      | ![emacs-icons-project-EmacsI](emacs-icons-project-EmacsIcon3.png)                                               |
