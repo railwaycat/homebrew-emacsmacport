@@ -2,11 +2,9 @@
 
 source_dir=$1
 installprefix=`pwd`/$source_dir/tmproot
-app_dir=$installprefix/Emacs.app/Contents/Resources
 emacs_version=$2
-compver=x86_64-apple-darwin`uname -r`
 
-export PATH="/usr/local/opt/texinfo/bin:$PATH"
+export PATH="/opt/homebrew/opt/texinfo/bin:/usr/local/opt/texinfo/bin:$PATH"
 
 set -e
 cd $source_dir

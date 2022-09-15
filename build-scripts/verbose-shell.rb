@@ -33,7 +33,7 @@ class VerboseShell
 
   def self.cp(src,dest,options={})
     system_trace *%W"cp #{src} #{dest}"
-    FileUtils.cp(src, dest, options)
+    FileUtils.cp(src, dest)
   end
 
   def self.cp_r(src,dest,options={})
@@ -53,7 +53,7 @@ class VerboseShell
 
   def self.mkdir_p(file,options={})
     system_trace *%W"mkdir -p #{file}"
-    FileUtils.mkdir_p file, options
+    FileUtils.mkdir_p file
   end
 
   def self.chdir(dir)
