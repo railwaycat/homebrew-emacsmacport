@@ -31,7 +31,7 @@ If you'd like to install with Homebrew, please:
 `$ brew tap railwaycat/emacsmacport`
 
 and then
- 
+
 `$ brew install emacs-mac`
 
 If you are using cask:
@@ -44,29 +44,38 @@ To disable this tap, please:
 
 ### Pre-built Download ###
 
+Pre-built bundles can be downloaded from the release page:
+
 https://github.com/railwaycat/homebrew-emacsmacport/releases
 
-Pre-built for macOS 10.13(High Sierra)/10.14(Mojave) and above, please
-download based on your macOS version. Due to the limitation of Travis-CI,
-pre-built for macOS before 10.13 is not supported for now, please install by homebrew
-(without `--cask`) in case you are using an older version macOS. 
+Bundles are the same as those from Homebrew Cask.
+
+Support macOS versions:
+
+* Intel Mac
+  - Monterey (macOS12)
+  - Big Sur (macOS11)
+* Apple Silicon Mac
+  - Monterey (macOS12)
+
+For macOS versions not be listed above, please install from Homebrew formula
+(install without `--cask`).
+
+Intel Mac bundles are built by GitHub Actions, the version support limitation is
+from the macOS versions they
+[support](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources)
+currently.
+
+Apple Silicon bundles are built on a M1 Mac with
+[Tart](https://github.com/cirruslabs/tart). The version support limitation is
+because Apple only supports macOS virtualization since Monterey (macOS12).
 
 ## Useful links ##
-
-* Switch meta and option key - https://gist.github.com/3498096
 
 * Emacs mac port on [MacPorts](https://www.macports.org/) (not be maintained by the maintainer of this repo):
   - [emacs-mac-app](https://ports.macports.org/port/emacs-mac-app/)  
   - [emacs-mac-app-devel](https://ports.macports.org/port/emacs-mac-app-devel/)
 
+* Switch meta and option key - https://gist.github.com/3498096
+
 * An Emacs.app CLI starter, modified from Aquamacs - https://gist.github.com/4043945
-
-## Included Patches Information ##
-
-* No title bar
-  `--with-no-title-bars`  
-  Enabled by default when build with this patch. This feature can been controlled by `mac-use-title-bar`, a boolean with default value `false`. Value settings will been used in new frame **after** Emacs started. (<- yes this is a bug).
-  
-* Natural title bar
-  `--with-natural-title-bar`  
-  Disabled by default when build with this patch, more information see this [wiki page](https://github.com/railwaycat/homebrew-emacsmacport/wiki/Natural-Title-Bar)
