@@ -15,7 +15,7 @@ class EmacsMac < Formula
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
   option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
-  option "with-native-comp", "Build with native compilation"
+  option "with-native-compilation", "Build with native compilation"
   option "with-xwidgets", "Build with xwidgets"
 
   # icons
@@ -82,7 +82,7 @@ class EmacsMac < Formula
     end
   end
 
-  if build.with? "native-comp"
+  if build.with? "native-compilation"
     depends_on "libgccjit" => :recommended
     depends_on "gcc" => :build
   end
@@ -107,10 +107,10 @@ class EmacsMac < Formula
     args << "--with-modules" if build.with? "modules"
     args << "--with-rsvg" if build.with? "rsvg"
     args << "--with-mac-metal" if build.with? "mac-metal"
-    args << "--with-native-compilation" if build.with? "native-comp"
+    args << "--with-native-compilation" if build.with? "native-compilation"
     args << "--with-xwidgets" if build.with? "xwidgets"
 
-    if build.with? "native-comp"
+    if build.with? "native-compilation"
       gcc_ver = Formula["gcc"].any_installed_version
       gcc_ver_major = gcc_ver.major
       gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
@@ -159,7 +159,7 @@ class EmacsMac < Formula
   end
 
   def post_install
-    if build.with? "native-comp"
+    if build.with? "native-compilation"
       ln_sf "#{Dir[opt_prefix/"lib/emacs/*"].first}/native-lisp", "#{opt_prefix}/Emacs.app/Contents/native-lisp"
     end
   end
