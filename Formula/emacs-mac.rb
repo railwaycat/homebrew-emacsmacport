@@ -99,7 +99,8 @@ class EmacsMac < Formula
   def install
     args = [
       "--enable-locallisppath=#{HOMEBREW_PREFIX}/share/emacs/site-lisp",
-      "--infodir=#{info}/emacs",
+      "--infodir=#{info}",
+      "--mandir=#{man}",
       "--prefix=#{prefix}",
       "--with-mac",
       "--enable-mac-app=#{prefix}",
