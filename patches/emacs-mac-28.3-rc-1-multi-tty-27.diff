@@ -1,0 +1,58 @@
+diff --git a/lisp/server.el b/lisp/server.el
+index 3429e4362a..8b93a4a272 100644
+--- a/lisp/server.el
++++ b/lisp/server.el
+@@ -1217,10 +1217,9 @@ The following commands are accepted by the client:
+                  ;; choice there.)  In daemon mode on Windows, we can't
+                  ;; make tty frames, so force the frame type to GUI
+                  ;; there too.
+-                 (when (or (and (eq system-type 'windows-nt)
+-                                (or (daemonp)
+-                                    (eq window-system 'w32)))
+-                           (eq window-system 'mac))
++                 (when (and (eq system-type 'windows-nt)
++                            (or (daemonp)
++                                (eq window-system 'w32)))
+                    (push "-window-system" args-left)))
+ 
+                 ;; -position +LINE[:COLUMN]:  Set point to the given
+diff --git a/src/frame.c b/src/frame.c
+index 3782857826..3a1fd3ef82 100644
+--- a/src/frame.c
++++ b/src/frame.c
+@@ -1343,12 +1343,8 @@ affects all frames on the same terminal device.  */)
+     emacs_abort ();
+ #else /* not MSDOS */
+ 
+-#if defined WINDOWSNT || defined HAVE_MACGUI /* This should work now! */
+-  if (sf->output_method != output_termcap
+-#ifdef HAVE_MACGUI
+-      && sf->output_method != output_initial
+-#endif
+-      )
++#ifdef WINDOWSNT /* This should work now! */
++  if (sf->output_method != output_termcap)
+     error ("Not using an ASCII terminal now; cannot make a new ASCII frame");
+ #endif
+ #endif /* not MSDOS */
+diff --git a/src/macterm.c b/src/macterm.c
+index c25236b9ac..77a9515cff 100644
+--- a/src/macterm.c
++++ b/src/macterm.c
+@@ -2939,6 +2939,7 @@ mac_mouse_position (struct frame **fp, int insist, Lisp_Object *bar_window,
+ {
+   struct frame *f1;
+   struct mac_display_info *dpyinfo = FRAME_DISPLAY_INFO (*fp);
++  struct frame *sf = SELECTED_FRAME ();
+ 
+   block_input ();
+ 
+@@ -2971,7 +2972,7 @@ mac_mouse_position (struct frame **fp, int insist, Lisp_Object *bar_window,
+ 	f1 = XFRAME (mac_event_frame ());
+     }
+ 
+-  if (f1)
++  if (f1 && sf->output_method != output_termcap)
+     {
+       /* Ok, we found a frame.  Store all the values.
+ 	 last_mouse_glyph is a rectangle used to reduce the generation
