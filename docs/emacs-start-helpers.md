@@ -54,11 +54,7 @@ Cons: Hard to be pinned on Dock.
 #### Installation
 Run the command below to create a starter app bundle. Rename it if possible and place it under `/Applications` or other preferred places.
 ```
-# Apple Silicon Macs
-osacompile -o Emacs.app -e 'tell application "Finder" to open POSIX file "/opt/homebrew/opt/emacs-mac/Emacs.app"'
-
-# Intel Macs
-osacompile -o Emacs.app -e 'tell application "Finder" to open POSIX file "/usr/local/opt/emacs-mac/Emacs.app"'
+osacompile -o Emacs.app -e "tell application \"Finder\" to open POSIX file \"$(brew --prefix)/opt/emacs-mac/Emacs.app\""
 ```
 
 ### Helper 3
