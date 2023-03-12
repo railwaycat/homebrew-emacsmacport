@@ -33,7 +33,7 @@ This script starts an Emacs GUI window if Emacs is not started; it will bring th
 Get the script from https://gist.github.com/railwaycat/4043945 . There are also useful updates and rewrites in the comment of this gist.
 
 ## GUI helpers
-GUI helpers are usually for the Emacs-mac installed by formula, since formula installation is not able to put an App bundle `Emacs.app` to `/Applications` by the restriction of Homebrew.
+GUI helpers are usually for the Emacs-mac installed by formula, since formula installation is not able to put an App bundle `Emacs.app` to `/Applications` by the restriction of Homebrew.  You can avoid the need for a GUI helper by installing from cask.
 
 ### helper 1
 Make a copy of `Emacs.app` to `/Applications`. This solution is hard to be classified as a helper script/app, but it might be the solution most close to a native app.
