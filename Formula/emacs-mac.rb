@@ -187,10 +187,8 @@ class EmacsMac < Formula
       Emacs.app was installed to:
         #{prefix}
 
-      To link the application to default Homebrew App location:
-        osascript -e 'tell application "Finder" to make alias file to POSIX file "#{prefix}/Emacs.app" at POSIX file "/Applications"'
-      You can use ln -s, but symlinks created this way don't show up in Spotlight:
-        ln -s #{prefix}/Emacs.app /Applications
+      To link the application to default App location and CLI scripts, please checkout:
+        https://github.com/railwaycat/homebrew-emacsmacport/blob/master/docs/emacs-start-helpers.md
 
       If you are using Doom Emacs, be sure to run doom sync:
         ~/.emacs.d/bin/doom sync

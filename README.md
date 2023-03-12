@@ -55,8 +55,10 @@ Support macOS versions:
 * Intel Mac
   - Monterey (macOS12)
   - Big Sur (macOS11)
+  - Ventura (macOS13)
 * Apple Silicon Mac
   - Monterey (macOS12)
+  - Ventura (macOS13)
 
 For macOS versions not be listed above, please install from Homebrew formula
 (install without `--cask`).
@@ -78,4 +80,4 @@ because Apple only supports macOS virtualization since Monterey (macOS12).
 
 * Switch meta and option key - https://gist.github.com/3498096
 
-* An Emacs.app CLI starter, modified from Aquamacs - https://gist.github.com/4043945
+* For helper scripts/Apps to start Emacs.app, see [this document](https://github.com/railwaycat/homebrew-emacsmacport/blob/master/docs/emacs-start-helpers.md).
