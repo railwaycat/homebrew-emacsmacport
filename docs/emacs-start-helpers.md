@@ -43,7 +43,7 @@ Pros: Most likely close to a native `Emacs.app`.
 Cons: Need to repeat the install step for every upgrade and build option change.
 
 #### Installation
-Copy the `Emacs.app` from `$(brew --prefix)/opt/emacs/` to `/Applications` manually or by a shell script.
+Copy the `Emacs.app` from `$(brew --prefix)/opt/emacs-mac/` to `/Applications` manually or by a shell script.
 
 ### Helper 2
 Create a simple app bundle that opens `Emacs.app` under Homebrew directory.
@@ -65,7 +65,7 @@ Pros: No need to be updated for every upgrade or build option change
 Cons: When using Spotlight, the alias `Emacs.app` may not be listed on the top of candidates. May cause issues for native compilation, see #317.
 
 #### Installation
-Create an alias to `$(brew --prefix)/opt/emacs/Emacs.app`. This step can be done manually by right click the app and selecting "Make Alias" from the context menu, or by the command below:
+Create an alias to `$(brew --prefix)/opt/emacs-mac/Emacs.app`. This step can be done manually by right click the app and selecting "Make Alias" from the context menu, or by the command below:
 
 ```
 # Apple Silicon Macs
