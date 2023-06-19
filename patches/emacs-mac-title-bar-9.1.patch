@@ -1,0 +1,54 @@
+diff --git a/src/macappkit.m b/src/macappkit.m
+index 16403f9bf5..2118b8bb13 100644
+--- a/src/macappkit.m
++++ b/src/macappkit.m
+@@ -1935,6 +1935,18 @@ - (BOOL)doesHoldQuit
+ 
+ @implementation EmacsWindow
+ 
+++ (NSButton *)standardWindowButton:(NSWindowButton)b forStyleMask:(NSWindowStyleMask)styleMask
++{
++
++  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
++  NSString *hideDocumentIcon = [userDefaults stringForKey: @"HideDocumentIcon"];
++
++  if([hideDocumentIcon isEqualToString: @"YES"] && (b == NSWindowDocumentIconButton || b == NSWindowDocumentVersionsButton)) {
++    return nil;
++  }
++  return [NSWindow standardWindowButton:b forStyleMask:styleMask];
++}
++
+ - (instancetype)initWithContentRect:(NSRect)contentRect
+ 			  styleMask:(NSWindowStyleMask)windowStyle
+ 			    backing:(NSBackingStoreType)bufferingType
+@@ -2495,6 +2507,23 @@ - (void)setupWindow
+   window.contentView = visualEffectView;
+   MRC_RELEASE (visualEffectView);
+   FRAME_BACKGROUND_ALPHA_ENABLED_P (f) = true;
++	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
++  NSString *transparentTitleBar = [userDefaults stringForKey: @"TransparentTitleBar"];
++
++  if ([transparentTitleBar isEqualToString: @"YES"]) {
++    window.titlebarAppearsTransparent = true;
++  }
++
++  if ([transparentTitleBar isEqualToString: @"DARK"]) {
++    window.titlebarAppearsTransparent = true;
++    window.appearance = [NSAppearance appearanceNamed: NSAppearanceNameVibrantDark];
++  }
++
++  if ([transparentTitleBar isEqualToString: @"LIGHT"]) {
++    window.titlebarAppearsTransparent = true;
++    window.appearance = [NSAppearance appearanceNamed: NSAppearanceNameVibrantLight];
++  }
++
+   if (FRAME_MAC_DOUBLE_BUFFERED_P (f))
+     {
+       FRAME_SYNTHETIC_BOLD_WORKAROUND_DISABLED_P (f) = true;
+@@ -6309,6 +6334,7 @@ + (void)initialize
+ 
+       if ([defaults objectForKey:@"ApplePressAndHoldEnabled"] == nil)
+ 	[defaults registerDefaults:@{@"ApplePressAndHoldEnabled" : @"NO"}];
++	[NSDictionary dictionaryWithObjectsAndKeys:@"NO", @"ApplePressAndHoldEnabled", @"NO", @"TransparentTitleBar", @"NO", @"HideDocumentIcon", nil];
+     }
+ }
