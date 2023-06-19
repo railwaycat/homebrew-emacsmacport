@@ -21,16 +21,12 @@ index 16403f9bf5..2118b8bb13 100644
  - (instancetype)initWithContentRect:(NSRect)contentRect
  			  styleMask:(NSWindowStyleMask)windowStyle
  			    backing:(NSBackingStoreType)bufferingType
-@@ -2495,6 +2507,23 @@ - (void)setupWindow
+@@ -2495,6 +2507,19 @@ - (void)setupWindow
    window.contentView = visualEffectView;
    MRC_RELEASE (visualEffectView);
    FRAME_BACKGROUND_ALPHA_ENABLED_P (f) = true;
 +	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 +  NSString *transparentTitleBar = [userDefaults stringForKey: @"TransparentTitleBar"];
-+
-+  if ([transparentTitleBar isEqualToString: @"YES"]) {
-+    window.titlebarAppearsTransparent = true;
-+  }
 +
 +  if ([transparentTitleBar isEqualToString: @"DARK"]) {
 +    window.titlebarAppearsTransparent = true;
