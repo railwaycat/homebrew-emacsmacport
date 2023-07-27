@@ -20,7 +20,6 @@ cask 'emacs-mac-spacemacs-icon' do
     url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.2-mac-9.1/emacs-28.2-mac-9.1-arm64-12.5.1-spacemacs-icon.zip'
   end
 
-  appcast 'https://github.com/railwaycat/homebrew-emacsmacport/releases.atom'
   name 'Emacs-mac with spacemacs icon'
   homepage 'https://bitbucket.org/mituharu/emacs-mac.git'
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
