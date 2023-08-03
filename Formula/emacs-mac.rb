@@ -2,27 +2,26 @@ class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
   stable do
-    url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-28.2-mac-9.1.tar.gz"
-    version "emacs-28.2-mac-9.1"
-    sha256 "9287262473589c1edfe42e92b183a8ddf1682c995e81763adfdf95160874843e"
+    url "https://bitbucket.org/mituharu/emacs-mac/get/25008e087de5e784605a7fe0b445af0cbfa6bfc4.tar.gz"
+    version "emacs-28.3-rc1-mac-9.2"
+    sha256 "0442b892974771bb38ea6db17c1d933265851c520ce37c30716728313448d04f"
     patch do
       # patch for multi-tty support, see the following links for details
       # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
       # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/multi-tty-27.diff"
-      sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/540c5b87c8160c68725029cbc4d9d60d332d6100/patches/emacs-mac-28.3-rc-1-multi-tty-27.diff"
+      sha256 "b0e26dd07d089786a59faebe138820f01ff0365fb9c9597b47c7b07c451fea56"
     end
   end
 
   head do
     url "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
-    # patch for multi-tty support, see the following links for details
-    # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
-    # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-    # starting with emacs-mac-28.3-rc1 (changes introduced in commit 45c40d3ec0) there needs to be a different patch applied
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/540c5b87c8160c68725029cbc4d9d60d332d6100/patches/emacs-mac-28.3-rc-1-multi-tty-27.diff"
-      sha256 "b0e26dd07d089786a59faebe138820f01ff0365fb9c9597b47c7b07c451fea56"
+      # patch for multi-tty support, see the following links for details
+      # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
+      # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/8b06f75ea28a68f9a490d9001ce33fd1b0d426aa/patches/emacs-mac-29-multi-tty.diff"
+      sha256 "4412ce35689e3caf8e8b1d751bf3641b473cd3aef11889d3ecd682474bf204b0"
     end
   end
 
