@@ -16,6 +16,7 @@ class EmacsMac < Formula
 
   head do
     url "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
+    depends_on "tree-sitter"
     patch do
       # patch for multi-tty support, see the following links for details
       # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
