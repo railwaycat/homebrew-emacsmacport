@@ -21,7 +21,7 @@ Vsh = VerboseShell
 Vsh.verbose = true
 
 def copy_lib(exe, brew_dir, dest, options={})
-options[:rel_path_to_dest] ||= "@executable_path/" + Pathname.new(dest).relative_path_from(Pathname.new(exe).dirname).to_s
+  options[:rel_path_to_dest] ||= "@executable_path/" + Pathname.new(dest).relative_path_from(Pathname.new(exe).dirname).to_s
   `otool -L #{exe}`.split("\n").each do |line| # ex:   /Volumes/sensitive/src/build-emacs/brew/opt/gnutls/lib/libgnutls.30.dylib (compatibility version 37.0.0, current version 37.6.0)
     (m,orig,brew_path,lib)=line.match(%r,^\s+(#{brew_dir}(/[^ ]+)/(lib[^/ ]+))\s,).to_a
     if m
@@ -32,7 +32,7 @@ options[:rel_path_to_dest] ||= "@executable_path/" + Pathname.new(dest).relative
           Vsh.system(*%W"install_name_tool -change #{orig} #{options[:rel_path_to_dest]}/#{lib} #{exe}") # Point the libs to the newly embedded lib directory
         end
       }
-      unless lib == File.basename(exe) || File.exists?(File.join(dest, lib))
+      unless lib == File.basename(exe) || File.exist?(File.join(dest, lib))
         Vsh.mkdir_p(dest)
         Vsh.cp(File.join(brew_dir, brew_path, lib), dest)
         copy_lib(File.join(dest, lib), brew_dir, dest, options) # Copy lib's deps, too
