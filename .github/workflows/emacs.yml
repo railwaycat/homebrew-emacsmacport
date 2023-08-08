@@ -10,22 +10,28 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: set env variables
+        run: |
+          echo "EMACS_VER=29.1" >> $GITHUB_ENV
+          echo "MACPORT_VER=29.1-mac-10.0" >> $GITHUB_ENV
+          echo "COMMIT_HASH=65c6c96f27afa446df6f9d8eff63f9cc012cc738" >> $GITHUB_ENV
+          echo "OUTPUT_DIR=build_out" >> $GITHUB_ENV
       - name: get current time
         run: echo "REL_DATE=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
       - name: get OS version
         run: echo "OS_VER=$(sw_vers -productVersion)" >> $GITHUB_ENV
 
       - name: prepare
-        run: ./build-scripts/prepare_homebrew.sh
+        run: pushd build-scripts; ./prepare_homebrew.sh; popd
 
       - name: build and pack
         run: |
           pushd build-scripts
-          ./fetch-emacs-mac-port.sh "28.2-mac-9.1"
-          ./build-emacs.sh emacs-source "28.2"
-          pushd emacs-source; ../copylib.rb $(brew --prefix); popd
-          ./make-zipball.sh emacs-source/tmproot "28.2-mac-9.1"
-          ls -d $PWD/emacs-source/tmproot/*.zip
+          ./fetch-emacs-mac-port.sh "${{ env.MACPORT_VER }}" "${{ env.COMMIT_HASH }}" "${{ env.OUTPUT_DIR }}"
+          ./build-emacs.sh "${{ env.OUTPUT_DIR }}" "${{ env.EMACS_VER }}"
+          ./install_libs.sh $(pwd) "${{ env.OUTPUT_DIR }}"
+          ./make-zipball.sh "${{ env.OUTPUT_DIR }}/tmproot" "${{ env.MACPORT_VER }}"
+          ls -d ${{ env.OUTPUT_DIR }}/tmproot/*.zip
           popd
 
       - name: publish
@@ -34,7 +40,7 @@ jobs:
           name: ${{ matrix.os }}-${{ env.REL_DATE }}
           draft: true
           files: |
-            build-scripts/emacs-source/tmproot/emacs-28.2-mac-9.1-${{ env.OS_VER }}.zip
-            build-scripts/emacs-source/tmproot/emacs-28.2-mac-9.1-${{ env.OS_VER }}-spacemacs-icon.zip
+            build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.OS_VER }}.zip
+            build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.OS_VER }}-spacemacs-icon.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

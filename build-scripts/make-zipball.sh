@@ -4,7 +4,7 @@ set -e
 
 work_dir=$1
 emacs_version=$2
-version="$emacs_version-$(sw_vers -productVersion)"
+version="$emacs_version-$(uname -m)-$(sw_vers -productVersion)"
 echo "make tarball for version $version"
 
 # default icon
