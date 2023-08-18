@@ -44,12 +44,17 @@ This tap provides the following formulas:
 - `emacs-mac@28`: install Emacs mac port based on Emacs 28.
 
 #### Cask
-This tap provides the following casks, all based on Emacs 29
+This tap provides the following casks, based on Emacs 29:
 
 - `emacs-mac`
 - `emacs-mac-spacemacs-icon`
 
-Both casks can be installed by `brew install --cask` command.
+and the following casks, based on Emacs 28:
+
+- `emacs-mac-28`
+- `emacs-mac-28-spacemacs-icon`
+
+All of these casks can be installed by `brew install --cask` command.
 
 ### Pre-built Download ###
 
