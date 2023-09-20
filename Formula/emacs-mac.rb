@@ -170,6 +170,10 @@ class EmacsMac < Formula
     if (build.with? "native-comp") || (build.with? "native-compilation")
       ln_sf "#{Dir[opt_prefix/"lib/emacs/*"].first}/native-lisp", "#{opt_prefix}/Emacs.app/Contents/native-lisp"
     end
+    (info/"dir").delete if (info/"dir").exist?
+    info.glob("*.info{,.gz}") do |f|
+      quiet_system Formula["texinfo"].bin/"install-info", "--quiet", "--info-dir=#{info}", f
+    end
   end
 
   def caveats
