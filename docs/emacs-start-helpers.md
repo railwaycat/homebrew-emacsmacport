@@ -21,7 +21,7 @@ For an already-installed Emacs-mac, place the following code in a script file, r
 
 ```
 #!/bin/bash
-exec #(brew --prefix)/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs.sh "$@"
+exec $(brew --prefix)/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs.sh "$@"
 ```
 
 ### Starter script 2
