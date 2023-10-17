@@ -22,6 +22,7 @@ class EmacsMac < Formula
   option "with-native-comp", "Build with native compilation (same as \"--with-native-compilation\", for compatibility only)"
   option "with-native-compilation", "Build with native compilation"
   option "with-xwidgets", "Build with xwidgets"
+  option "with-unlimited-select", "Builds with unlimited select, which increases emacs's open file limit to 10000"
 
   # icons
   ICONS_INFO = {
@@ -129,6 +130,11 @@ class EmacsMac < Formula
       ENV.append "LDFLAGS", "-L#{gcc_lib}"
       ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
       ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
+    end
+
+    if build.with? "unlimited-select"
+      ENV.append "CFLAGS", "-DFD_SETSIZE=10000"
+      ENV.append "CFLAGS", "-DDARWIN_UNLIMITED_SELECT"
     end
 
     icons_dir = buildpath/"mac/Emacs.app/Contents/Resources"
