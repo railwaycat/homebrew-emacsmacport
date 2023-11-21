@@ -74,12 +74,22 @@ class EmacsMac < Formula
   depends_on "imagemagick" => :optional
   depends_on "librsvg" => :optional
 
-  patch do
-    # patch for multi-tty support, see the following links for details
-    # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
-    # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/8b06f75ea28a68f9a490d9001ce33fd1b0d426aa/patches/emacs-mac-29-multi-tty.diff"
-    sha256 "4412ce35689e3caf8e8b1d751bf3641b473cd3aef11889d3ecd682474bf204b0"
+  if build.head?
+    patch do
+      # patch for multi-tty support, see the following links for details
+      # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
+      # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/4ff55f8bfc70078c168749a399c87e2d26ee591b/patches/emacs-mac-29.2-rc-1-multi-tty.diff"
+      sha256 "4ede698c8f8f5509e3abf4e6a9c73e1dc3909b0f52f52ad4c33068bfaed3d1e4"
+    end
+  else
+    patch do
+      # patch for multi-tty support, see the following links for details
+      # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
+      # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/8b06f75ea28a68f9a490d9001ce33fd1b0d426aa/patches/emacs-mac-29-multi-tty.diff"
+      sha256 "4412ce35689e3caf8e8b1d751bf3641b473cd3aef11889d3ecd682474bf204b0"
+    end
   end
 
   if build.with? "no-title-bars"
