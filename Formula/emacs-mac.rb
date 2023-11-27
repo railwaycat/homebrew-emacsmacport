@@ -5,10 +5,24 @@ class EmacsMac < Formula
     url "https://bitbucket.org/mituharu/emacs-mac/get/65c6c96f27afa446df6f9d8eff63f9cc012cc738.tar.gz"
     version "emacs-29.1-mac-10.0"
     sha256 "54d7ba79157c8cb7c3e20be5ce0fbcddd3d5bd0b339b11bc628d7c67a4765b9b"
+    patch do
+      # patch for multi-tty support, see the following links for details
+      # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
+      # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/8b06f75ea28a68f9a490d9001ce33fd1b0d426aa/patches/emacs-mac-29-multi-tty.diff"
+      sha256 "4412ce35689e3caf8e8b1d751bf3641b473cd3aef11889d3ecd682474bf204b0"
+    end
   end
 
   head do
     url "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
+    patch do
+      # patch for multi-tty support, see the following links for details
+      # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
+      # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
+      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/4ff55f8bfc70078c168749a399c87e2d26ee591b/patches/emacs-mac-29.2-rc-1-multi-tty.diff"
+      sha256 "4ede698c8f8f5509e3abf4e6a9c73e1dc3909b0f52f52ad4c33068bfaed3d1e4"
+    end
   end
 
   option "without-modules", "Build without dynamic modules support"
@@ -73,24 +87,6 @@ class EmacsMac < Formula
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
   depends_on "librsvg" => :optional
-
-  if build.head?
-    patch do
-      # patch for multi-tty support, see the following links for details
-      # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
-      # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/4ff55f8bfc70078c168749a399c87e2d26ee591b/patches/emacs-mac-29.2-rc-1-multi-tty.diff"
-      sha256 "4ede698c8f8f5509e3abf4e6a9c73e1dc3909b0f52f52ad4c33068bfaed3d1e4"
-    end
-  else
-    patch do
-      # patch for multi-tty support, see the following links for details
-      # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
-      # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/8b06f75ea28a68f9a490d9001ce33fd1b0d426aa/patches/emacs-mac-29-multi-tty.diff"
-      sha256 "4412ce35689e3caf8e8b1d751bf3641b473cd3aef11889d3ecd682474bf204b0"
-    end
-  end
 
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
