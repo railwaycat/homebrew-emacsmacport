@@ -1,3 +1,10 @@
+class CopyDownloadStrategy < AbstractFileDownloadStrategy
+  # Function from https://github.com/d12frosted/homebrew-emacs-plus/blob/c8bb5ccf04f0360c668ade0d71b7a07becd1ddae/Library/EmacsBase.rb#L4
+  def initialize(url, name, version, **meta)
+      @cached_location = Pathname.new url
+  end
+end
+
 class EmacsMac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
@@ -9,7 +16,7 @@ class EmacsMac < Formula
       # patch for multi-tty support, see the following links for details
       # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
       # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/8b06f75ea28a68f9a490d9001ce33fd1b0d426aa/patches/emacs-mac-29-multi-tty.diff"
+      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-mac-29-multi-tty.diff", :using => CopyDownloadStrategy
       sha256 "4412ce35689e3caf8e8b1d751bf3641b473cd3aef11889d3ecd682474bf204b0"
     end
   end
@@ -20,7 +27,7 @@ class EmacsMac < Formula
       # patch for multi-tty support, see the following links for details
       # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
       # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/4ff55f8bfc70078c168749a399c87e2d26ee591b/patches/emacs-mac-29.2-rc-1-multi-tty.diff"
+      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-mac-29.2-rc-1-multi-tty.diff", :using => CopyDownloadStrategy
       sha256 "4ede698c8f8f5509e3abf4e6a9c73e1dc3909b0f52f52ad4c33068bfaed3d1e4"
     end
   end
@@ -91,14 +98,14 @@ class EmacsMac < Formula
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
+      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-26.2-rc1-mac-7.5-no-title-bar.patch", :using => CopyDownloadStrategy
       sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
     end
   end
 
   if build.with? "natural-title-bar"
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/911412ca8ea2671c1122bc307a1cd0740005a55d/patches/emacs-mac-title-bar-9.1.patch"
+      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-mac-title-bar-9.1.patch", :using => CopyDownloadStrategy
       sha256 "297203d750c5c2d9f05aa68f1f47f1bda43419bf1b9ba63f8167625816c3a88d"
     end
   end
