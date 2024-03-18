@@ -1,7 +1,8 @@
 class CopyDownloadStrategy < AbstractFileDownloadStrategy
   # Function from https://github.com/d12frosted/homebrew-emacs-plus/blob/c8bb5ccf04f0360c668ade0d71b7a07becd1ddae/Library/EmacsBase.rb#L4
   def initialize(url, name, version, **meta)
-      @cached_location = Pathname.new url
+    super(url, name, version, **meta)
+    @cached_location = Pathname.new url
   end
 end
 
@@ -16,7 +17,7 @@ class EmacsMac < Formula
       # patch for multi-tty support, see the following links for details
       # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
       # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-mac-29-multi-tty.diff", :using => CopyDownloadStrategy
+      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-mac-29-multi-tty.diff", using: CopyDownloadStrategy
       sha256 "4412ce35689e3caf8e8b1d751bf3641b473cd3aef11889d3ecd682474bf204b0"
     end
   end
@@ -27,7 +28,7 @@ class EmacsMac < Formula
       # patch for multi-tty support, see the following links for details
       # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
       # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-mac-29.2-rc-1-multi-tty.diff", :using => CopyDownloadStrategy
+      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-mac-29.2-rc-1-multi-tty.diff", using: CopyDownloadStrategy
       sha256 "4ede698c8f8f5509e3abf4e6a9c73e1dc3909b0f52f52ad4c33068bfaed3d1e4"
     end
   end
@@ -40,7 +41,8 @@ class EmacsMac < Formula
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
   option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
-  option "with-native-comp", "Build with native compilation (same as \"--with-native-compilation\", for compatibility only)"
+  option "with-native-comp", \
+         "Build with native compilation (same as \"--with-native-compilation\", for compatibility only)"
   option "with-native-compilation", "Build with native compilation"
   option "with-xwidgets", "Build with xwidgets"
   option "with-unlimited-select", "Builds with unlimited select, which increases emacs's open file limit to 10000"
@@ -98,14 +100,14 @@ class EmacsMac < Formula
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
     patch do
-      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-26.2-rc1-mac-7.5-no-title-bar.patch", :using => CopyDownloadStrategy
+      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-26.2-rc1-mac-7.5-no-title-bar.patch", using: CopyDownloadStrategy
       sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
     end
   end
 
   if build.with? "natural-title-bar"
     patch do
-      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-mac-title-bar-9.1.patch", :using => CopyDownloadStrategy
+      url "#{HOMEBREW_LIBRARY}/Taps/railwaycat/homebrew-emacsmacport/patches/emacs-mac-title-bar-9.1.patch", using: CopyDownloadStrategy
       sha256 "297203d750c5c2d9f05aa68f1f47f1bda43419bf1b9ba63f8167625816c3a88d"
     end
   end
