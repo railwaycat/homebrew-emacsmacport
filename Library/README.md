@@ -17,3 +17,7 @@ building(outside of brew tap).
 
 `CopyDownloadStrategy` is the same as the one from emacs-plus:
 https://github.com/d12frosted/homebrew-emacs-plus/blob/c8bb5ccf04f0360c668ade0d71b7a07becd1ddae/Library/EmacsBase.rb#L4
+
+## Icons.rb
+
+This file include the name and hash of all supported icons.
