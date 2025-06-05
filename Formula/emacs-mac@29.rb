@@ -1,6 +1,6 @@
 require_relative "../Library/UrlResolver.rb"
 
-class EmacsMac < Formula
+class EmacsMacAT29 < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
 
