@@ -1,6 +1,11 @@
+require_relative "../Library/UrlResolver.rb"
+
 class EmacsMacAT28 < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
+
+  @@urlResolver = UrlResolver.new(ENV["HOMEBREW_EMACS_MAC_MODE"] || "remote")
+
   stable do
     url "https://bitbucket.org/mituharu/emacs-mac/get/25008e087de5e784605a7fe0b445af0cbfa6bfc4.tar.gz"
     version "emacs-28.3-rc1-mac-9.2"
@@ -51,7 +56,7 @@ class EmacsMacAT28 < Formula
     next if build.without? icon
 
     resource icon do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/f7490351882f685a50fc6c21024a6af70daa8e0d/icons/#{icon}.icns"
+      url (@@urlResolver.icon_url icon), using: CopyDownloadStrategy
       sha256 iconsha
     end
   end
@@ -76,21 +81,21 @@ class EmacsMacAT28 < Formula
     # patch for multi-tty support, see the following links for details
     # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
     # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-    url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/540c5b87c8160c68725029cbc4d9d60d332d6100/patches/emacs-mac-28.3-rc-1-multi-tty-27.diff"
+    url (@@urlResolver.patch_url "emacs-mac-28.3-rc-1-multi-tty-27"), using: CopyDownloadStrategy
     sha256 "b0e26dd07d089786a59faebe138820f01ff0365fb9c9597b47c7b07c451fea56"
   end
 
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/667f0efc08506facfc6963ac1fd1d5b9b777e094/patches/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
+      url (@@urlResolver.patch_url "emacs-26.2-rc1-mac-7.5-no-title-bar"), using: CopyDownloadStrategy
       sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
     end
   end
 
   if build.with? "natural-title-bar"
     patch do
-      url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/911412ca8ea2671c1122bc307a1cd0740005a55d/patches/emacs-mac-title-bar-9.1.patch"
+      url (@@urlResolver.patch_url "emacs-mac-title-bar-9.1"), using: CopyDownloadStrategy
       sha256 "297203d750c5c2d9f05aa68f1f47f1bda43419bf1b9ba63f8167625816c3a88d"
     end
   end

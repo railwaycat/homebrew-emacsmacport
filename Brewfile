@@ -1,7 +1,6 @@
-tap "homebrew/bundle"
 brew "autoconf"
 brew "automake"
-# brew "gnutls"
+brew "gnutls"
 brew "pkg-config"
 brew "texinfo"
 brew "jansson"
