@@ -1,20 +1,20 @@
-name: Emacs 29
+name: Emacs 28
 
 on:
   push:
     branches:
       - master
     paths:
-      - "Formula/emacs-mac@29.rb"
+      - "Formula/emacs-mac@28.rb"
       - "patches/**"
       - "Library/**"
-      - ".github/workflows/emacs29.yml"
+      - ".github/workflows/emacs28.yml"
   pull_request:
     paths:
-      - "Formula/emacs-mac@29.rb"
+      - "Formula/emacs-mac@28.rb"
       - "patches/**"
       - "Library/**"
-      - ".github/workflows/emacs29.yml"
+      - ".github/workflows/emacs28.yml"
 
 jobs:
   build:
@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Emacs
-        run: brew install --formula ./Formula/emacs-mac@29.rb ${{ matrix.build_opts }} --verbose
+        run: brew install --formula ./Formula/emacs-mac@28.rb ${{ matrix.build_opts }} --verbose
 
       - name: Test Building
         run: $(brew --prefix)/bin/emacs --batch --eval='(print (+ 2 2))'
@@ -46,12 +46,12 @@ jobs:
           echo "build_opts=$BUILD_OPTS" >> "$GITHUB_ENV"
           RUNNER_OS=$(echo "${{ matrix.os }}" | sed 's/ //')
           echo "runner_os=$RUNNER_OS" >> "$GITHUB_ENV"
-          tar -C ~/Library/Logs/Homebrew/emacs-mac@29/ -czvf ~/Library/Logs/Homebrew/emacs-mac@29-$RUNNER_OS$BUILD_OPTS.tar.gz .
+          tar -C ~/Library/Logs/Homebrew/emacs-mac@28/ -czvf ~/Library/Logs/Homebrew/emacs-mac@28-$RUNNER_OS$BUILD_OPTS.tar.gz .
 
       - name: Upload logs
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: emacs-mac@29-${{ env.runner_os }}${{ env.build_opts }}.tar.gz
+          name: emacs-mac@28-${{ env.runner_os }}${{ env.build_opts }}.tar.gz
           path: |
-            ~/Library/Logs/Homebrew/emacs-mac@29-${{ env.runner_os }}${{ env.build_opts }}.tar.gz
+            ~/Library/Logs/Homebrew/emacs-mac@28-${{ env.runner_os }}${{ env.build_opts }}.tar.gz
