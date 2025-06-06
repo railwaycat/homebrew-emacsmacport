@@ -23,7 +23,6 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-13
           - macos-15
         build_opts:
           - ""
