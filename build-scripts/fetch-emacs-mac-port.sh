@@ -20,7 +20,7 @@ fi
 echo "apply patch: --with-natural-title-bar"
 patch -d "$OUTPUT_DIR" -p1 < ../patches/emacs-mac-title-bar-9.1.diff
 
-echo "apply patch: multi-tty-27"
+echo "apply patch: multi-tty"
 patch -d "$OUTPUT_DIR" -p1 < ../patches/${MULTI_TTY_PATCH}
 
 echo "apply patch: bundle structure signature hack"
