@@ -7,10 +7,9 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-12
-          - macos-11
+          - macos-15
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: set env variables
         run: |
@@ -36,13 +35,11 @@ jobs:
           ls -d ${{ env.OUTPUT_DIR }}/tmproot/*.zip
           popd
 
-      - name: publish
-        uses: softprops/action-gh-release@v1
+      - name: upload
+        uses: actions/upload-artifact@v4
+
         with:
-          name: ${{ matrix.os }}-${{ env.REL_DATE }}
-          draft: true
-          files: |
+          name: emacs-mac-29
+          path: |
             build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.OS_VER }}.zip
             build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.OS_VER }}-spacemacs-icon.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

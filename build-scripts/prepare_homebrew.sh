@@ -23,8 +23,8 @@ brew update --force --quiet
 # brew update remove all installed formula and reinstall from
 # Brewfile, prevent waste time on upgrade all
 # brew remove --force $(brew list --formula)
-brew bundle --force cleanup --file ./Brewfile
-brew bundle --file ./Brewfile
+brew bundle --force cleanup --file ./Brewfile-29
+brew bundle --file ./Brewfile-29
 # build gnutls from source code, to ensure the absolute path for
 # linked libs
 brew install --build-from-source gnutls
