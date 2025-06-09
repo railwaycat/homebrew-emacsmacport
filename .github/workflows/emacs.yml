@@ -17,6 +17,7 @@ jobs:
           echo "MACPORT_VER=29.1-mac-10.0" >> $GITHUB_ENV
           echo "COMMIT_HASH=65c6c96f27afa446df6f9d8eff63f9cc012cc738" >> $GITHUB_ENV
           echo "OUTPUT_DIR=build_out" >> $GITHUB_ENV
+          echo "MAC_ARCH=$(uname -m)" >> $GITHUB_ENV
       - name: get current time
         run: echo "REL_DATE=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
       - name: get OS version
@@ -41,5 +42,5 @@ jobs:
         with:
           name: emacs-mac-29
           path: |
-            build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.OS_VER }}.zip
-            build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.OS_VER }}-spacemacs-icon.zip
+            build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.MAC_ARCH }}-${{ env.OS_VER }}.zip
+            build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.MAC_ARCH }}-${{ env.OS_VER }}-spacemacs-icon.zip
