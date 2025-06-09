@@ -1,5 +1,5 @@
 # patches
 
-This directory for the patches. Patches usually include a version
-number in its filename.
+This directory is for patches. Patch filenames usually include a version
+number.
 
