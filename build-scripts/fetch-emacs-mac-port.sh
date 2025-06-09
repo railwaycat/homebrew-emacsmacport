@@ -18,7 +18,7 @@ else
 fi
 
 echo "apply patch: --with-natural-title-bar"
-patch -d "$OUTPUT_DIR" -p1 < ../patches/emacs-mac-title-bar-9.1.patch
+patch -d "$OUTPUT_DIR" -p1 < ../patches/emacs-mac-title-bar-9.1.diff
 
 echo "apply patch: multi-tty-27"
 patch -d "$OUTPUT_DIR" -p1 < ../patches/${MULTI_TTY_PATCH}
