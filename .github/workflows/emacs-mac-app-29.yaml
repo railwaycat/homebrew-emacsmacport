@@ -1,4 +1,4 @@
-name: Emacs build
+name: Emacs App 29 Build
 on: workflow_dispatch
 jobs:
   build:
@@ -7,11 +7,13 @@ jobs:
       fail-fast: false
       matrix:
         os:
+          - macos-13
+          - macos-14
           - macos-15
     steps:
       - uses: actions/checkout@v4
 
-      - name: set env variables
+      - name: Set env variables
         run: |
           echo "EMACS_VER=29.1" >> $GITHUB_ENV
           echo "MACPORT_VER=29.1-mac-10.0" >> $GITHUB_ENV
@@ -23,10 +25,14 @@ jobs:
       - name: get OS version
         run: echo "OS_VER=$(sw_vers -productVersion)" >> $GITHUB_ENV
 
-      - name: prepare
-        run: pushd build-scripts; ./prepare_homebrew.sh; popd
+      - name: Prepare dependencies
+        run: |
+          pushd build-scripts
+          ./prepare_homebrew.sh
+          brew bundle --file ./Brewfile-29
+          popd
 
-      - name: build and pack
+      - name: Building and Packing
         run: |
           pushd build-scripts
           ./fetch-emacs-mac-port.sh "${{ env.MACPORT_VER }}" "${{ env.COMMIT_HASH }}" "${{ env.OUTPUT_DIR }}"
@@ -36,11 +42,11 @@ jobs:
           ls -d ${{ env.OUTPUT_DIR }}/tmproot/*.zip
           popd
 
-      - name: upload
+      - name: Uploading
         uses: actions/upload-artifact@v4
 
         with:
-          name: emacs-mac-29
+          name: emacs-mac-app-29
           path: |
             build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.MAC_ARCH }}-${{ env.OS_VER }}.zip
             build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.MAC_ARCH }}-${{ env.OS_VER }}-spacemacs-icon.zip
