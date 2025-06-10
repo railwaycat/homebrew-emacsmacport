@@ -15,9 +15,7 @@ jobs:
 
       - name: Set env variables
         run: |
-          echo "EMACS_VER=29.4" >> $GITHUB_ENV
           echo "MACPORT_VER=29.4-mac-10.1" >> $GITHUB_ENV
-          echo "COMMIT_HASH=5a9b8b89ddf75f6f7c5e584e82d021bfa7383805" >> $GITHUB_ENV
           echo "OUTPUT_DIR=build_out" >> $GITHUB_ENV
           echo "MAC_ARCH=$(uname -m)" >> $GITHUB_ENV
       - name: get current time
@@ -35,8 +33,8 @@ jobs:
       - name: Building and Packing
         run: |
           pushd build-scripts
-          ./fetch-emacs-mac-port.sh "${{ env.MACPORT_VER }}" "${{ env.COMMIT_HASH }}" "${{ env.OUTPUT_DIR }}"
-          ./build-emacs.sh "${{ env.OUTPUT_DIR }}" "${{ env.EMACS_VER }}"
+          ./fetch-src-emacs-29.sh "${{ env.OUTPUT_DIR }}"
+          ./build-emacs.sh "${{ env.OUTPUT_DIR }}"
           ./install_libs.sh $(pwd) "${{ env.OUTPUT_DIR }}"
           ./make-zipball.sh "${{ env.OUTPUT_DIR }}/tmproot" "${{ env.MACPORT_VER }}"
           ls -d ${{ env.OUTPUT_DIR }}/tmproot/*.zip

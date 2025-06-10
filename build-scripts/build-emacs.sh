@@ -2,7 +2,6 @@
 
 source_dir=$1
 installprefix=`pwd`/$source_dir/tmproot
-emacs_version=$2
 
 # texinfo usually a keg-only package
 export PATH="/opt/homebrew/opt/texinfo/bin:/usr/local/opt/texinfo/bin:$PATH"
