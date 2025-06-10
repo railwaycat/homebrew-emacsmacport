@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v4
 
         with:
-          name: emacs-mac-app-29
+          name: emacs-mac-app-29-${{ env.OS_VER }}-${{ env.MAC_ARCH }}
           path: |
             build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.MAC_ARCH }}-${{ env.OS_VER }}.zip
             build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.MAC_ARCH }}-${{ env.OS_VER }}-spacemacs-icon.zip
