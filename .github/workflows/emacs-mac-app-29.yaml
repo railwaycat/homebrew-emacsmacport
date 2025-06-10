@@ -15,9 +15,9 @@ jobs:
 
       - name: Set env variables
         run: |
-          echo "EMACS_VER=29.1" >> $GITHUB_ENV
-          echo "MACPORT_VER=29.1-mac-10.0" >> $GITHUB_ENV
-          echo "COMMIT_HASH=65c6c96f27afa446df6f9d8eff63f9cc012cc738" >> $GITHUB_ENV
+          echo "EMACS_VER=29.4" >> $GITHUB_ENV
+          echo "MACPORT_VER=29.4-mac-10.1" >> $GITHUB_ENV
+          echo "COMMIT_HASH=5a9b8b89ddf75f6f7c5e584e82d021bfa7383805" >> $GITHUB_ENV
           echo "OUTPUT_DIR=build_out" >> $GITHUB_ENV
           echo "MAC_ARCH=$(uname -m)" >> $GITHUB_ENV
       - name: get current time
