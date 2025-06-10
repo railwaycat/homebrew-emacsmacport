@@ -10,9 +10,9 @@ end
 # This is a modification based on UrlResolver class from d12frosted's
 # emacs-plus
 
-HOMEBREW_EMACS_MAC_TAP_OWNER = "railwaycat"
-HOMEBREW_EMACS_MAC_TAP_REPO = "emacsmacport"
 class UrlResolver
+  HOMEBREW_EMACS_MAC_TAP_OWNER = "railwaycat"
+  HOMEBREW_EMACS_MAC_TAP_REPO = "emacsmacport"
   def initialize(mode)
     tap = Tap.fetch(HOMEBREW_EMACS_MAC_TAP_OWNER, HOMEBREW_EMACS_MAC_TAP_REPO)
     @formula_root =
