@@ -67,25 +67,18 @@ Bundles are the same as those from Homebrew Cask.
 Support macOS versions:
 
 * Intel Mac
-  - Monterey (macOS12)
-  - Big Sur (macOS11)
-  - Ventura (macOS13)
+  - Ventura (macOS13) and later
 * Apple Silicon Mac
-  - Monterey (macOS12)
-  - Ventura (macOS13)
+  - Sonoma (macOS14)
+  - Sequoia (macOS15) and later
 
 For macOS versions not be listed above, please install from Homebrew
 formula (install without `--cask`).
 
-Intel Mac bundles are built by GitHub Actions, the version support
-limitation is from the macOS versions they
-[support](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources)
-currently.
-
-Apple Silicon bundles are built on a M1 Mac with
-[Tart](https://github.com/cirruslabs/tart). The version support
-limitation is because Apple only supports macOS virtualization since
-Monterey (macOS12).
+All bundles are built by GitHub Actions and available for all macOS
+versions [GitHub hosted
+runners](https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories)
+have.
 
 ## Useful links ##
 
