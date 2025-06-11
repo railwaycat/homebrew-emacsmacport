@@ -1,0 +1,37 @@
+name: Emacs 29 Cask
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "Casks/emacs-mac.rb"
+      - ".github/workflows/emacs29-cask.yml"
+  pull_request:
+    paths:
+      - "Casks/emacs-mac.rb"
+      - ".github/workflows/emacs29-cask.yml"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-13
+          - macos-14
+          - macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Cask
+        run: brew tap railwaycat/emacsmacport .
+
+      - name: Install Emacs-mac
+        run: brew install --cask emacs-mac
+
+      - name: Test Binaries
+        run: |
+          $(brew --prefix)/bin/emacs --version
+          $(brew --prefix)/bin/emacs --batch --eval='(print (+ 2 2))'
