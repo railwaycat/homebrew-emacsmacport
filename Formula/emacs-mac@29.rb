@@ -170,7 +170,7 @@ class EmacsMacAT29 < Formula
 
   def post_install
     if (build.with? "native-comp") || (build.with? "native-compilation")
-      ln_sf "#{Dir[opt_prefix/"lib/emacs/*"].first}/native-lisp", "#{opt_prefix}/Emacs.app/Contents/native-lisp"
+      ln_sf "#{Dir[prefix/"lib/emacs/*"].first}/native-lisp", "#{prefix}/Emacs.app/Contents/native-lisp"
     end
     (info/"dir").delete if (info/"dir").exist?
     info.glob("*.info{,.gz}") do |f|
