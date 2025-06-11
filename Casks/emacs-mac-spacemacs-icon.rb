@@ -1,27 +1,22 @@
 cask 'emacs-mac-spacemacs-icon' do
-  version 'emacs-29.1-mac-10.0'
+  version 'emacs-29.4-mac-10.1'
 
   if Hardware::CPU.intel?
-    depends_on macos: ">= :big_sur"
+    depends_on macos: ">= :ventura"
 
-    if MacOS.version <= :big_sur
-      sha256 '7f8f4923c38fefcb18ebb5922fb983bcca3b6328c75f6f8812787a7cdf77b9ee'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.1-mac-10.0/emacs-29.1-mac-10.0-x86_64-11.7.8-spacemacs-icon.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
-    else
-      # for macOS version is or newer than Big Sur
-      sha256 '0d724e7bcd67ac8b16c50055df033220ffba570bd669ae209769d63e3dbe2a59'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.1-mac-10.0/emacs-29.1-mac-10.0-x86_64-12.6.7-spacemacs-icon.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
-    end
+    sha256 '79f1406d98c341114b90be5eecca93a69d6a07b87533351b0b8fb792906b33a4'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-x86_64-13.7.6-spacemacs-icon.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
   else # Apple Silicon
-    depends_on macos: ">= :monterey"
+    depends_on macos: ">= :ventura"
 
-    if MacOS.version <= :monterey
-      sha256 'dd3caddf159e855395abfa60561833af8bbb436354a27cd25df44b2b737da494'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.1-mac-10.0/emacs-29.1-mac-10.0-arm64-12.5.1-spacemacs-icon.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
+    if MacOS.version >= :sequoia # macOS 15
+      # for macOS is or newer than 15
+      sha256 'a74503eef9df69a6a647d602b3b618eb85c4820b9e135413cf5278bd7c04d84b'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-arm64-15.5-spacemacs-icon.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
     else
-      # for macOS version is or newer than Monterey
-      sha256 'd47dddbf74a15d509a8217ed27a1a51bc9f19a35e7554d14dcdc7fbf4cb65f3e'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.1-mac-10.0/emacs-29.1-mac-10.0-arm64-13.4-spacemacs-icon.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
+      # for macOS older than 15, which is 14
+      sha256 '809e5993a22a424a9293e3da33cb182ffd6b8f375c75a400cb7b95da05a1bb19'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-arm64-14.7.6-spacemacs-icon.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
     end
   end
 
@@ -32,6 +27,8 @@ cask 'emacs-mac-spacemacs-icon' do
   conflicts_with cask: [
                         'emacs',
                         'emacs-mac',
+                        'emacs-mac-28',
+                        'emacs-mac-28-spacemacs-icon',
                        ]
 
   app 'Emacs.app'
