@@ -1,23 +1,22 @@
 cask 'emacs-mac-28' do
-  version 'emacs-28.2-mac-9.1'
+  version 'emacs-28.3-rc1-mac-9.2'
 
   if Hardware::CPU.intel?
-    depends_on macos: ">= :big_sur"
-
-    if MacOS.version <= :big_sur
-      sha256 '6a62f75894475fa3d9474cb5b7a9a596c5c5466b94398687b8a71d84fc3af6d8'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.2-mac-9.1/emacs-28.2-mac-9.1-11.6.8.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
-    else
-      # for macOS version is or newer than Monterey
-      sha256 '484690f89fceaa03f686b38bff6c12f462bf26e1e8d61283fe22df30d1481482'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.2-mac-9.1/emacs-28.2-mac-9.1-12.6.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
-    end
+    depends_on macos: ">= :ventura" # macOS 13
+    sha256 '1ba349eb63edb0345c9514b76b1460023d0b59c118459f9f5e577be523d44d89'
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.3-rc1-mac-9.2/emacs-28.3-rc1-mac-9.2-x86_64-13.7.6.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
   else # Apple Silicon
-    depends_on macos: ">= :monterey"
+    depends_on macos: ">= :sonoma" # macOS 14
 
-    # for macOS version is or newer than Monterey
-    sha256 '488a1bf68a87a3dd304a25f2a1fe2f0b4ae95c2c80bfe4e53bdbeff0e3a2c5d4'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.2-mac-9.1/emacs-28.2-mac-9.1-arm64-12.5.1.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
+    if MacOS.version >= :sequoia # macOS 15
+      # for macOS is or newer than 15
+      sha256 '72e02759cc33334b5c897d2731f26f3cf81af9fc0985051c0e9274f3c9e471c8'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.3-rc1-mac-9.2/emacs-28.3-rc1-mac-9.2-arm64-15.5.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
+    else
+      # for macOS older than 15, which is 14
+      sha256 '033c4d13ff16b408f8fa49cd021804eda1aa3db6e13d3f35ef67b9f63f425269'
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.3-rc1-mac-9.2/emacs-28.3-rc1-mac-9.2-arm64-14.7.6.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
+    end
   end
 
   name 'Emacs-mac v28'
@@ -26,7 +25,9 @@ cask 'emacs-mac-28' do
 
   conflicts_with cask: [
                         'emacs',
+                        'emacs-mac',
                         'emacs-mac-spacemacs-icon',
+                        'emacs-mac-28-spacemacs-icon',
                        ]
 
   app 'Emacs.app'
