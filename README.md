@@ -83,7 +83,7 @@ have.
 ## Useful links ##
 
 * Emacs mac port on [MacPorts](https://www.macports.org/) (not be maintained by the maintainer of this repo):
-  - [emacs-mac-app](https://ports.macports.org/port/emacs-mac-app/)  
+  - [emacs-mac-app](https://ports.macports.org/port/emacs-mac-app/)
   - [emacs-mac-app-devel](https://ports.macports.org/port/emacs-mac-app-devel/)
 
 * Switch meta and option key - https://gist.github.com/3498096

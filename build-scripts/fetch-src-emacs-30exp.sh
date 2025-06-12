@@ -16,7 +16,7 @@ echo "apply patch: multi-tty"
 patch -d "$OUTPUT_DIR" -p1 < ../patches/emacs-mac-29.2-rc-1-multi-tty.diff
 
 echo "apply patch: Make man more portable"
-patch -d "$OUTPUT_DIR" =p1 < ../patches/emacs-mac-30-Make-man-more-portable.diff
+patch -d "$OUTPUT_DIR" -p1 < ../patches/emacs-mac-30-Make-man-more-portable.diff
 
 echo "apply patch: --with-natural-title-bar"
 patch -d "$OUTPUT_DIR" -p1 < ../patches/emacs-mac-title-bar-9.1.diff
