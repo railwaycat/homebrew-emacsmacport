@@ -1,0 +1,50 @@
+name: Emacs App 30exp Build
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-13
+          - macos-14
+          - macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set env variables
+        run: |
+          echo "MACPORT_VER=30.1-mac-exp" >> $GITHUB_ENV
+          echo "OUTPUT_DIR=build_out" >> $GITHUB_ENV
+          echo "MAC_ARCH=$(uname -m)" >> $GITHUB_ENV
+      - name: get current time
+        run: echo "REL_DATE=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+      - name: get OS version
+        run: echo "OS_VER=$(sw_vers -productVersion)" >> $GITHUB_ENV
+
+      - name: Prepare dependencies
+        run: |
+          pushd build-scripts
+          ./prepare_homebrew.sh
+          brew bundle --file ./Brewfile-30
+          popd
+
+      - name: Building and Packing
+        run: |
+          pushd build-scripts
+          ./fetch-src-emacs-30exp.sh "${{ env.OUTPUT_DIR }}"
+          ./build-emacs.sh "${{ env.OUTPUT_DIR }}"
+          ./install_libs.sh $(pwd) "${{ env.OUTPUT_DIR }}"
+          ./make-zipball.sh "${{ env.OUTPUT_DIR }}/tmproot" "${{ env.MACPORT_VER }}"
+          ls -d ${{ env.OUTPUT_DIR }}/tmproot/*.zip
+          popd
+
+      - name: Uploading
+        uses: actions/upload-artifact@v4
+
+        with:
+          name: emacs-mac-app-30-${{ env.OS_VER }}-${{ env.MAC_ARCH }}
+          path: |
+            build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.MAC_ARCH }}-${{ env.OS_VER }}.zip
+            build-scripts/${{ env.OUTPUT_DIR }}/tmproot/emacs-${{ env.MACPORT_VER }}-${{ env.MAC_ARCH }}-${{ env.OS_VER }}-spacemacs-icon.zip

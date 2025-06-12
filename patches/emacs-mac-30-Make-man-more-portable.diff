@@ -1,0 +1,38 @@
+From fc5e905dc90e21b1a381bde42e22c06f45c17e16 Mon Sep 17 00:00:00 2001
+From: Michael Albinus <michael.albinus@gmx.de>
+Date: Tue, 22 Apr 2025 08:45:34 +0200
+Subject: [PATCH] Make `man' more portable
+
+* lisp/man.el (Man-init-defvars): Use [:cntrl:].  Character ranges
+with octal numbers aren't portable enough.  (Bug#77944)
+---
+ lisp/man.el | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/lisp/man.el b/lisp/man.el
+index d34d9154052..397162a7ad1 100644
+--- a/lisp/man.el
++++ b/lisp/man.el
+@@ -635,9 +635,7 @@ This is necessary if one wants to dump man.el with Emacs."
+ 	     (if Man-sed-script
+ 		 (concat "-e '" Man-sed-script "'")
+ 	       "")
+-             ;; Use octal numbers.  Otherwise, \032 (Ctrl-Z) would
+-             ;; suspend remote connections.
+-	     "-e '/^[\\o001-\\o032][\\o001-\\o032]*$/d'"
++	     "-e '/^[[:cntrl:]][[:cntrl:]]*$/d'"
+ 	     "-e '/\e[789]/s///g'"
+ 	     "-e '/Reformatting page.  Wait/d'"
+ 	     "-e '/Reformatting entry.  Wait/d'"
+@@ -772,7 +770,7 @@ Different man programs support this feature in different ways.
+ The default Debian man program (\"man-db\") has a `--local-file'
+ \(or `-l') option for this purpose.  The default Red Hat man
+ program has no such option, but interprets any name containing
+-a \"/\" as a local filename.  The function returns either `man-db'
++a \"/\" as a local filename.  The function returns either `man-db',
+ `man', or nil."
+   (if (eq Man-support-local-filenames 'auto-detect)
+       (with-connection-local-variables
+-- 
+2.49.0
+
