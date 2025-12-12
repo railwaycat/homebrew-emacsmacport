@@ -137,6 +137,9 @@ class EmacsMacAT29 < Formula
       end
     end
 
+    # cf. https://mirror.slackware.jp/slackware/slackware64-current/extra/source/emacs-regular-build/emacs.SlackBuild.with-native-compilation
+    system "sed -i '' -e 's/ts_language_version/ts_language_abi_version/g' src/treesit.c"
+
     system "./autogen.sh"
     system "./configure", *args
     system "make"
