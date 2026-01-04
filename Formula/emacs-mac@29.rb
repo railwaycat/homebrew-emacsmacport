@@ -30,6 +30,11 @@ class EmacsMacAT29 < Formula
     sha256 "318395d3869d3479da4593360bcb11a5df08b494b995287074d0d744ec562c17"
   end
 
+  patch do
+    url (@@urlResolver.patch_url "macos-26-event"), using: CopyDownloadStrategy
+    sha256 "86fc40d3a4073969f16527360272b6eed2d9f8ee264186e40c83a19eb19c576d"
+  end
+
   option "without-modules", "Build without dynamic modules support"
   option "with-ctags", "Don't remove the ctags executable that emacs provides"
   option "with-no-title-bars",
@@ -66,7 +71,7 @@ class EmacsMacAT29 < Formula
   depends_on "texinfo"
   depends_on "jansson" => :recommended
   depends_on "libxml2" => :recommended
-  depends_on "tree-sitter" => :recommended
+  depends_on "tree-sitter@0.25" => :recommended
   depends_on "dbus" => :optional
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
