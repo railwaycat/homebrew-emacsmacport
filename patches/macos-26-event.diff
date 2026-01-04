@@ -1,0 +1,43 @@
+diff --git a/src/callproc.c b/src/callproc.c
+index 7db908b99a..b47107910b 100644
+--- a/src/callproc.c
++++ b/src/callproc.c
+@@ -1344,7 +1344,14 @@ emacs_posix_spawn_init_actions (posix_spawn_file_actions_t *actions,
+   /* Haiku appears to have linkable posix_spawn_file_actions_chdir,
+      but it always fails.  So use the _np function instead.  */
+ #if defined HAVE_POSIX_SPAWN_FILE_ACTIONS_ADDCHDIR && !defined HAIKU
+-  error = posix_spawn_file_actions_addchdir (actions, cwd);
++#if defined DARWIN_OS
++  if (__builtin_available (macos 26.0, *))
++#endif
++    error = posix_spawn_file_actions_addchdir (actions, cwd);
++#if defined DARWIN_OS
++  else
++    error = posix_spawn_file_actions_addchdir_np (actions, cwd);
++#endif
+ #elif defined HAVE_POSIX_SPAWN_FILE_ACTIONS_ADDCHDIR_NP
+   error = posix_spawn_file_actions_addchdir_np (actions, cwd);
+ #elif defined DARWIN_OS
+diff --git a/src/macappkit.m b/src/macappkit.m
+index 7df321374a..a3ecf45601 100644
+--- a/src/macappkit.m
++++ b/src/macappkit.m
+@@ -1955,6 +1955,18 @@ - (BOOL)doesHoldQuit
+ install_application_handler (void)
+ {
+   mac_within_gui (^{
++      if (mac_operating_system_version.major >= 26)
++	/* Disable some event-related macOS 26 features so as to avoid
++	   the following problems:
++	   1. Can't get events from the Carbon main event queue.
++	   2. Rerouting a C-g event to the GUI queue from -[EmacsMenu
++	      performKeyEquivalent:] causes hang.
++	   3. Deferring a menu bar click event may fail and report
++	      "Canceling unexpected menu tracking:".  */
++	[NSUserDefaults.standardUserDefaults
++	    registerDefaults:@{@"NSEventConcurrentProcessingEnabled" : @"NO",
++	      @"NSApplicationUpdateCycleEnabled" : @"NO"}];
++
+       [EmacsApplication sharedApplication];
+       emacsController = [[EmacsController alloc] init];
+       [NSApp setDelegate:emacsController];
