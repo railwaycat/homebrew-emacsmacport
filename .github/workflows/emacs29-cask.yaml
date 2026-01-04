@@ -6,11 +6,11 @@ on:
       - master
     paths:
       - "Casks/emacs-mac.rb"
-      - ".github/workflows/emacs29-cask.yml"
+      - ".github/workflows/emacs29-cask.yaml"
   pull_request:
     paths:
       - "Casks/emacs-mac.rb"
-      - ".github/workflows/emacs29-cask.yml"
+      - ".github/workflows/emacs29-cask.yaml"
 
 jobs:
   build:
@@ -19,9 +19,9 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-13
           - macos-14
           - macos-15
+          - macos-26
     steps:
       - uses: actions/checkout@v4
 
