@@ -35,7 +35,8 @@ jobs:
       - name: Build Emacs
         run: |
           export HOMEBREW_DEVELOPER=1
-          brew install Formula/emacs-mac@31exp.rb --HEAD ${{ matrix.build_opts }} --verbose
+          brew tap railwaycat/emacsmacport .
+          brew install emacs-mac@31exp --HEAD ${{ matrix.build_opts }} --verbose
 
       - name: Test Building
         run: $(brew --prefix)/bin/emacs --batch --eval='(print (+ 2 2))'
