@@ -31,26 +31,27 @@ port on your Mac machine, either building from source code or
 installing pre-built binaries from casks.
 
 ### If you encounter an issue
-If it is:
-- a build error when installing/upgrading any of the formulas
-- Emacs.app from formula or cask fails to start or freezes
-- other issues you are not certain about
 
-Feel free to open an issue to this repo.
+- If it is:
+  - a build error when installing/upgrading any of the formulas
+  - Emacs.app from formula or cask fails to start or freezes
+  - other issues you are not certain about
 
-If it is a bug while using Emacs or related to a feature of Emacs Mac
-Port 30 and above, please refer to the upstream repo:
-<https://github.com/jdtsmith/emacs-mac/tree/emacs-mac-30_1_exp>
+  Feel free to open an issue to this repo.
 
-If it is any issue with Emacs Mac Port 28 and 29, please read the
-following note from the developer first:
+- If it is a bug while using Emacs or related to a feature of Emacs Mac
+  Port 30 and above, please refer to the upstream repo:
+  <https://github.com/jdtsmith/emacs-mac/tree/emacs-mac-30_1_exp>
 
-> If you find a bug, then please try to reproduce it with some
-> official builds such as X11 or NS (Cocoa).  If it turns out to be
-> specific to the Mac port, then please report it to
-> <a href="mailto:mituharu+bug-gnu-emacs-mac@math.s.chiba-u.ac.jp">mituharu+bug-gnu-emacs-mac@math.s.chiba-u.ac.jp</a>.  Otherwise (i.e.,
-> it is also reproducible with official ones), report it using <kbd>M-x</kbd>
-> report-emacs-bug **USING THE OFFICIAL BUILD** as such.
+- If it is any issue with Emacs Mac Port 28 and 29, please read the
+  following note from the developer first:
+
+  > If you find a bug, then please try to reproduce it with some
+  > official builds such as X11 or NS (Cocoa).  If it turns out to be
+  > specific to the Mac port, then please report it to
+  > <a href="mailto:mituharu+bug-gnu-emacs-mac@math.s.chiba-u.ac.jp">mituharu+bug-gnu-emacs-mac@math.s.chiba-u.ac.jp</a>.  Otherwise (i.e.,
+  > it is also reproducible with official ones), report it using <kbd>M-x</kbd>
+  > report-emacs-bug **USING THE OFFICIAL BUILD** as such.
 
 
 ## Installation options
