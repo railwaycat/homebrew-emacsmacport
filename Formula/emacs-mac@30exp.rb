@@ -9,9 +9,9 @@ class EmacsMacAT30exp < Formula
 
   # Using jdtsmith's fork with Emacs 30 mac port patches
   # No tagged releases - pin to specific commit hash
-  url "https://github.com/jdtsmith/emacs-mac/archive/8b59765b2a73b307d25743c87a6f4f2dd4cd1287.tar.gz"
-  version "emacs-30-20260119"
-  sha256 "705e9658f26450120f9d1cf5da51fa9d5ec8765238c5a7d99c0c94eb25ae7981"
+  url "https://github.com/jdtsmith/emacs-mac/archive/880eef8aeef7ba6346078404a09522ffc5fd3d8d.tar.gz"
+  version "emacs-30-20260201"
+  sha256 "64f74a2691db669cfce206f6a8c95135b871908df7eedcb12f904d0e33bf0343"
 
   head do
     url "https://github.com/jdtsmith/emacs-mac.git", branch: "emacs-mac-30_1_exp"
