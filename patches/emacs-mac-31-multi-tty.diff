@@ -1,0 +1,52 @@
+diff --git a/lisp/server.el b/lisp/server.el
+index c7165bbc884..26ea5ce0777 100644
+--- a/lisp/server.el
++++ b/lisp/server.el
+@@ -1357,7 +1357,6 @@ server--process-filter-1
+                  (when (or (and (eq system-type 'windows-nt)
+                                 (or (daemonp)
+                                     (eq window-system 'w32)))
+-                           (eq window-system 'mac)
+                            ;; Client runs on Windows, but the server
+                            ;; runs on a Posix host.
+                            (equal tty-name "CONOUT$"))
+diff --git a/src/frame.c b/src/frame.c
+index 67a6e2ac079..22ed326381e 100644
+--- a/src/frame.c
++++ b/src/frame.c
+@@ -1771,12 +1771,8 @@ affects all frames on the same terminal device.  */)
+     emacs_abort ();
+ #else /* not MSDOS */
+ 
+-#ifdef defined WINDOWSNT || defined HAVE_MACGUI /* This should work now! */
+-  if (!FRAME_TERMCAP_P (sf)
+-#ifdef HAVE_MACGUI
+-      && sf->output_method != output_initial
+-#endif
+-      )
++#ifdef WINDOWSNT /* This should work now! */
++  if (!FRAME_TERMCAP_P (sf))
+     error ("Not using an ASCII terminal now; cannot make a new ASCII frame");
+ #endif
+ #endif /* not MSDOS */
+diff --git a/src/macterm.c b/src/macterm.c
+index 087b38c0674..452d0be6e75 100644
+--- a/src/macterm.c
++++ b/src/macterm.c
+@@ -2978,6 +2978,7 @@ mac_mouse_position (struct frame **fp, int insist, Lisp_Object *bar_window,
+ {
+   struct frame *f1;
+   struct mac_display_info *dpyinfo = FRAME_DISPLAY_INFO (*fp);
++  struct frame *sf = SELECTED_FRAME ();
+   bool return_no_frame_flag = false;
+ 
+   block_input ();
+@@ -3017,7 +3018,7 @@ mac_mouse_position (struct frame **fp, int insist, Lisp_Object *bar_window,
+ 	f1 = XFRAME (mac_event_frame ());
+     }
+ 
+-  if (f1)
++  if (f1 && !FRAME_TERMCAP_P (f1))
+     {
+       /* Ok, we found a frame.  Store all the values.
+ 	 last_mouse_glyph is a rectangle used to reduce the generation

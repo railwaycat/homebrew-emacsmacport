@@ -1,5 +1,5 @@
-require_relative "../Library/UrlResolver.rb"
-require_relative "../Library/Icons.rb"
+require_relative "../Library/UrlResolver"
+require_relative "../Library/Icons"
 
 class EmacsMacAT31exp < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs (GNU master experimental)"
@@ -9,43 +9,19 @@ class EmacsMacAT31exp < Formula
 
   # This formula only supports HEAD builds tracking GNU Emacs master
   # Install with: brew install --HEAD emacs-mac@31exp
-  head "https://github.com/jdtsmith/emacs-mac.git", branch: "emacs-mac-gnu_master_exp"
-
   license "GPL-3.0-or-later"
-
-  patch do
-    # patch for multi-tty support, see the following links for details
-    # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
-    # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-    url (@@urlResolver.patch_url "emacs-mac-29.2-rc-1-multi-tty"), using: CopyDownloadStrategy
-    sha256 "4ede698c8f8f5509e3abf4e6a9c73e1dc3909b0f52f52ad4c33068bfaed3d1e4"
-  end
-
-  patch do
-    url (@@urlResolver.patch_url "prefer-typo-ascender-descender-linegap"), using: CopyDownloadStrategy
-    sha256 "318395d3869d3479da4593360bcb11a5df08b494b995287074d0d744ec562c17"
-  end
+  head "https://github.com/jdtsmith/emacs-mac.git", branch: "emacs-mac-gnu_master_exp"
 
   option "without-modules", "Build without dynamic modules support"
   option "with-no-title-bars", "Build with a patch for no title bars on frames"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
   option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
-  option "with-native-comp", \
+  option "with-native-comp",
          "Build with native compilation (same as \"--with-native-compilation\", for compatibility only)"
+
   option "with-native-compilation", "Build with native compilation"
   option "with-xwidgets", "Build with xwidgets"
   option "with-unlimited-select", "Builds with unlimited select, which increases emacs's open file limit to 10000"
-
-  # icons
-  ICONS_INFO.each do |icon, iconsha|
-    option "with-#{icon}", "Using Emacs icon: #{icon}"
-    next if build.without? icon
-
-    resource icon do
-      url (@@urlResolver.icon_url icon), using: CopyDownloadStrategy
-      sha256 iconsha
-    end
-  end
 
   deprecated_option "icon-official" => "with-official-icon"
   deprecated_option "icon-modern" => "with-modern-icon"
@@ -62,6 +38,30 @@ class EmacsMacAT31exp < Formula
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
   depends_on "librsvg" => :optional
+
+  patch do
+    # patch for multi-tty support, see the following links for details
+    # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
+    # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
+    url (@@urlResolver.patch_url "emacs-mac-31-multi-tty"), using: CopyDownloadStrategy
+    sha256 "d8f984ec2f9e7f94821155e729472031dd89f07612fffa23bc8cfde0b1bf9ad6"
+  end
+
+  patch do
+    url (@@urlResolver.patch_url "prefer-typo-ascender-descender-linegap"), using: CopyDownloadStrategy
+    sha256 "318395d3869d3479da4593360bcb11a5df08b494b995287074d0d744ec562c17"
+  end
+
+  # icons
+  ICONS_INFO.each do |icon, iconsha|
+    option "with-#{icon}", "Using Emacs icon: #{icon}"
+    next if build.without? icon
+
+    resource icon do
+      url (@@urlResolver.icon_url icon), using: CopyDownloadStrategy
+      sha256 iconsha
+    end
+  end
 
   if build.with? "no-title-bars"
     patch do
