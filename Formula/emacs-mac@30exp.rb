@@ -1,5 +1,11 @@
-require_relative "../Library/UrlResolver.rb"
-require_relative "../Library/Icons.rb"
+begin
+  require_relative "../Library/UrlResolver.rb"
+  require_relative "../Library/Icons.rb"
+rescue LoadError
+  tap = Tap.fetch("railwaycat", "emacsmacport")
+  require "#{tap.path}/Library/UrlResolver.rb"
+  require "#{tap.path}/Library/Icons.rb"
+end
 
 class EmacsMacAT30exp < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs (Emacs 30 experimental)"
