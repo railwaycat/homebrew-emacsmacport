@@ -1,5 +1,11 @@
-require_relative "../Library/UrlResolver"
-require_relative "../Library/Icons"
+begin
+  require_relative "../Library/UrlResolver"
+  require_relative "../Library/Icons"
+rescue LoadError
+  tap = Tap.fetch("railwaycat", "emacsmacport")
+  require "#{tap.path}/Library/UrlResolver"
+  require "#{tap.path}/Library/Icons"
+end
 
 class EmacsMacAT31exp < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs (GNU master experimental)"
@@ -126,6 +132,10 @@ class EmacsMacAT31exp < Formula
     system "make", "install"
     prefix.install "NEWS-mac"
 
+    if (build.with? "native-comp") || (build.with? "native-compilation")
+      ln_sf "#{Dir[prefix/"lib/emacs/*"].first}/native-lisp", "#{prefix}/Emacs.app/Contents/native-lisp"
+    end
+
     if build.with? "starter"
       # Replace the symlink with one that starts GUI
       # alignment the behavior with cask
@@ -139,9 +149,6 @@ class EmacsMacAT31exp < Formula
   end
 
   def post_install
-    if (build.with? "native-comp") || (build.with? "native-compilation")
-      ln_sf "#{Dir[prefix/"lib/emacs/*"].first}/native-lisp", "#{prefix}/Emacs.app/Contents/native-lisp"
-    end
     (info/"dir").delete if (info/"dir").exist?
     info.glob("*.info{,.gz}") do |f|
       quiet_system Formula["texinfo"].bin/"install-info", "--quiet", "--info-dir=#{info}", f
