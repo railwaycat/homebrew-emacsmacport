@@ -2,11 +2,11 @@ cask 'emacs-mac-28-spacemacs-icon' do
   version 'emacs-28.3-rc1-mac-9.2'
 
   if Hardware::CPU.intel?
-    depends_on macos: ">= :ventura" # macOS 13
+    depends_on macos: :ventura # macOS 13
     sha256 '368841421adff600c3941fcd94bd32532a005ce65ec56bf2834df97d73f28b85'
     url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-28.3-rc1-mac-9.2/emacs-28.3-rc1-mac-9.2-x86_64-13.7.6-spacemacs-icon.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
   else # Apple Silicon
-    depends_on macos: ">= :sonoma" # macOS 14
+    depends_on macos: :sonoma # macOS 14
 
     if MacOS.version >= :sequoia # macOS 15
       # for macOS is or newer than 15
