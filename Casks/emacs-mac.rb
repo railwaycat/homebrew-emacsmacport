@@ -2,12 +2,12 @@ cask 'emacs-mac' do
   version 'emacs-29.4-mac-10.1'
 
   if Hardware::CPU.intel?
-    depends_on macos: ">= :ventura"
+    depends_on macos: :ventura
 
     sha256 '412516bec8d5561163c868874b452c7275aa903617df252cf6a287289b6d7fe3'
     url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-x86_64-13.7.6.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
   else # Apple Silicon
-    depends_on macos: ">= :ventura"
+    depends_on macos: :ventura
 
     if MacOS.version >= :sequoia # macOS 15
       # for macOS is or newer than 15
