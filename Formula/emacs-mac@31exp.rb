@@ -89,6 +89,8 @@ class EmacsMacAT31exp < Formula
       "--prefix=#{prefix}",
       "--with-mac",
       "--enable-mac-app=#{prefix}",
+      "--enable-mac-self-contained",
+      "--bindir=#{bin}",
       "--with-gnutls",
     ]
     args << "--with-modules" if build.with? "modules"
@@ -132,18 +134,19 @@ class EmacsMacAT31exp < Formula
     system "make", "install"
     prefix.install "NEWS-mac"
 
-    if (build.with? "native-comp") || (build.with? "native-compilation")
-      ln_sf "#{Dir[prefix/"lib/emacs/*"].first}/native-lisp", "#{prefix}/Emacs.app/Contents/native-lisp"
-    end
-
+    # Self-contained builds do not install a top-level bin/emacs, so
+    # provide one ourselves.
+    (bin/"emacs").delete if (bin/"emacs").exist?
     if build.with? "starter"
-      # Replace the symlink with one that starts GUI
-      # alignment the behavior with cask
-      # borrow the idea from emacs-plus
-      (bin/"emacs").unlink
+      # Launch the GUI via Emacs.sh to match the cask behavior borrowed from emacs-plus.
       (bin/"emacs").write <<~EOS
         #!/bin/bash
         exec #{prefix}/Emacs.app/Contents/MacOS/Emacs.sh "$@"
+      EOS
+    else
+      (bin/"emacs").write <<~EOS
+        #!/bin/bash
+        exec #{prefix}/Emacs.app/Contents/MacOS/Emacs "$@"
       EOS
     end
   end
