@@ -16,7 +16,7 @@ class EmacsMacAT31exp < Formula
   # This formula only supports HEAD builds tracking GNU Emacs master
   # Install with: brew install --HEAD emacs-mac@31exp
   license "GPL-3.0-or-later"
-  head "https://github.com/jdtsmith/emacs-mac.git", branch: "emacs-mac-gnu_master_exp"
+  head "https://github.com/jdtsmith/emacs-mac.git", branch: "emacs-mac-31"
 
   option "without-modules", "Build without dynamic modules support"
   option "with-no-title-bars", "Build with a patch for no title bars on frames"
