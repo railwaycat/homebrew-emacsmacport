@@ -70,6 +70,9 @@ This tap provides the following formulas:
 - `emacs-mac@28`: install Emacs mac port 28.
 - `emacs-mac@30exp`: install Emacs mac port 30 based on the experimental repo.
 - `emacs-mac@31exp`: install Emacs mac port 31 based on the experimental repo.
+- `emacs-mac@32exp`: install Emacs mac port based on the GNU Emacs master
+  branch of the experimental repo. HEAD only, install it by
+  `brew install --HEAD emacs-mac@32exp`.
 
 #### Cask
 This tap provides the following casks, based on Emacs 29:
