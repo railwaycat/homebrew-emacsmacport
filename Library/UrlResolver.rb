@@ -13,11 +13,13 @@ end
 class UrlResolver
   HOMEBREW_EMACS_MAC_TAP_OWNER = "railwaycat"
   HOMEBREW_EMACS_MAC_TAP_REPO = "emacsmacport"
+
   def initialize(mode)
     tap = Tap.fetch(HOMEBREW_EMACS_MAC_TAP_OWNER, HOMEBREW_EMACS_MAC_TAP_REPO)
+    repo_root = File.expand_path("..", __dir__)
     @formula_root =
       mode == "local" || !tap.installed? ?
-        Dir.pwd : tap.path.to_s
+        repo_root : tap.path.to_s
   end
 
   def patch_url name
