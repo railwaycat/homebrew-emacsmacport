@@ -15,7 +15,7 @@ Please see the full feature list
 Development from the official repository slowed down after Emacs 29
 (29.4-mac-10.1) because the developer has been busy.
 [@jdtsmith](https://github.com/jdtsmith) forked from upstream and is
-doing experimental development for Emacs 30 and master.
+doing experimental development for Emacs 30, Emacs 31, and master.
 
 I highly recommend that who want to use Emacs mac port >=30 read
 [@jdtsmith](https://github.com/jdtsmith)'s
@@ -69,7 +69,7 @@ This tap provides the following formulas:
 - `emacs-mac`: install the latest version of Emacs mac port 29.
 - `emacs-mac@28`: install Emacs mac port 28.
 - `emacs-mac@30exp`: install Emacs mac port 30 based on the experimental repo.
-- `emacs-mac@31exp`: install Emacs mac port 31(master) based on the experimental repo. This formula is `--HEAD` only.
+- `emacs-mac@31exp`: install Emacs mac port 31 based on the experimental repo.
 
 #### Cask
 This tap provides the following casks, based on Emacs 29:

@@ -8,13 +8,17 @@ rescue LoadError
 end
 
 class EmacsMacAT31exp < Formula
-  desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs (GNU master experimental)"
+  desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs (Emacs 31 experimental)"
   homepage "https://www.gnu.org/software/emacs/"
 
   @@urlResolver = UrlResolver.new(ENV["HOMEBREW_EMACS_MAC_MODE"] || "remote")
 
-  # This formula only supports HEAD builds tracking GNU Emacs master
-  # Install with: brew install --HEAD emacs-mac@31exp
+  # Using jdtsmith's fork with Emacs 31 mac port patches
+  # No tagged releases - pin to specific commit hash
+  url "https://github.com/jdtsmith/emacs-mac/archive/617ada906640ac5694cbec9f5fccf2246b17e21d.tar.gz"
+  version "emacs-31-20260901"
+  sha256 "998ace03e3496af7b894b9af6b28c1d297bd4d6e792745f8fa06eaee980eddf4"
+
   license "GPL-3.0-or-later"
   head "https://github.com/jdtsmith/emacs-mac.git", branch: "emacs-mac-31"
 
@@ -157,11 +161,10 @@ class EmacsMacAT31exp < Formula
 
   def caveats
     <<~EOS
-      This is a HIGHLY EXPERIMENTAL build of YAMAMOTO Mitsuharu's "Mac port"
-      tracking GNU Emacs master branch, based on jdtsmith's fork.
+      This is an EXPERIMENTAL build of YAMAMOTO Mitsuharu's "Mac port"
+      addition to GNU Emacs 31, based on jdtsmith's fork.
 
-      WARNING: This tracks bleeding-edge development. Expect breakage.
-      Use at your own risk.
+      WARNING: This is experimental software. Use at your own risk.
 
       This provides a native GUI support for macOS.
       After installing, see README-mac and NEWS-mac in #{prefix} for the port details.
