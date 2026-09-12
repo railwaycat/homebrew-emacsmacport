@@ -5,18 +5,18 @@ cask 'emacs-mac' do
     depends_on macos: :ventura
 
     sha256 '412516bec8d5561163c868874b452c7275aa903617df252cf6a287289b6d7fe3'
-    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-x86_64-13.7.6.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
+    url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-x86_64-13.7.6.zip'
   else # Apple Silicon
     depends_on macos: :ventura
 
     if MacOS.version >= :sequoia # macOS 15
       # for macOS is or newer than 15
       sha256 'e673ce675cbc44047eb27857171be554e3aa938fcadce9bd5f411f722b735b22'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-arm64-15.5.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-arm64-15.5.zip'
     else
       # for macOS older than 15, which is 14
       sha256 'f4f18e78297e6a1e0dc69bb4ce91496aa7249f0a92679665deb5e7e405ca1fbd'
-      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-arm64-14.7.6.zip', verified: "github.com/railwaycat/homebrew-emacsmacport"
+      url 'https://github.com/railwaycat/homebrew-emacsmacport/releases/download/emacs-29.4-mac-10.1/emacs-29.4-mac-10.1-arm64-14.7.6.zip'
     end
   end
 
