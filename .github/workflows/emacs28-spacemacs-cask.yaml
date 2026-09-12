@@ -28,6 +28,9 @@ jobs:
       - name: Install Cask
         run: brew tap railwaycat/emacsmacport .
 
+      - name: Trust the cask
+        run: brew trust --cask railwaycat/emacsmacport/emacs-mac-28-spacemacs-icon
+
       - name: Install Emacs-mac
         run: brew install --cask emacs-mac-28-spacemacs-icon
 
