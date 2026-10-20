@@ -18,7 +18,7 @@ index 67a6e2ac079..22ed326381e 100644
      emacs_abort ();
  #else /* not MSDOS */
  
--#ifdef defined WINDOWSNT || defined HAVE_MACGUI /* This should work now! */
+-#if defined WINDOWSNT || defined HAVE_MACGUI
 -  if (!FRAME_TERMCAP_P (sf)
 -#ifdef HAVE_MACGUI
 -      && sf->output_method != output_initial
