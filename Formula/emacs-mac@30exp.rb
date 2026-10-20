@@ -159,14 +159,19 @@ class EmacsMacAT30exp < Formula
     end
   end
 
-  def post_install
-    if (build.with? "native-comp") || (build.with? "native-compilation")
-      ln_sf "#{Dir[prefix/"lib/emacs/*"].first}/native-lisp", "#{prefix}/Emacs.app/Contents/native-lisp"
-    end
-    (info/"dir").delete if (info/"dir").exist?
-    info.glob("*.info{,.gz}") do |f|
-      quiet_system Formula["texinfo"].bin/"install-info", "--quiet", "--info-dir=#{info}", f
-    end
+  post_install_steps do
+    symlink "lib/emacs/*/native-lisp", "Emacs.app/Contents",
+            source_base: :prefix, target_base: :prefix,
+            source_glob: true, overwrite: true
+    remove "info/dir", base: :share
+    run "/usr/bin/find",
+        args: [
+          "{{share}}/info", "-maxdepth", "1",
+          "(", "-name", "*.info", "-o", "-name", "*.info.gz", ")",
+          "-exec", "{{HOMEBREW_PREFIX}}/opt/texinfo/bin/install-info",
+          "--quiet", "--info-dir={{share}}/info", "{}", ";",
+        ],
+        must_succeed: false, print_stderr: false
   end
 
   def caveats

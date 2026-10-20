@@ -152,11 +152,16 @@ class EmacsMacAT31exp < Formula
     end
   end
 
-  def post_install
-    (info/"dir").delete if (info/"dir").exist?
-    info.glob("*.info{,.gz}") do |f|
-      quiet_system Formula["texinfo"].bin/"install-info", "--quiet", "--info-dir=#{info}", f
-    end
+  post_install_steps do
+    remove "info/dir", base: :share
+    run "/usr/bin/find",
+        args: [
+          "{{share}}/info", "-maxdepth", "1",
+          "(", "-name", "*.info", "-o", "-name", "*.info.gz", ")",
+          "-exec", "{{HOMEBREW_PREFIX}}/opt/texinfo/bin/install-info",
+          "--quiet", "--info-dir={{share}}/info", "{}", ";",
+        ],
+        must_succeed: false, print_stderr: false
   end
 
   def caveats

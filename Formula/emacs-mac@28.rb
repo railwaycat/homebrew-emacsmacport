@@ -154,10 +154,10 @@ class EmacsMacAT28 < Formula
     end
   end
 
-  def post_install
-    if (build.with? "native-comp") || (build.with? "native-compilation")
-      ln_sf "#{Dir[opt_prefix/"lib/emacs/*"].first}/native-lisp", "#{opt_prefix}/Emacs.app/Contents/native-lisp"
-    end
+  post_install_steps do
+    symlink "lib/emacs/*/native-lisp", "Emacs.app/Contents",
+            source_base: :opt_prefix, target_base: :opt_prefix,
+            source_glob: true, overwrite: true
   end
 
   def caveats
