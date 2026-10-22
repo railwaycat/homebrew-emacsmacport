@@ -29,6 +29,18 @@ index 67a6e2ac079..22ed326381e 100644
      error ("Not using an ASCII terminal now; cannot make a new ASCII frame");
  #endif
  #endif /* not MSDOS */
+diff --git a/src/macappkit.m b/src/macappkit.m
+--- a/src/macappkit.m
++++ b/src/macappkit.m
+@@ -17088,7 +17088,7 @@ mac_select (int nfds, fd_set *rfds, fd_set *wfds, fd_set *efds,
+ 
+   read_all_from_nonblocking_fd (mac_select_fds[0]);
+ 
+-  if (inhibit_window_system || noninteractive || nfds <= mac_select_fds[1]
++  if (noninteractive || nfds <= mac_select_fds[1]
+       || rfds == NULL || !FD_ISSET (mac_select_fds[1], rfds))
+     {
+       fd_set rfds_fallback;
 diff --git a/src/macterm.c b/src/macterm.c
 index 087b38c0674..452d0be6e75 100644
 --- a/src/macterm.c
