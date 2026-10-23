@@ -15,9 +15,9 @@ class EmacsMacAT31exp < Formula
 
   # Using jdtsmith's fork with Emacs 31 mac port patches
   # No tagged releases - pin to specific commit hash
-  url "https://github.com/jdtsmith/emacs-mac/archive/f192ebbc2eb27f44c6b3bd3b2f1c5813c900ffbc.tar.gz"
-  version "emacs-31-20260928"
-  sha256 "a645758e36e012412cef0c1c605fe5a80aa49fb3a5ce9d56dcd4d344419a06f7"
+  url "https://github.com/jdtsmith/emacs-mac/archive/c3ab9f8e29498d96b354c7ed16d2b2a60c55dee8.tar.gz"
+  version "emacs-31-20261018"
+  sha256 "1b3fa53b44431c06b131ea2db3dccfd7b268093d683a1aa19f0bbc26a73d9994"
 
   license "GPL-3.0-or-later"
   head "https://github.com/jdtsmith/emacs-mac.git", branch: "emacs-mac-31"
@@ -54,7 +54,7 @@ class EmacsMacAT31exp < Formula
     # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
     # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
     url (@@urlResolver.patch_url "emacs-mac-31-multi-tty"), using: CopyDownloadStrategy
-    sha256 "d8f984ec2f9e7f94821155e729472031dd89f07612fffa23bc8cfde0b1bf9ad6"
+    sha256 "0731b2e838169d9b69b4a71b641cbe1baa02353955254d5d99474542286683db"
   end
 
   patch do
