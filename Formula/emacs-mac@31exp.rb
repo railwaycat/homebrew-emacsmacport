@@ -15,9 +15,9 @@ class EmacsMacAT31exp < Formula
 
   # Using jdtsmith's fork with Emacs 31 mac port patches
   # No tagged releases - pin to specific commit hash
-  url "https://github.com/jdtsmith/emacs-mac/archive/c3ab9f8e29498d96b354c7ed16d2b2a60c55dee8.tar.gz"
-  version "emacs-31-20261018"
-  sha256 "1b3fa53b44431c06b131ea2db3dccfd7b268093d683a1aa19f0bbc26a73d9994"
+  url "https://github.com/jdtsmith/emacs-mac/archive/7191e1ebcf007cba4a07e23c6cf0b7b5849dffc7.tar.gz"
+  version "emacs-31-20261024"
+  sha256 "84df47b9cf940fec876235eede94eefd6c3740512b183bbb67883d68a7fdfcca"
 
   license "GPL-3.0-or-later"
   head "https://github.com/jdtsmith/emacs-mac.git", branch: "emacs-mac-31"
@@ -48,14 +48,6 @@ class EmacsMacAT31exp < Formula
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
   depends_on "librsvg" => :optional
-
-  patch do
-    # patch for multi-tty support, see the following links for details
-    # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
-    # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
-    url (@@urlResolver.patch_url "emacs-mac-31-multi-tty"), using: CopyDownloadStrategy
-    sha256 "0731b2e838169d9b69b4a71b641cbe1baa02353955254d5d99474542286683db"
-  end
 
   patch do
     url (@@urlResolver.patch_url "prefer-typo-ascender-descender-linegap"), using: CopyDownloadStrategy
