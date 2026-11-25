@@ -154,6 +154,27 @@ class EmacsMacAT31exp < Formula
           "--quiet", "--info-dir={{share}}/info", "{}", ";",
         ],
         must_succeed: false, print_stderr: false
+
+    # The linker's ad-hoc signature names the binary temacs-<uuid>, not the
+    # bundle's org.gnu.Emacs. macOS Local Network privacy looks the app up by
+    # both, so connections to LAN hosts from Emacs and its subprocesses fail
+    # with "No route to host" even when Emacs is allowed in System Settings.
+    # Sealing the bundle needs the non-Mach-O files in MacOS/ (Emacs.sh, the
+    # .pdmp) signed first. Runs here, after keg fixups, which may re-sign.
+    run "/bin/sh",
+        args: [
+          "-c",
+          <<~'SH',
+            set -e
+            app="$1"
+            for f in "$app"/Contents/MacOS/*; do
+              [ "$f" = "$app/Contents/MacOS/Emacs" ] || /usr/bin/codesign --force --sign - "$f"
+            done
+            /usr/bin/codesign --force --sign - --identifier org.gnu.Emacs "$app"
+            /usr/bin/codesign --verify "$app"
+          SH
+          "sh", "{{prefix}}/Emacs.app"
+        ]
   end
 
   def caveats
