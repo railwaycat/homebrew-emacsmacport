@@ -29,13 +29,24 @@ jobs:
           - "--with-native-compilation"
     env:
       HOMEBREW_EMACS_MAC_MODE: local
+      HOMEBREW_NO_AUTO_UPDATE: 1
     steps:
       - uses: actions/checkout@v4
+
+      - name: Link checkout as tap
+        run: |
+          TAP_DIR="$(brew --repository)/Library/Taps/railwaycat/homebrew-emacsmacport"
+          mkdir -p "$(dirname "$TAP_DIR")"
+          ln -s "$GITHUB_WORKSPACE" "$TAP_DIR"
+          brew tap
+
+      - name: Trust the tap
+        run: brew trust railwaycat/emacsmacport
 
       - name: Build Emacs
         run: |
           export HOMEBREW_DEVELOPER=1
-          brew install Formula/emacs-mac@31exp.rb ${{ matrix.build_opts }} --verbose
+          brew install railwaycat/emacsmacport/emacs-mac@31exp ${{ matrix.build_opts }} --verbose
 
       - name: Test Building
         run: $(brew --prefix)/bin/emacs --batch --eval='(print (+ 2 2))'
